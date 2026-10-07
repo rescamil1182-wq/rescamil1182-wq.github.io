@@ -190,12 +190,33 @@
         .btn-action-dark { display: block; width: 100%; text-align: center; background-color: var(--bone); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
         .btn-action-teal { display: block; width: 100%; text-align: center; background-color: var(--teal); color: var(--bone); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
         .btn-action-dark:hover, .btn-action-teal:hover { opacity: 0.9; }
-        .contact-line { margin-top: 40px; font-size: 14px; opacity: 0.75; }
+        .contact-line { margin-top: 24px; font-size: 14px; opacity: 0.75; }
         .contact-line a { color: inherit; }
+
+        /* Correo directo destacado */
+        .email-feature { max-width: 800px; margin: 32px auto 0; padding: 32px 40px; border: 1px solid rgba(201, 138, 59, 0.45); border-radius: 16px; background-color: rgba(201, 138, 59, 0.06); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; text-align: left; }
+        .email-feature .meta-tag { display: block; color: var(--amber); opacity: 1; margin-bottom: 6px; }
+        .email-feature .email-link { font-family: var(--serif); font-size: 32px; font-weight: 600; line-height: 1.2; color: var(--bone); text-decoration: none; border-bottom: 3px solid var(--amber); overflow-wrap: anywhere; }
+        .email-feature .email-link:hover { color: var(--amber); }
+        .btn-email { display: inline-block; background-color: var(--amber); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px 24px; border-radius: 6px; text-decoration: none; white-space: nowrap; }
+        .btn-email:hover { opacity: 0.9; }
+        .hero-email { margin-top: 20px; font-size: 15px; }
+        .hero-email a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--amber); }
+
+        /* Aviso legal y confidencialidad */
+        .legal { max-width: 900px; margin: 24px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 40px; text-align: left; font-size: 12.5px; line-height: 1.6; }
+        .legal h5 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 4px; }
+        .legal p { opacity: 0.75; }
+        .legal a { color: var(--ink); font-weight: 600; }
+        .doc-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+        .doc-link.is-pending { cursor: default; border-bottom-style: dashed; opacity: 0.7; }
+        .doc-link .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); background-color: rgba(201, 138, 59, 0.25); padding: 2px 6px; border-radius: 3px; }
+        .footer-bottom { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(11, 20, 32, 0.1); }
+        .footer-bottom strong { font-weight: 700; }
 
         footer { position: relative; z-index: 1; background-color: var(--bone-dim); border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 48px 0; text-align: center; font-size: 12px; }
         footer img { height: 28px; width: auto; margin: 0 auto 16px; }
-        footer p { opacity: 0.6; }
+        footer .footer-bottom p { opacity: 0.7; }
 
         /* Adaptabilidad Móvil */
         @media (max-width: 1024px) {
@@ -239,6 +260,10 @@
             .box-card { padding: 28px 22px; }
             .conversion-section { padding: 72px 0; }
             .fixed-watermark { display: none; }
+            .email-feature { padding: 24px 22px; }
+            .email-feature .email-link { font-size: 22px; }
+            .btn-email { width: 100%; text-align: center; }
+            .legal { grid-template-columns: minmax(0, 1fr); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -296,10 +321,11 @@
                         <a href="#contacto" class="btn-primary">Solicitar diagnóstico &rarr;</a>
                         <a href="#metodologia" class="btn-secondary">Ver metodología</a>
                     </div>
+                    <p class="hero-email">O escríbanos directo a <a href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></p>
                 </div>
                 <div class="hero-right">
                     <div class="image-frame">
-                        <img src="oficina.png" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896">
+                        <img src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896">
                     </div>
                 </div>
             </div>
@@ -485,7 +511,7 @@
                     </div>
                     <!-- Funciona siempre: por defecto abre un correo prellenado.
                          Para usar Zoho, pegue su liga en AGENDA_URL (script al final). -->
-                    <a id="cta-agenda" class="btn-action-dark" href="mailto:Ilik-analytics@gmail.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico</a>
+                    <a id="cta-agenda" class="btn-action-dark" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico</a>
                 </div>
                 <div class="box-card">
                     <div>
@@ -496,7 +522,15 @@
                 </div>
             </div>
 
-            <p class="contact-line"><a href="mailto:Ilik-analytics@gmail.com">Ilik-analytics@gmail.com</a> &middot; <a href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
+            <div class="email-feature">
+                <div>
+                    <span class="meta-tag">Correo directo</span>
+                    <a class="email-link" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a>
+                </div>
+                <a class="btn-email" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">Enviar correo</a>
+            </div>
+
+            <p class="contact-line">Teléfono y WhatsApp: <a href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
         </div>
     </section>
 
@@ -505,7 +539,29 @@
     <footer>
         <div class="max-w-7xl">
             <img src="logo-oficial.png" alt="Ilik" width="43" height="28">
-            <p>&copy; <span id="year">2026</span> Ilik &middot; Inteligencia de Compra Hospitalaria &middot; Aviso de privacidad y confidencialidad disponible a solicitud.</p>
+            <div class="legal">
+                <div>
+                    <h5>Derechos reservados</h5>
+                    <p>El nombre Ilik, su logotipo, los textos, las imágenes y la metodología descrita en este sitio son propiedad de su titular. Queda prohibida su reproducción, distribución o uso, total o parcial, sin autorización previa y por escrito.</p>
+                </div>
+                <div>
+                    <h5>Confidencialidad</h5>
+                    <p>Toda información que un hospital comparte con Ilik se trata como estrictamente confidencial, se usa solo para el diagnóstico solicitado y no se comparte con terceros. Ilik no recaba datos de pacientes. El intercambio de archivos con cada hospital se formaliza mediante un Convenio de Confidencialidad.</p>
+                    <a class="doc-link is-pending" id="doc-convenio" role="link" aria-disabled="true" title="Documento en preparación">Convenio de Confidencialidad <span class="badge">Próximamente</span></a>
+                </div>
+                <div>
+                    <h5>Alcance de la información</h5>
+                    <p>El contenido de este sitio es informativo. Los casos se muestran anonimizados, sin identificar a ninguna institución, y sus cifras se presentan como efecto ilustrativo de la metodología. Nada de lo publicado constituye una auditoría, una garantía de resultados ni una oferta vinculante.</p>
+                </div>
+                <div>
+                    <h5>Datos personales</h5>
+                    <p>Los datos de contacto que nos envíe se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Mientras se publica nuestro Aviso de Privacidad, puede solicitarlo en <a href="mailto:contacto@ilikanalytics.com?subject=Aviso%20de%20privacidad">contacto@ilikanalytics.com</a>.</p>
+                    <a class="doc-link is-pending" id="doc-aviso" role="link" aria-disabled="true" title="Documento en preparación">Aviso de Privacidad <span class="badge">Próximamente</span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><strong>&copy; <span id="year">2026</span> Ilik. Todos los derechos reservados.</strong> &middot; Inteligencia de Compra Hospitalaria &middot; <a href="mailto:contacto@ilikanalytics.com" style="color: inherit;">contacto@ilikanalytics.com</a></p>
+            </div>
         </div>
     </footer>
 
@@ -521,6 +577,26 @@
                 agenda.target = "_blank";
                 agenda.rel = "noopener";
             }
+            // Cuando cada documento esté listo, pegue aquí su liga (https://...). Mientras esté vacía, se muestra "Próximamente".
+            var DOCS = {
+                "doc-convenio": "",
+                "doc-aviso": ""
+            };
+            Object.keys(DOCS).forEach(function (id) {
+                var link = document.getElementById(id);
+                var url = DOCS[id];
+                if (link && /^https:\/\//.test(url)) {
+                    link.href = url;
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                    link.removeAttribute("aria-disabled");
+                    link.removeAttribute("role");
+                    link.classList.remove("is-pending");
+                    link.title = "";
+                    var badge = link.querySelector(".badge");
+                    if (badge) { badge.remove(); }
+                }
+            });
             var y = document.getElementById("year");
             if (y) { y.textContent = String(new Date().getFullYear()); }
         } catch (e) { /* sin efecto visible */ }
