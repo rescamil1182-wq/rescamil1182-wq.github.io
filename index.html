@@ -5,36 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilik Analytics | Inteligencia de Compra Hospitalaria</title>
     
-    <!-- MOTOR DE ESTILOS ULTRA-ESTABLE PARA GITHUB PAGES -->
-    <script src="https://tailwindcss.com"></script>
+    <!-- ESTILOS PRE-PROCESADOS CON PALETA DE COLORES RE-VALIDADA -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FUENTES OFICIALES DE LA IDENTIDAD ILIK -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['Fraunces', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        tinta: '#0B1420',
-                        hueso: '#E7E9ED',
-                        tealIlik: '#3F8072',
-                        ambar: '#C98A3B',
-                    }
-                }
-            }
-        }
-    </script>
+    <style>
+        /* Inyección de fuentes y variables nativas para evitar caídas del motor */
+        .font-serif { font-family: 'Fraunces', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        body { background-color: #E7E9ED; color: #0B1420; }
+    </style>
 </head>
 <body class="font-sans bg-[#E7E9ED] text-[#0B1420] antialiased selection:bg-[#3F8072] selection:text-white">
 
-    <!-- WATERMARK DE FONDO (Firma Reducida "il") -->
+    <!-- WATERMARK DE FONDO (Firma Reducida "il" posicionada estratégicamente) -->
     <div class="fixed bottom-10 right-10 opacity-5 pointer-events-none select-none font-serif text-[12rem] font-bold text-[#3F8072] leading-none z-0">
         il<span class="text-[#0B1420]">•</span>
     </div>
@@ -145,7 +133,8 @@
                 <span>•</span>
                 <span>2. Capacidad</span>
                 <span>•</span>
-                <span>3. Activation</span>
+                <span>3. Activación</span>
             </div>
 
             <div class="space-y-6">
+                <p class="text-sm opacity-80 leading-relaxed font-medium">
