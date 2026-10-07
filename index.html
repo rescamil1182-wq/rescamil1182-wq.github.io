@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilik | Inteligencia de Compra Hospitalaria</title>
-    <meta name="description" content="Convertimos el Kardex de su hospital en un diagnóstico de gasto que finanzas puede defender.">
+    <title>Ilik | Inteligencia de Compra</title>
+    <meta name="description" content="Inteligencia de compra aplicable a cualquier industria. Convertimos sus datos de compra en un diagnóstico de gasto que finanzas puede defender. Primer vertical: hospitales privados en México.">
     <meta name="theme-color" content="#0B1420">
     <link rel="icon" type="image/png" href="marca-agua.png">
 
@@ -41,7 +41,7 @@
             -webkit-font-smoothing: antialiased;
         }
         img { max-width: 100%; display: block; }
-        [id] { scroll-margin-top: 84px; }
+        [id] { scroll-margin-top: 96px; }
         :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
         .skip-link { position: absolute; left: 16px; top: -60px; z-index: 200; background: var(--amber); color: var(--ink); font-weight: 600; padding: 10px 16px; border-radius: 4px; text-decoration: none; }
         .skip-link:focus { top: 12px; }
@@ -50,7 +50,7 @@
         .max-w-7xl { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
         /* Marca de agua corporativa flotante */
-        .fixed-watermark { position: fixed; bottom: 40px; right: 40px; width: 72px; opacity: 0.06; pointer-events: none; z-index: 0; }
+        .fixed-watermark { position: fixed; bottom: 32px; right: 32px; width: 104px; opacity: 0.18; pointer-events: none; z-index: 2; }
 
         /* Encabezado Corporativo Principal */
         header {
@@ -67,11 +67,11 @@
             align-items: center;
             justify-content: space-between;
             gap: 24px;
-            padding: 16px 24px;
+            padding: 12px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .header-container .logo img { height: 32px; width: auto; }
+        .header-container .logo img { height: 58px; width: auto; }
         nav { display: flex; gap: 24px; }
         nav a { color: rgba(247, 248, 250, 0.8); text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; transition: color 0.2s; }
         nav a:hover { color: var(--teal-soft); }
@@ -98,28 +98,48 @@
         .section-header-meta-dark { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid rgba(247, 248, 250, 0.1); padding-bottom: 12px; margin-bottom: 48px; width: 100%; }
         .meta-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
 
-        /* Sección 1: Hero Principal */
-        .hero-block { padding-top: 40px; padding-bottom: 100px; border-bottom: 1px solid rgba(11, 20, 32, 0.1); }
-        .hero-layout { display: flex; gap: 64px; align-items: center; padding: 40px 0; width: 100%; }
-        .hero-left { flex: 7; min-width: 0; }
-        .hero-right { flex: 5; min-width: 0; }
-        .hero-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 16px; display: block; }
-        .hero-layout h1 { font-size: 54px; font-weight: 700; line-height: 1.1; margin-bottom: 24px; color: var(--ink); }
-        .hero-layout h1 span { color: var(--amber); font-style: italic; font-weight: 400; }
-        .hero-desc { font-size: 18px; opacity: 0.85; margin-bottom: 36px; color: var(--ink); }
+        /* Sección 1: Portada (pantalla completa, imagen a sangre) */
+        .hero-cover { position: relative; display: flex; align-items: center; min-height: calc(100vh - 84px); min-height: calc(100svh - 84px); background-color: var(--ink); color: var(--bone); overflow: hidden; }
+        .hero-media { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; margin: 0; }
+        .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 28% 30%; }
+        .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 0%, rgba(11, 20, 32, 0.82) 22%, rgba(11, 20, 32, 0.25) 60%, rgba(11, 20, 32, 0.1) 100%); pointer-events: none; }
+        .hero-inner { position: relative; z-index: 1; padding-top: 72px; padding-bottom: 72px; }
+        .hero-content { max-width: 640px; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--teal-soft); margin-bottom: 22px; }
+        .hero-cover h1 { font-size: 60px; font-weight: 700; line-height: 1.06; margin-bottom: 24px; color: var(--bone); }
+        .hero-cover h1 .h1-line { display: block; }
+        .hero-cover h1 .h1-accent { color: var(--amber); font-style: italic; font-weight: 400; }
+        .hero-desc { font-size: 19px; line-height: 1.55; opacity: 0.88; margin-bottom: 14px; max-width: 520px; }
+        .hero-vertical { font-size: 14px; color: var(--teal-soft); margin-bottom: 32px; max-width: 520px; }
+        .hero-vertical strong { color: var(--bone); font-weight: 600; }
 
         .cta-group { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
         .btn-primary { background-color: var(--amber); color: var(--ink); text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; display: inline-block; }
-        .btn-secondary { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
         .btn-primary:hover { opacity: 0.9; }
+        .btn-secondary { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
+        .hero-cover .btn-secondary { color: var(--bone); border-bottom-color: var(--bone); }
+        .hero-email { margin-top: 22px; font-size: 15px; opacity: 0.9; }
+        .hero-email a { color: var(--bone); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--amber); }
 
-        .image-frame { background-color: var(--bone); padding: 8px; border-radius: 12px; border: 1px solid rgba(11, 20, 32, 0.1); box-shadow: 0 30px 60px rgba(11, 20, 32, 0.1); aspect-ratio: 4 / 3; overflow: hidden; width: 100%; }
-        .image-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 40%; border-radius: 8px; }
+        /* Franja de prueba: cifras reales del caso, visibles al entrar */
+        .proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 44px; border-top: 1px solid rgba(247, 248, 250, 0.18); }
+        .proof-item { padding: 18px 20px 0 0; }
+        .proof-item + .proof-item { padding-left: 20px; border-left: 1px solid rgba(247, 248, 250, 0.18); }
+        .proof-num { display: block; font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--bone); white-space: nowrap; }
+        .proof-num small { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--teal-soft); margin-left: 2px; }
+        .proof-label { display: block; font-size: 12.5px; line-height: 1.4; opacity: 0.75; margin-top: 4px; }
+        .proof-note { margin-top: 14px; font-size: 11px; letter-spacing: 0.04em; opacity: 0.5; }
+
+        /* Identificación del fundador sobre la foto */
+        .hero-caption { position: absolute; right: 168px; bottom: 32px; z-index: 1; background-color: rgba(11, 20, 32, 0.88); color: var(--bone); padding: 14px 20px; border-radius: 8px; border-left: 3px solid var(--amber); }
+        .hero-caption strong { display: block; font-size: 14px; font-weight: 700; }
+        .hero-caption span { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-soft); margin-top: 2px; }
 
         /* Sección 2: Nosotros (Origen Maya) */
-        .about-block { text-align: center; padding: 80px 0 0; border-top: 1px solid rgba(11, 20, 32, 0.1); margin-top: 40px; }
+        .about-block { text-align: center; }
         .about-block h2 { font-size: 38px; line-height: 1.2; max-width: 800px; margin: 0 auto 24px; }
-        .about-block > p { opacity: 0.8; max-width: 640px; margin: 0 auto 48px; }
+        .about-block > p { opacity: 0.8; max-width: 680px; margin: 0 auto 16px; }
+        .about-block > p.vertical-note { opacity: 1; font-size: 15px; color: var(--teal); font-weight: 600; margin-bottom: 48px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 60px; width: 100%; }
         .pillar-card { background-color: rgba(11, 20, 32, 0.03); padding: 24px; border-radius: 8px; border: 1px solid rgba(11, 20, 32, 0.05); }
         .pillar-num { font-size: 24px; font-weight: 700; color: var(--teal); display: block; margin-bottom: 8px; }
@@ -200,30 +220,50 @@
         .email-feature .email-link:hover { color: var(--amber); }
         .btn-email { display: inline-block; background-color: var(--amber); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px 24px; border-radius: 6px; text-decoration: none; white-space: nowrap; }
         .btn-email:hover { opacity: 0.9; }
-        .hero-email { margin-top: 20px; font-size: 15px; }
-        .hero-email a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--amber); }
 
-        /* Aviso legal y confidencialidad */
-        .legal { max-width: 900px; margin: 24px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 40px; text-align: left; font-size: 12.5px; line-height: 1.6; }
-        .legal h5 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 4px; }
-        .legal p { opacity: 0.75; }
+        /* Pie de página: marca, navegación, documentos, contacto y aviso legal */
+        footer { position: relative; z-index: 1; background-color: var(--bone-dim); border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 64px 0 28px; font-size: 13px; }
+        .footer-top { display: grid; grid-template-columns: 4fr 2fr 3.4fr 2.6fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(11, 20, 32, 0.12); }
+        .footer-brand img { height: 60px; width: auto; margin-bottom: 16px; }
+        .footer-brand p { opacity: 0.75; max-width: 300px; }
+        .footer-brand .tagline { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--amber); opacity: 1; margin-top: 10px; }
+        nav.footer-col { display: block; }
+        .footer-col h5 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 14px; }
+        .footer-col ul { list-style: none; display: grid; gap: 8px; }
+        .footer-col a { color: var(--ink); text-decoration: none; }
+        .footer-col a:hover { color: var(--teal); }
+        .footer-col .contact-email { font-weight: 700; border-bottom: 2px solid var(--amber); }
+        .doc-link { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-weight: 600; color: var(--ink); text-decoration: none; }
+        .doc-link.is-pending { cursor: default; opacity: 0.75; }
+        .doc-link .badge { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); background-color: rgba(201, 138, 59, 0.25); padding: 2px 6px; border-radius: 3px; }
+
+        .legal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; padding: 32px 0; font-size: 12px; line-height: 1.6; }
+        .legal h6 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .legal p { opacity: 0.7; }
         .legal a { color: var(--ink); font-weight: 600; }
-        .doc-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 1px solid currentColor; }
-        .doc-link.is-pending { cursor: default; border-bottom-style: dashed; opacity: 0.7; }
-        .doc-link .badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); background-color: rgba(201, 138, 59, 0.25); padding: 2px 6px; border-radius: 3px; }
-        .footer-bottom { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(11, 20, 32, 0.1); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px; padding-top: 20px; border-top: 1px solid rgba(11, 20, 32, 0.12); font-size: 12px; }
+        .footer-bottom p { opacity: 0.75; }
         .footer-bottom strong { font-weight: 700; }
 
-        footer { position: relative; z-index: 1; background-color: var(--bone-dim); border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 48px 0; text-align: center; font-size: 12px; }
-        footer img { height: 28px; width: auto; margin: 0 auto 16px; }
-        footer .footer-bottom p { opacity: 0.7; }
+        /* Pantallas bajas (laptops de 768 px): la portada cabe completa sin recortarse */
+        @media (min-width: 901px) and (max-height: 860px) {
+            .hero-inner { padding-top: 36px; padding-bottom: 36px; }
+            .hero-tag { margin-bottom: 14px; }
+            .hero-cover h1 { font-size: 50px; margin-bottom: 16px; }
+            .hero-desc { margin-bottom: 10px; }
+            .hero-vertical { margin-bottom: 22px; }
+            .hero-email { margin-top: 14px; }
+            .proof-strip { margin-top: 26px; }
+            .proof-item { padding-top: 12px; }
+            .proof-num { font-size: 28px; }
+        }
 
         /* Adaptabilidad Móvil */
         @media (max-width: 1024px) {
             nav { gap: 16px; }
             nav a { font-size: 13px; }
-            .hero-layout h1 { font-size: 46px; }
-            .hero-layout { gap: 40px; }
+            .hero-cover h1 { font-size: 50px; }
+            .hero-media { width: 50%; }
             .timeline-step { font-size: 13px; }
         }
 
@@ -232,22 +272,30 @@
             .header-container { flex-wrap: wrap; row-gap: 10px; padding: 12px 24px 8px; }
             nav { order: 3; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px 0 6px; }
             nav::-webkit-scrollbar { display: none; }
-            .hero-layout { flex-direction: column; align-items: stretch; }
-            .hero-right { width: 100%; max-width: 560px; }
+            .hero-cover { flex-direction: column; align-items: stretch; min-height: 0; }
+            .hero-media { position: relative; width: 100%; height: 380px; order: 2; }
+            .hero-media::after { background: linear-gradient(180deg, var(--ink) 0%, rgba(11, 20, 32, 0.15) 35%, rgba(11, 20, 32, 0) 100%); }
+            .hero-inner { padding-top: 56px; padding-bottom: 40px; }
             .timeline-bar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 8px; }
             .case-split, .case-footer-metrics { grid-template-columns: minmax(0, 1fr); gap: 24px; }
             .grid-fases { grid-template-columns: minmax(0, 1fr); }
             .kardex-banner { gap: 32px; }
+            .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .legal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
         @media (max-width: 680px) {
             .max-w-7xl, .header-container { padding-left: 20px; padding-right: 20px; }
             .section-white, .section-dark { padding: 64px 0; }
-            .hero-block { padding-bottom: 64px; }
-            .hero-layout { padding: 16px 0; }
-            .hero-layout h1 { font-size: 36px; }
+            .hero-inner { padding-top: 40px; }
+            .hero-cover h1 { font-size: 38px; }
+            .hero-media { height: 300px; }
             .hero-desc { font-size: 16px; }
-            .about-block { padding-top: 56px; }
+            .header-container .logo img { height: 44px; }
+            .proof-strip { grid-template-columns: minmax(0, 1fr); }
+            .proof-item, .proof-item + .proof-item { padding: 14px 0; border-left: 0; border-bottom: 1px solid rgba(247, 248, 250, 0.12); }
+            .proof-num { font-size: 26px; }
+            .hero-caption { right: 12px; bottom: 12px; padding: 10px 14px; }
             .about-block h2, .case-split h2 { font-size: 27px; }
             .section-title-dark h2, .section-intro h2, .conversion-title { font-size: 30px; }
             .section-header-meta, .section-header-meta-dark { margin-bottom: 32px; }
@@ -263,7 +311,8 @@
             .email-feature { padding: 24px 22px; }
             .email-feature .email-link { font-size: 22px; }
             .btn-email { width: 100%; text-align: center; }
-            .legal { grid-template-columns: minmax(0, 1fr); }
+            .footer-top { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+            .legal { grid-template-columns: minmax(0, 1fr); gap: 20px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -283,13 +332,13 @@
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <!-- MARCA DE AGUA CORPORATIVA FLOTANTE -->
-    <img class="fixed-watermark" src="marca-agua.png" alt="" aria-hidden="true">
+    <img class="fixed-watermark" id="watermark" src="marca-agua.png" data-src-dark="marca-agua.png" data-src-light="marca-agua-clara.png" alt="" aria-hidden="true">
 
     <!-- NAVEGACIÓN EXTENDIDA HORIZONTAL -->
     <header>
         <div class="header-container">
-            <a class="logo" href="#nosotros" aria-label="Ilik, ir al inicio">
-                <img src="logo-claro.png" alt="Ilik" width="49" height="32">
+            <a class="logo" href="#inicio" aria-label="Ilik, ir al inicio">
+                <img src="logo-claro.png" alt="Ilik" width="88" height="58">
             </a>
             <nav aria-label="Secciones">
                 <a href="#nosotros">Nosotros</a>
@@ -305,41 +354,49 @@
 
     <main id="contenido">
 
+    <!-- PORTADA -->
+    <section id="inicio" class="hero-cover">
+        <figure class="hero-media">
+            <img src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896">
+            <figcaption class="hero-caption"><strong>Ricardo Rodríguez Escamilla</strong><span>Fundador &middot; Estadístico</span></figcaption>
+        </figure>
+        <div class="max-w-7xl hero-inner">
+            <div class="hero-content">
+                <span class="hero-tag">Inteligencia de Compra</span>
+                <h1 class="font-serif"><span class="h1-line">Lo que no se mide,</span> <span class="h1-line h1-accent">se paga de más.</span></h1>
+                <p class="hero-desc">Convertimos su Kardex y sus datos de compra en un diagnóstico de gasto que finanzas puede defender.</p>
+                <p class="hero-vertical">Metodología aplicable a cualquier industria. <strong>Primer vertical: hospitales privados en México.</strong></p>
+                <div class="cta-group">
+                    <a href="#contacto" class="btn-primary">Solicitar diagnóstico &rarr;</a>
+                    <a href="#metodologia" class="btn-secondary">Ver metodología</a>
+                </div>
+                <p class="hero-email">O escríbanos directo a <a href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></p>
+
+                <div class="proof-strip">
+                    <div class="proof-item"><span class="proof-num">$169.9<small>M</small></span><span class="proof-label">en movimientos de Kardex analizados</span></div>
+                    <div class="proof-item"><span class="proof-num">2.12<small>x</small></span><span class="proof-label">sobreestimación del gasto detectada</span></div>
+                    <div class="proof-item"><span class="proof-num">0.0<small>%</small></span><span class="proof-label">diferencia no explicada al conciliar</span></div>
+                </div>
+                <p class="proof-note">Caso real anonimizado, presentado como efecto ilustrativo de la metodología.</p>
+            </div>
+        </div>
+    </section>
+
     <div class="max-w-7xl">
-        <!-- SECCIÓN 01: HERO / NOSOTROS -->
-        <section id="nosotros" class="hero-block">
+        <!-- SECCIÓN 01: NOSOTROS -->
+        <section id="nosotros" class="section-white about-block">
             <div class="section-header-meta">
-                <span class="meta-tag">Inteligencia de Compra Hospitalaria</span>
+                <span class="meta-tag">Nosotros</span>
                 <span class="meta-tag">Sección 01</span>
             </div>
-            <div class="hero-layout">
-                <div class="hero-left">
-                    <span class="hero-tag">Inteligencia de Compra Hospitalaria</span>
-                    <h1 class="font-serif">Lo que no se mide, <span>se paga de más.</span></h1>
-                    <p class="hero-desc">Convertimos su Kardex en un diagnóstico de gasto que finanzas puede defender.</p>
-                    <div class="cta-group">
-                        <a href="#contacto" class="btn-primary">Solicitar diagnóstico &rarr;</a>
-                        <a href="#metodologia" class="btn-secondary">Ver metodología</a>
-                    </div>
-                    <p class="hero-email">O escríbanos directo a <a href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></p>
-                </div>
-                <div class="hero-right">
-                    <div class="image-frame">
-                        <img src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896">
-                    </div>
-                </div>
-            </div>
+            <h2 class="font-serif">Ilik: del maya yucateco, ver, observar, mirar.</h2>
+            <p>Consultoría boutique de inteligencia de compra. Un pipeline propio, no un dashboard genérico, que funciona en cualquier industria donde existan datos de compra.</p>
+            <p class="vertical-note">Nuestro primer vertical son los hospitales privados en México, por la experiencia reciente de su fundador: más de ocho años al frente de la inteligencia comercial del canal hospitalario privado en la industria farmacéutica.</p>
 
-            <div class="about-block">
-                <span class="meta-tag" style="display: block; margin-bottom: 16px;">Nosotros</span>
-                <h2 class="font-serif">Ilik: del maya yucateco, ver, observar, mirar.</h2>
-                <p>Consultoría boutique de inteligencia de compra hospitalaria. Un pipeline propio, no un dashboard genérico.</p>
-
-                <div class="grid-3">
-                    <div class="pillar-card"><span class="pillar-num font-serif">01</span><span class="pillar-text">Rigor antes que velocidad</span></div>
-                    <div class="pillar-card"><span class="pillar-num font-serif">02</span><span class="pillar-text">Criterio propio, no el del ERP</span></div>
-                    <div class="pillar-card"><span class="pillar-num font-serif">03</span><span class="pillar-text">Cero especulación</span></div>
-                </div>
+            <div class="grid-3">
+                <div class="pillar-card"><span class="pillar-num font-serif">01</span><span class="pillar-text">Rigor antes que velocidad</span></div>
+                <div class="pillar-card"><span class="pillar-num font-serif">02</span><span class="pillar-text">Criterio propio, no el del ERP</span></div>
+                <div class="pillar-card"><span class="pillar-num font-serif">03</span><span class="pillar-text">Cero especulación</span></div>
             </div>
         </section>
     </div>
@@ -469,7 +526,7 @@
                 <article class="card-fase">
                     <span class="fase-title">Fase 03</span>
                     <h4 class="font-serif">Escalamiento</h4>
-                    <p>Todo el gasto hospitalario, con reportes recurrentes y reconciliación en cada corte.</p>
+                    <p>Todo el gasto de la organización, con reportes recurrentes y reconciliación en cada corte.</p>
                     <span class="fase-duration">Trimestral</span>
                 </article>
             </div>
@@ -538,29 +595,62 @@
 
     <footer>
         <div class="max-w-7xl">
-            <img src="logo-oficial.png" alt="Ilik" width="43" height="28">
-            <div class="legal">
-                <div>
-                    <h5>Derechos reservados</h5>
-                    <p>El nombre Ilik, su logotipo, los textos, las imágenes y la metodología descrita en este sitio son propiedad de su titular. Queda prohibida su reproducción, distribución o uso, total o parcial, sin autorización previa y por escrito.</p>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-oficial.png" alt="Ilik" width="92" height="60">
+                    <p>Inteligencia de Compra para cualquier industria. Diagnóstico de gasto con trazabilidad y reconciliación completa. Primer vertical: hospitales privados en México.</p>
+                    <p class="tagline">Lo que no se mide, se paga de más.</p>
                 </div>
-                <div>
-                    <h5>Confidencialidad</h5>
-                    <p>Toda información que un hospital comparte con Ilik se trata como estrictamente confidencial, se usa solo para el diagnóstico solicitado y no se comparte con terceros. Ilik no recaba datos de pacientes. El intercambio de archivos con cada hospital se formaliza mediante un Convenio de Confidencialidad.</p>
-                    <a class="doc-link is-pending" id="doc-convenio" role="link" aria-disabled="true" title="Documento en preparación">Convenio de Confidencialidad <span class="badge">Próximamente</span></a>
+                <nav class="footer-col" aria-label="Sitio">
+                    <h5>Sitio</h5>
+                    <ul>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#resolver">Qué resolvemos</a></li>
+                        <li><a href="#metodologia">Metodología</a></li>
+                        <li><a href="#caso">Caso real</a></li>
+                        <li><a href="#trabajo">Cómo trabajamos</a></li>
+                        <li><a href="#preguntas">Preguntas</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-col">
+                    <h5>Documentos</h5>
+                    <ul>
+                        <li><a class="doc-link is-pending" id="doc-convenio" role="link" aria-disabled="true" title="Documento en preparación">Convenio de Confidencialidad <span class="badge">Próximamente</span></a></li>
+                        <li><a class="doc-link is-pending" id="doc-aviso" role="link" aria-disabled="true" title="Documento en preparación">Aviso de Privacidad <span class="badge">Próximamente</span></a></li>
+                    </ul>
                 </div>
-                <div>
-                    <h5>Alcance de la información</h5>
-                    <p>El contenido de este sitio es informativo. Los casos se muestran anonimizados, sin identificar a ninguna institución, y sus cifras se presentan como efecto ilustrativo de la metodología. Nada de lo publicado constituye una auditoría, una garantía de resultados ni una oferta vinculante.</p>
-                </div>
-                <div>
-                    <h5>Datos personales</h5>
-                    <p>Los datos de contacto que nos envíe se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Mientras se publica nuestro Aviso de Privacidad, puede solicitarlo en <a href="mailto:contacto@ilikanalytics.com?subject=Aviso%20de%20privacidad">contacto@ilikanalytics.com</a>.</p>
-                    <a class="doc-link is-pending" id="doc-aviso" role="link" aria-disabled="true" title="Documento en preparación">Aviso de Privacidad <span class="badge">Próximamente</span></a>
+                <div class="footer-col">
+                    <h5>Contacto</h5>
+                    <ul>
+                        <li><a class="contact-email" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></li>
+                        <li>Tel. <a href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></li>
+                        <li><a href="https://wa.me/523310874987" target="_blank" rel="noopener">WhatsApp directo</a></li>
+                    </ul>
                 </div>
             </div>
+
+            <div class="legal">
+                <div>
+                    <h6>Derechos reservados</h6>
+                    <p>El nombre Ilik, su logotipo, los textos, las imágenes y la metodología de este sitio son propiedad de su titular. Queda prohibida su reproducción, distribución o uso, total o parcial, sin autorización previa y por escrito.</p>
+                </div>
+                <div>
+                    <h6>Confidencialidad</h6>
+                    <p>La información que un hospital comparte con Ilik se trata como estrictamente confidencial, se usa solo para el diagnóstico solicitado y no se comparte con terceros. Ilik no recaba datos de pacientes. El intercambio de archivos se formaliza mediante un Convenio de Confidencialidad.</p>
+                </div>
+                <div>
+                    <h6>Alcance de la información</h6>
+                    <p>El contenido de este sitio es informativo. Los casos se muestran anonimizados y sus cifras se presentan como efecto ilustrativo de la metodología. Nada de lo publicado constituye una auditoría, una garantía de resultados ni una oferta vinculante.</p>
+                </div>
+                <div>
+                    <h6>Datos personales</h6>
+                    <p>Sus datos de contacto se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Mientras se publica nuestro Aviso de Privacidad, puede solicitarlo en <a href="mailto:contacto@ilikanalytics.com?subject=Aviso%20de%20privacidad">contacto@ilikanalytics.com</a>.</p>
+                </div>
+            </div>
+
             <div class="footer-bottom">
-                <p><strong>&copy; <span id="year">2026</span> Ilik. Todos los derechos reservados.</strong> &middot; Inteligencia de Compra Hospitalaria &middot; <a href="mailto:contacto@ilikanalytics.com" style="color: inherit;">contacto@ilikanalytics.com</a></p>
+                <p><strong>&copy; <span id="year">2026</span> Ilik. Todos los derechos reservados.</strong></p>
+                <p>Inteligencia de Compra &middot; México</p>
             </div>
         </div>
     </footer>
@@ -597,6 +687,31 @@
                     if (badge) { badge.remove(); }
                 }
             });
+            // Marca de agua: versión clara sobre secciones oscuras, versión oficial sobre secciones claras.
+            var wm = document.getElementById("watermark");
+            if (wm && document.elementsFromPoint) {
+                var lastDark = null, ticking = false;
+                var checkWatermark = function () {
+                    ticking = false;
+                    var r = wm.getBoundingClientRect();
+                    if (!r.width) { return; }
+                    var stack = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+                    var dark = false;
+                    for (var i = 0; i < stack.length; i++) {
+                        if (stack[i] === wm) { continue; }
+                        if (stack[i].closest && stack[i].closest(".hero-cover, .section-dark, .conversion-section")) { dark = true; }
+                        break;
+                    }
+                    if (dark !== lastDark) {
+                        lastDark = dark;
+                        wm.src = dark ? wm.getAttribute("data-src-light") : wm.getAttribute("data-src-dark");
+                    }
+                };
+                var onScroll = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(checkWatermark); } };
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+                checkWatermark();
+            }
             var y = document.getElementById("year");
             if (y) { y.textContent = String(new Date().getFullYear()); }
         } catch (e) { /* sin efecto visible */ }
