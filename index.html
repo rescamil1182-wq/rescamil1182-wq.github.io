@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilik Analytics | Inteligencia de Compra Hospitalaria</title>
+    <!-- Tailwind CSS v4 para Máxima Velocidad de Carga -->
+    <script src="https://jsdelivr.net"></script>
+    
+    <!-- Fuentes Oficiales de la Identidad Ilik -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-serif { font-family: 'Fraunces', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        /* Paleta Confirmada por Muestreo de Marca de Ilik */
+        :root {
+            --tinta: #0B1420;
+            --hueso: #E7E9ED;
+            --teal-ilik: #3F8072;
+            --ambar: #C98A3B;
+        }
+        .bg-hueso { background-color: var(--hueso); }
+        .bg-tinta { background-color: var(--tinta); }
+        .text-tinta { color: var(--tinta); }
+        .text-teal-ilik { color: var(--teal-ilik); }
+        .bg-teal-ilik { background-color: var(--teal-ilik); }
+        .border-teal-ilik { border-color: var(--teal-ilik); }
+        .text-ambar { color: var(--ambar); }
+    </style>
+</head>
+<body class="font-sans bg-hueso text-tinta antialiased selection:bg-teal-ilik selection:text-white">
+
+    <!-- WATERMARK DISCRETO DE FONDO (Firma Reducida "il" posicionada estratégicamente) -->
+    <div class="fixed bottom-10 right-10 opacity-5 pointer-events-none select-none font-serif text-[12rem] font-bold text-teal-ilik leading-none">
+        il<span class="text-tinta">•</span>
+    </div>
+
+    <!-- ENCABEZADO PREMIUM -->
+    <header class="border-b border-tinta/10 backdrop-blur-md sticky top-0 bg-hueso/80 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-2xl font-serif font-bold tracking-tight text-tinta flex items-center gap-1.5">
+                Ilik<span class="text-teal-ilik text-3xl leading-none font-sans">•</span><span class="text-sm font-sans font-medium opacity-60 tracking-wider uppercase ml-1">Analytics</span>
+            </div>
+            <a href="#diagnostico" class="bg-tinta text-white hover:bg-tinta/90 transition-all text-xs font-semibold tracking-wider uppercase px-5 py-3 rounded-lg shadow-sm">
+                Acceso Privado
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO / APERTURA PRINCIPLE DE MINTO (SCQA) -->
+    <section class="max-w-7xl mx-auto px-6 pt-20 pb-28 grid lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full text-xs font-semibold bg-white text-teal-ilik border border-tinta/10 shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-ilik animate-pulse"></span>
+                Consultoría de Nicho | Alta Dirección Hospitalaria Privada en México
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-tinta tracking-tight leading-[1.08]">
+                Devolvemos la visibilidad al <span class="text-teal-ilik font-normal italic">gasto estratégico</span> de su hospital.
+            </h1>
+            
+            <p class="text-lg opacity-85 leading-relaxed max-w-xl font-normal">
+                El 81.3% de las instituciones médicas privadas en México operan sin herramientas avanzadas de compra, dependiendo de dashboards comerciales estáticos. Nuestro <span class="font-semibold">pipeline analítico propio</span> transforma el desorden de datos en ventajas de negociación e inteligencia predictiva real.
+            </p>
+            
+            <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                <a href="#diagnostico" class="inline-flex justify-center items-center bg-teal-ilik hover:bg-teal-ilik/90 text-white font-semibold text-sm px-7 py-4 rounded-xl shadow-lg shadow-teal-ilik/20 transition-all">
+                    Iniciar Micro-Diagnóstico Autodirigido
+                </a>
+                <a href="#portafolio" class="inline-flex justify-center items-center bg-white/60 border border-tinta/15 text-tinta hover:bg-white font-semibold text-sm px-7 py-4 rounded-xl transition-all">
+                    Explorar Arquitectura Modular
+                </a>
+            </div>
+        </div>
+
+        <!-- CONTENEDOR DE LA IMAGEN CORPORATIVA EN PERSPECTIVA -->
+        <div class="lg:col-span-5 relative">
+            <div class="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-teal-ilik to-ambar opacity-15 blur-xl"></div>
+            <div class="relative bg-white p-2 rounded-2xl border border-tinta/10 shadow-2xl aspect-[4/3] overflow-hidden group">
+                <div class="w-full h-full bg-tinta/5 rounded-xl flex flex-col items-center justify-center p-6 text-center space-y-2 border border-dashed border-tinta/10">
+                    <span class="text-xs font-semibold uppercase tracking-widest opacity-40">Espacio de Identidad Corporativa</span>
+                    <p class="text-sm opacity-60 max-w-xs font-serif italic text-tinta">[ Aquí se despliega su fotografía con el Logotipo Translúcido en Ángulo ]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO MODULAR RIGUROSO (MÉTODO ILIK) -->
+    <section id="portafolio" class="bg-tinta text-white/90 py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl space-y-4 mb-20">
+                <span class="text-xs font-bold tracking-widest text-teal-ilik uppercase">Marco Metodológico MECE</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white tracking-tight">Estructura Analítica de 3 Niveles</h2>
+                <p class="opacity-70 text-sm">Diseño exclusivo para hospitales independientes medianos. No entregamos plantillas estáticas; estructuramos pipelines científicos de datos.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Nivel 1 -->
+                <div class="p-8 rounded-xl bg-white/5 border border-white/10 space-y-5 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-xs font-bold text-ambar tracking-widest uppercase">Nivel 1 • Descriptivo</div>
+                        <h3 class="text-2xl font-serif font-semibold text-white">Mapa de Gasto y Concentración</h3>
+                        <p class="opacity-70 text-sm leading-relaxed">Concentración analítica mediante métricas HHI y Pareto. Identificación de estacionalidad avanzada con algoritmos de descomposición STL para blindar el inventario hospitalario.</p>
+                    </div>
+                    <span class="text-xs font-semibold opacity-40 border-t border-white/10 pt-4 mt-4">Fase A: Diagnóstico Inicial</span>
+                </div>
+                
+                <!-- Nivel 2 -->
+                <div class="p-8 rounded-xl bg-white/5 border border-white/10 space-y-5 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-xs font-bold text-teal-ilik tracking-widest uppercase">Nivel 2 • Recurrente</div>
+                        <h3 class="text-2xl font-serif font-semibold text-white">Auditoría Automatizada de Anomalías</h3>
+                        <p class="opacity-70 text-sm leading-relaxed">Clasificación asistida por modelos LLM adaptados al catálogo de insumos médicos. Detección multivariada de desvíos mediante Isolation Forest en reportes mensuales.</p>
+                    </div>
+                    <span class="text-xs font-semibold opacity-40 border-t border-white/10 pt-4 mt-4">Fase A+: Seguimiento Continuo</span>
+                </div>
+                
+                <!-- Nivel 3 -->
+                <div class="p-8 rounded-xl bg-white/5 border border-white/10 space-y-5 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-xs font-bold text-white/50 tracking-widest uppercase">Nivel 3 • Predictivo</div>
+                        <h3 class="text-2xl font-serif font-semibold text-white">Benchmark Comparativo de Sector</h3>
+                        <p class="opacity-70 text-sm leading-relaxed">Modelos de referencia de precio externo y agrupación técnica para consorcios de compra. Privacidad absoluta de datos clínicos y comerciales mediante protocolos de k-anonimato.</p>
+                    </div>
+                    <span class="text-xs font-semibold opacity-40 border-t border-white/10 pt-4 mt-4">Fase B: Benchmark Anónimo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMBUDO DE CONVERSIÓN AUTODIRIGIDO (El Sistema de Captura Ejecutiva) -->
+    <section id="diagnostico" class="max-w-4xl mx-auto px-6 py-28 text-center space-y-12">
+        <div class="space-y-4 max-w-xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-tinta tracking-tight">Evaluación de Viabilidad Operativa</h2>
+            <p class="opacity-75 text-sm">Determine si la infraestructura de datos de su red hospitalaria califica para un diagnóstico estratégico sin costo y sin traslape confidencial.</p>
+        </div>
+        
+        <!-- Interfaz del Embudo Autodirigido -->
+        <div class="bg-white p-8 md:p-10 rounded-2xl border border-tinta/10 shadow-xl text-left max-w-xl mx-auto space-y-8">
+            <!-- Micro-Pasos Visuales -->
+            <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider text-tinta/40 border-b border-tinta/10 pb-4">
