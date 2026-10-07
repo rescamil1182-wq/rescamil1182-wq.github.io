@@ -5,23 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilik Analytics | Inteligencia de Compra Hospitalaria</title>
     
-    <!-- MAQUETACIÓN CSS PURA NATIVA INDEPENDIENTE - GARANTÍA DE RENDERIZADO OBLIGATORIO -->
+    <!-- CONEXIÓN AL MOTOR DE ESTILOS ESTABLE -->
+    <script src="https://tailwindcss.com"></script>
+    
+    <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- BLINDAJE DE CSS NATIVO PARA RENDERIZADO OBLIGATORIO -->
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background-color: #E7E9ED; 
             color: #0B1420; 
             line-height: 1.6;
-            padding: 0;
-            margin: 0;
         }
-        .font-serif { font-family: Georgia, Cambria, "Times New Roman", Times, serif !important; }
+        .font-serif { font-family: 'Fraunces', serif !important; }
         .max-w-7xl { max-w: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
         
-        /* Encabezado Corporativo Principal */
-        header { 
+        /* Barra Superior */
+        .top-bar { 
             background-color: #0B1420; 
             position: sticky; 
             top: 0; 
@@ -37,9 +43,9 @@
             max-w: 1200px;
             margin: 0 auto;
         }
-        nav { display: flex; gap: 24px; }
-        nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        nav a:hover { color: #3F8072; }
+        .menu-links { display: flex; gap: 24px; }
+        .menu-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .menu-links a:hover { color: #3F8072; }
         
         .btn-header {
             background-color: #3F8072;
@@ -54,15 +60,15 @@
             display: inline-block;
         }
 
-        /* Estructuras de Sección Mundiales */
-        .section-white { background-color: #E7E9ED; padding: 100px 0; border-bottom: 1px solid rgba(11, 20, 32, 0.1); }
-        .section-dark { background-color: #0B1420; color: #FFFFFF; }
+        /* Bloques de Sección */
+        .section-white { background-color: #E7E9ED; padding: 100px 0; border-bottom: 1px solid rgba(11, 20, 32, 0.1); width: 100%; }
+        .section-dark { background-color: #0B1420; color: #FFFFFF; padding: 100px 24px; width: 100%; }
         .section-header-meta { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(11, 20, 32, 0.1); padding-bottom: 12px; margin-bottom: 48px; width: 100%; }
         .section-header-meta-dark { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 12px; margin-bottom: 48px; width: 100%; }
         .meta-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
         
-        /* Sección 1: Hero Principal */
-        .hero-layout { display: flex; gap: 64px; align-items: center; padding: 40px 0; }
+        /* Héroe */
+        .hero-layout { display: flex; gap: 64px; align-items: center; padding: 40px 0; width: 100%; }
         .hero-left { flex: 7; }
         .hero-right { flex: 5; }
         .hero-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #3F8072; margin-bottom: 16px; display: block; }
@@ -77,20 +83,20 @@
         .image-frame { background-color: white; padding: 8px; border-radius: 12px; border: 1px solid rgba(11, 20, 32, 0.1); box-shadow: 0 30px 60px rgba(0,0,0,0.1); aspect-ratio: 4/3; overflow: hidden; width: 100%; }
         .image-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
 
-        /* Sección 2: Nosotros (Origen Maya) */
+        /* Pilares */
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; width: 100%; }
         .pillar-card { background-color: rgba(11, 20, 32, 0.03); padding: 24px; border-radius: 8px; border: 1px solid rgba(11, 20, 32, 0.05); }
         .pillar-num { font-size: 24px; font-weight: 700; color: #3F8072; display: block; margin-bottom: 8px; }
         .pillar-text { font-size: 16px; font-weight: 600; color: #0B1420; }
 
-        /* Sección 3: Qué Resolvemos (Kardex Seis Preguntas) */
+        /* Preguntas Kardex */
         .grid-questions { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; width: 100%; }
         .question-card { display: flex; gap: 24px; background-color: rgba(255,255,255,0.03); padding: 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
         .question-num { font-size: 16px; font-weight: 700; color: #C98A3B; }
         .question-content h4 { font-size: 18px; font-weight: 700; color: white; margin-bottom: 8px; }
         .question-content p { font-size: 14px; opacity: 0.7; }
 
-        /* Sección 4: Metodología (7 Etapas) */
+        /* Cronograma */
         .timeline-bar { display: flex; justify-content: space-between; border-bottom: 4px solid rgba(11, 20, 32, 0.1); padding-bottom: 12px; margin-top: 40px; width: 100%; }
         .timeline-step { font-size: 14px; font-weight: 600; opacity: 0.5; padding-bottom: 12px; }
         .timeline-step.active { opacity: 1; color: #3F8072; font-weight: 700; }
@@ -99,7 +105,7 @@
         .kardex-banner .num { font-size: 64px; font-weight: 700; font-family: Georgia, serif; color: #C98A3B; }
         .kardex-banner .text { font-size: 16px; opacity: 0.8; }
 
-        /* Sección 5: Caso Real */
+        /* Caso Real */
         .case-box { background-color: #0B1420; color: white; padding: 48px; border-radius: 16px; margin-top: 32px; width: 100%; }
         .case-split { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; }
         .progress-container { margin-top: 32px; }
@@ -109,14 +115,15 @@
         .case-footer-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; margin-top: 32px; }
         .meta-label { font-size: 11px; text-transform: uppercase; tracking: 0.05em; color: #C98A3B; margin-bottom: 4px; display: block; font-weight: 700; }
 
-        /* Sección 6: Cómo Trabajamos (3 Fases) */
+        /* Fases */
+        .grid-fases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px; width: 100%; }
         .card-fase { background-color: #0B1420; color: white; padding: 40px 32px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
         .card-fase.active { border-top: 4px solid #C98A3B; background-color: rgba(255,255,255,0.02); }
         .fase-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.5; margin-bottom: 16px; display: block; }
         .card-fase h4 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
         .fase-duration { font-size: 13px; font-weight: 700; text-transform: uppercase; color: #3F8072; margin-top: 24px; display: block; }
 
-        /* Conversión / Cierre (Doble Bloque Zoho & WhatsApp) */
+        /* Conversión */
         .conversion-section { background-color: #0B1420; color: white; padding: 120px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; }
         .conversion-title { font-size: 42px; font-weight: 700; margin-bottom: 16px; }
         .conversion-desc { opacity: 0.7; font-size: 16px; max-w: 600px; margin: 0 auto 48px auto; }
@@ -128,9 +135,6 @@
         .btn-action-teal { display: block; width: 100%; text-align: center; background-color: #3F8072; color: white; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 14px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
         .btn-action-dark:hover, .btn-action-teal:hover { opacity: 0.9; }
 
-        footer { background-color: #E7E9ED; border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 48px 0; text-align: center; font-size: 12px; opacity: 0.6; width: 100%; }
+        .footer-box { background-color: #E7E9ED; border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 48px 0; text-align: center; font-size: 12px; opacity: 0.6; width: 100%; }
         .fixed-watermark { position: fixed; bottom: 40px; right: 40px; opacity: 0.03; pointer-events: none; z-index: 0; max-width: 180px; }
 
-        /* Adaptabilidad Móvil */
-        @media (max-w: 1024px) {
-            .hero-layout, .grid-3, .grid-questions, .timeline-bar, .case-split, .case-footer-metrics, .grid-fases, .box-grid { grid-template-columns: 1fr; flex-direction: column; gap: 32px; }
