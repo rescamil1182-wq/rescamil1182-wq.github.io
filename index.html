@@ -5,135 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilik Analytics | Inteligencia de Compra Hospitalaria</title>
     
-    <!-- CONEXIÓN AL MOTOR DE ESTILOS ESTABLE -->
-    <script src="https://tailwindcss.com"></script>
-    
     <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- BLINDAJE DE CSS NATIVO PARA RENDERIZADO OBLIGATORIO -->
+    <!-- MAQUETACIÓN CSS PURA Y NATIVA - BLINDAJE CONTRA CAÍDAS -->
     <style>
-        .font-serif { font-family: 'Fraunces', serif !important; }
-        .font-sans { font-family: 'Inter', sans-serif !important; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background-color: #E7E9ED !important; color: #0B1420 !important; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #E7E9ED; 
+            color: #0B1420; 
+            line-height: 1.6;
+        }
+        .font-serif { font-family: 'Fraunces', serif !important; }
+        .max-w-7xl { max-w: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Encabezado Extendido */
+        header { 
+            background-color: #0B1420; 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            border-b: 1px solid rgba(63, 128, 114, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .header-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 16px 24px;
+            gap: 16px;
+        }
+        @media (min-width: 1024px) {
+            .header-container { flex-direction: row; }
+        }
+        
+        /* Menú de Accesos */
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+        nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #3F8072; }
+        
+        /* Botón de Acción */
+        .btn-teal { 
+            background-color: #3F8072; 
+            color: white; 
+            text-decoration: none; 
+            font-size: 12px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            padding: 10px 18px; 
+            border-radius: 4px; 
+            transition: opacity 0.2s;
+            display: inline-block;
+        }
+        .btn-teal:hover { opacity: 0.9; }
+        
+        /* Estructura del Hero */
+        .hero-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 40px; 
+            align-items: center; 
+            padding-top: 60px; 
+            padding-bottom: 80px; 
+        }
+        @media (min-width: 1024px) {
+            .hero-grid { grid-template-columns: 7fr 5fr; gap: 64px; }
+        }
+        
+        .badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            padding: 6px 14px; 
+            background-color: white; 
+            color: #3F8072; 
+            border: 1px solid rgba(11, 20, 32, 0.1); 
+            border-radius: 9999px; 
+            font-size: 12px; 
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .pulse { width: 6px; height: 6px; background-color: #3F8072; border-radius: 50%; }
+        
+        h1 { font-size: 36px; font-weight: 700; line-height: 1.1; margin-bottom: 24px; tracking: -0.02em; }
+        @media (min-width: 768px) { h1 { font-size: 48px; } }
+        @media (min-width: 1024px) { h1 { font-size: 56px; } }
+        
+        .hero-text { font-size: 18px; opacity: 0.85; margin-bottom: 32px; max-w: 560px; }
+        
+        /* Contenedor de la Imagen */
+        .image-wrapper { position: relative; }
+        .image-bg-blur { 
+            position: absolute; 
+            inset: -8px; 
+            background: gradient(linear, to top right, #3F8072, #C98A3B); 
+            opacity: 0.15; 
+            filter: blur(24px); 
+            border-radius: 16px; 
+        }
+        .image-container { 
+            position: relative; 
+            background-color: white; 
+            padding: 8px; 
+            border-radius: 16px; 
+            border: 1px solid rgba(11, 20, 32, 0.1); 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); 
+            aspect-ratio: 4/3; 
+            overflow: hidden; 
+        }
+        .image-container img { w-full: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+        
+        /* Secciones de Contenido */
+        .section-white { background-color: white; padding: 80px 0; border-top: 1px solid rgba(11, 20, 32, 0.1); border-bottom: 1px solid rgba(11, 20, 32, 0.1); }
+        .section-dark { background-color: #0B1420; color: rgba(255,255,255,0.9); padding: 80px 0; overflow: hidden; }
+        
+        .section-title-wrapper { max-w: 640px; margin-bottom: 60px; }
+        .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3F8072; display: block; margin-bottom: 16px; }
+        h2 { font-size: 30px; font-weight: 700; margin-bottom: 16px; }
+        @media (min-width: 768px) { h2 { font-size: 36px; } }
+        
+        /* Grid de Columnas */
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 32px; }
+        @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+        
+        .card-dark { padding: 32px; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
+        .card-tag-amber { color: #C98A3B; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+        .card-tag-teal { color: #3F8072; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+        .card-tag-silver { color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+        h3 { font-size: 22px; font-weight: 600; color: white; margin-bottom: 12px; }
+        .card-footer-text { font-size: 12px; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; margin-top: 16px; display: block; }
+        
+        /* Estilos del Caso Real */
+        .case-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; padding: 80px 0; }
+        @media (min-width: 1024px) { .case-grid { grid-template-columns: 5fr 7fr; gap: 48px; } }
+        .metric-card { background-color: white; padding: 32px; border-radius: 16px; border: 1px solid rgba(11, 20, 32, 0.1); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .metric-number { font-size: 48px; font-weight: 700; color: #0B1420; margin-top: 8px; margin-bottom: 8px; }
+        
+        /* Bloques de Onboarding y FAQ */
+        .card-step { padding: 24px; border: 1px solid rgba(11, 20, 32, 0.1); border-radius: 12px; background-color: rgba(231, 233, 237, 0.3); }
+        .step-num { color: #3F8072; font-weight: 700; font-size: 20px; display: block; margin-bottom: 8px; }
+        .faq-box { background-color: white; padding: 24px; border-radius: 12px; border: 1px solid rgba(11, 20, 32, 0.1); margin-bottom: 24px; }
+        .faq-box h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        
+        /* Bloque de Contacto Doble */
+        .contact-section { padding-bottom: 112px; text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-w: 680px; margin: 48px auto 0 auto; }
+        @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+        .contact-card { background-color: white; padding: 32px; border-radius: 16px; border: 1px solid rgba(11, 20, 32, 0.1); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; text-align: left; }
+        .contact-card h3 { color: #0B1420; margin-bottom: 8px; }
+        .btn-block-tinta { display: block; width: 100%; background-color: #0B1420; color: white; text-align: center; font-weight: 600; font-size: 14px; py: 14px; padding: 14px; border-radius: 8px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: opacity 0.2s; margin-top: 16px; }
+        .btn-block-teal { display: block; width: 100%; background-color: #3F8072; color: white; text-align: center; font-weight: 600; font-size: 14px; py: 14px; padding: 14px; border-radius: 8px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: opacity 0.2s; margin-top: 16px; }
+        .btn-block-tinta:hover, .btn-block-teal:hover { opacity: 0.9; }
+        
+        footer { border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 40px 0; text-align: center; font-size: 12px; opacity: 0.6; }
+        .fixed-watermark { position: fixed; bottom: 40px; right: 40px; opacity: 0.03; pointer-events: none; select: none; z-index: 0; max-width: 180px; }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-[#3F8072] selection:text-white relative">
+<body>
 
     <!-- MARCA DE AGUA OFICIAL DE FONDO -->
-    <div class="fixed bottom-10 right-10 opacity-[0.03] pointer-events-none select-none z-0 max-w-[180px]">
-        <img src="marca-agua.png" alt="Sello Oficial Ilik" class="w-full h-auto">
+    <div class="fixed-watermark">
+        <img src="marca-agua.png" alt="Sello Oficial Ilik" style="width: 100%; height: auto;">
     </div>
 
-    <!-- NAVBAR CORPORATIVO EXTENDIDO -->
-    <header class="bg-[#0B1420] text-white/90 sticky top-0 z-50 shadow-md border-b border-[#3F8072]/20">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-            
-            <!-- LOGOTIPO OFICIAL INTEGRADO -->
-            <div class="flex items-center">
-                <img src="logo-oficial.png" alt="Ilik Analytics" class="h-8 w-auto object-contain">
+    <!-- NAVBAR CORPORATIVO EXTENDIDO CON LOGO OFICIAL -->
+    <header>
+        <div class="max-w-7xl header-container">
+            <div style="display: flex; align-items: center;">
+                <img src="logo-oficial.png" alt="Ilik Analytics" style="height: 32px; width: auto; object-fit: contain;">
             </div>
-            
-            <!-- MENÚ DE ACCESOS HORIZONTAL -->
-            <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium tracking-wide">
-                <a href="#nosotros" class="text-white hover:text-[#3F8072] transition-colors">Nosotros</a>
-                <a href="#resolver" class="text-white hover:text-[#3F8072] transition-colors">Qué resolvemos</a>
-                <a href="#metodologia" class="text-white hover:text-[#3F8072] transition-colors">Metodología</a>
-                <a href="#caso" class="text-white hover:text-[#3F8072] transition-colors">Caso real</a>
-                <a href="#trabajo" class="text-white hover:text-[#3F8072] transition-colors">Cómo trabajamos</a>
-                <a href="#preguntas" class="text-white hover:text-[#3F8072] transition-colors">Preguntas</a>
-            </nav>
-
-            <!-- ACCESO DE ACCIÓN DIRECTA -->
-            <a href="#contacto" class="bg-[#3F8072] hover:bg-opacity-90 text-white text-xs font-semibold tracking-wider uppercase px-4 py-2.5 rounded transition-all">
-                Contacto Directo
-            </a>
-        </div>
-    </header>
-
-    <!-- SECCIÓN 1: NOSOTROS (HERO) -->
-    <section id="nosotros" class="max-w-7xl mx-auto px-6 pt-20 pb-24 grid lg:grid-cols-12 gap-16 items-center relative z-10">
-        <div class="lg:col-span-7 space-y-8">
-            <div class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full text-xs font-semibold bg-white text-[#3F8072] border border-[#0B1420]/10 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#3F8072] animate-pulse"></span>
-                Consultoría de Nicho | Alta Dirección Hospitalaria Privada en México
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#0B1420] tracking-tight leading-[1.08]">
-                Devolvemos la visibilidad al <span class="text-[#3F8072] font-normal italic">gasto estratégico</span> de su hospital.
-            </h1>
-            <p class="text-lg opacity-85 leading-relaxed max-w-xl font-normal text-[#0B1420]">
-                Ilik Analytics nace para dotar a los comités de compras hospitalarios de un pipeline analítico de datos de alta especialidad. No somos una solución de anaquel masiva; operamos como un socio estratégico enfocado en la optimización del P&L de salud privada.
-            </p>
-            <div class="pt-4 flex flex-col sm:flex-row gap-4">
-                <a href="#contacto" class="inline-flex justify-center items-center bg-[#3F8072] hover:bg-opacity-90 text-white font-semibold text-sm px-7 py-4 rounded-xl shadow-lg shadow-[#3F8072]/20 transition-all text-center">
-                    Iniciar Evaluación Estratégica
-                </a>
-            </div>
-        </div>
-
-        <!-- FOTOGRAFÍA CORPORATIVA EN PERSPECTIVA -->
-        <div class="lg:col-span-5 relative">
-            <div class="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-[#3F8072] to-[#C98A3B] opacity-15 blur-xl"></div>
-            <div class="relative bg-white p-2 rounded-2xl border border-[#0B1420]/10 shadow-2xl aspect-[4/3] overflow-hidden">
-                <img src="oficina.png" alt="Ilik Analytics Oficina" class="w-full h-full object-cover rounded-xl shadow-inner">
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 2: QUÉ RESOLVEMOS -->
-    <section id="resolver" class="bg-white py-24 border-t border-b border-[#0B1420]/10 relative z-10">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-6 space-y-6">
-                <span class="text-xs font-bold tracking-widest text-[#3F8072] uppercase">El Whitespace del Sector</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#0B1420] tracking-tight">El 81.3% de las instituciones operan a ciegas.</h2>
-                <p class="opacity-80 leading-relaxed text-[#0B1420]">
-                    Los dashboards comerciales tradicionales consolidan datos genéricos orientados a laboratorios masivos o cadenas globales. Los hospitales independientes medianos en México sufren dispersión de catálogos y falta de visibilidad en el costo unitario real de insumos de alta especialidad. Ilik resuelve este vacío mediante algoritmos de normalización de datos diseñados para medicina privada.
-                </p>
-            </div>
-            <div class="lg:col-span-6 bg-[#E7E9ED] p-8 rounded-2xl space-y-4 border border-[#0B1420]/10">
-                <div class="border-l-4 border-[#C98A3B] pl-4">
-                    <span class="block text-2xl font-bold font-serif text-[#0B1420]">01 / Descontrol en SKUs</span>
-                    <p class="text-sm opacity-70 text-[#0B1420]">Descripciones inconsistentes que duplican costos y dispersan el poder de negociación con proveedores.</p>
-                </div>
-                <div class="border-l-4 border-[#3F8072] pl-4">
-                    <span class="block text-2xl font-bold font-serif text-[#0B1420]">02 / Falta de Benchmarks</span>
-                    <p class="text-sm opacity-70 text-[#0B1420]">Inexistencia de métricas locales de precio de referencia para adquisiciones de equipo y consumibles críticos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 3: METODOLOGÍA -->
-    <section id="metodologia" class="bg-[#0B1420] text-white/90 py-24 relative overflow-hidden z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="max-w-2xl space-y-4 mb-20">
-                <span class="text-xs font-bold tracking-widest text-[#3F8072] uppercase">Marco Metodológico MECE</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white tracking-tight">Estructura Analítica de 3 Niveles</h2>
-                <p class="opacity-70 text-sm">Operamos bajo el principio SCQA de Barbara Minto: estructuramos pipelines científicos incrementales de datos.</p>
-            </div>
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-xl bg-white/5 border border-white/10 space-y-4">
-                    <div class="text-xs font-bold text-[#C98A3B] tracking-widest uppercase">Nivel 1 • Descriptivo</div>
-                    <h3 class="text-2xl font-serif font-semibold text-white">Mapa de Gasto y Concentración</h3>
-                    <p class="opacity-70 text-sm leading-relaxed">Concentración analítica mediante métricas HHI y Pareto. Identificación de estacionalidad avanzada con algoritmos de descomposición STL para blindar el inventario hospitalario.</p>
-                </div>
-                <div class="p-8 rounded-xl bg-white/5 border border-white/10 space-y-4">
-                    <div class="text-xs font-bold text-[#3F8072] tracking-widest uppercase">Nivel 2 • Recurrente</div>
-                    <h3 class="text-2xl font-serif font-semibold text-white">Auditoría Automatizada de Anomalías</h3>
-                    <p class="opacity-70 text-sm leading-relaxed">Clasificación asistida por modelos de lenguaje adaptados al catálogo de insumos médicos. Detección multivariada de desvíos mediante Isolation Forest.</p>
-                </div>
-                <div class="p-8 rounded-xl bg-white/5 border border-white/10 space-y-4">
-                    <div class="text-xs font-bold text-white/50 tracking-widest uppercase">Nivel 3 • Predictivo</div>
-                    <h3 class="text-2xl font-serif font-semibold text-white">Benchmark Comparativo de Sector</h3>
-                    <p class="opacity-70 text-sm leading-relaxed">Modelos de referencia de precio externo y agrupación técnica para consorcios de compra. Privacidad absoluta mediante protocolos de k-anonimato.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 4: CASO REAL -->
-    <section id="caso" class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-12 gap-12 items-center relative z-10">
-        <div class="lg:col-span-5 bg-white p-8 rounded-2xl border border-[#0B1420]/10 shadow-sm space-y-6">
+            <nav>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#resolver">Qué resolvemos</a>
+                <a href="#metodologia">Metodología</a>
+                <a href="#caso">Caso real</a>
