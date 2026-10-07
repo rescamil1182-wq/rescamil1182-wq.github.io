@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilik Analytics | Inteligencia de Compra Hospitalaria</title>
     
-    <!-- MOTOR DE ESTILOS ESTABLE -->
-    <script src="https://tailwindcss.com"></script>
-    
-    <!-- FUENTES OFICIALES ILIK -->
+    <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- INFRAESTRUCTURA CSS PURA NATIVA - BLINDAJE TOTAL CONTRA TEXTO PLANO -->
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
@@ -23,140 +21,118 @@
             line-height: 1.6;
         }
         .font-serif { font-family: 'Fraunces', serif !important; }
-    </style>
-</head>
-<body class="bg-[#E7E9ED] text-[#0B1420] antialiased">
-
-    <!-- MARCA DE AGUA OFICIAL DE FONDO -->
-    <div class="fixed bottom-10 right-10 opacity-[0.03] pointer-events-none select-none z-0 max-w-[180px]">
-        <img src="marca-agua.png" alt="Sello Oficial Ilik" class="w-full h-auto">
-    </div>
-
-    <!-- NAVBAR CORPORATIVO EXTENDIDO -->
-    <header class="bg-[#0B1420] text-white sticky top-0 z-50 border-b border-[#3F8072]/30 shadow-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <img src="logo-oficial.png" alt="Ilik Analytics" class="h-8 w-auto">
-            </div>
-            <nav class="flex gap-6 text-sm font-medium tracking-wide">
-                <a href="#nosotros" class="text-white/80 hover:text-[#3F8072] transition-colors">Nosotros</a>
-                <a href="#resolver" class="text-white/80 hover:text-[#3F8072] transition-colors">Qué resolvemos</a>
-                <a href="#metodologia" class="text-white/80 hover:text-[#3F8072] transition-colors">Metodología</a>
-                <a href="#caso" class="text-white/80 hover:text-[#3F8072] transition-colors">Caso real</a>
-                <a href="#trabajo" class="text-white/80 hover:text-[#3F8072] transition-colors">Cómo trabajamos</a>
-                <a href="#preguntas" class="text-white/80 hover:text-[#3F8072] transition-colors">Preguntas</a>
-            </nav>
-            <a href="#contacto" class="bg-[#3F8072] text-white text-xs font-semibold tracking-wider uppercase px-4 py-2 rounded hover:bg-opacity-90 transition-all">
-                Contacto Directo
-            </a>
-        </div>
-    </header>
-
-    <!-- SECCIÓN 01: NOSOTROS -->
-    <section id="nosotros" class="max-w-7xl mx-auto px-6 pt-16 pb-20">
-        <div class="flex justify-between items-center border-b border-[#0B1420]/10 pb-3 mb-12">
-            <span class="text-xs font-bold uppercase tracking-widest opacity-60">Inteligencia de Compra Hospitalaria</span>
-            <span class="text-xs font-bold uppercase tracking-widest opacity-60">Sección 01</span>
-        </div>
+        .max-w-7xl { max-w: 1200px; margin: 0 auto; padding: 0 24px; }
         
-        <div class="grid lg:grid-cols-12 gap-12 items-center mb-16">
-            <div class="lg:col-span-7 space-y-6">
-                <span class="text-xs font-bold uppercase tracking-widest text-[#3F8072]">Especialización de Nicho</span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#0B1420] tracking-tight leading-[1.1]">
-                    Lo que no se mide, <span class="text-[#C98A3B] italic font-normal">se paga de más.</span>
-                </h1>
-                <p class="text-lg opacity-85">Convertimos su Kardex en un diagnóstico de gasto que finanzas puede defender.</p>
-                <div class="flex gap-4 items-center pt-2">
-                    <a href="#contacto" class="bg-[#C98A3B] text-white px-6 py-3.5 rounded font-semibold text-sm hover:bg-opacity-90 transition-all">Solicitar diagnóstico →</a>
-                    <a href="#metodologia" class="text-[#0B1420] font-semibold text-sm border-b-2 border-[#0B1420] pb-0.5 hover:opacity-70 transition-all">Ver metodología</a>
-                </div>
-            </div>
-            <div class="lg:col-span-5">
-                <div class="bg-white p-2 rounded-xl border border-[#0B1420]/10 shadow-xl aspect-[4/3] overflow-hidden">
-                    <img src="oficina.png" alt="Ilik Analytics Corporativo" class="w-full h-full object-cover rounded-lg">
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center pt-12 border-t border-[#0B1420]/10">
-            <h2 class="font-serif text-3xl md:text-4xl max-w-3xl mx-auto mb-4">Ilik: del maya yucateco, ver, observar, mirar.</h2>
-            <p class="opacity-80 max-w-2xl mx-auto mb-12">Consultoría boutique de inteligencia de compra hospitalaria. Un pipeline propio, no un dashboard genérico.</p>
-            <div class="grid md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-                <div class="flex items-center gap-3"><span class="font-serif text-2xl font-bold text-[#3F8072]">01</span><span class="font-medium">Rigor antes que velocidad</span></div>
-                <div class="flex items-center gap-3"><span class="font-serif text-2xl font-bold text-[#3F8072]">02</span><span class="font-medium">Criterio propio, no el del ERP</span></div>
-                <div class="flex items-center gap-3"><span class="font-serif text-2xl font-bold text-[#3F8072]">03</span><span class="font-medium">Cero especulación</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 02: QUÉ RESOLVEMOS -->
-    <section id="resolver" class="bg-[#0B1420] text-white py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest opacity-50">Qué Resolvemos</span>
-                <span class="text-xs font-bold uppercase tracking-widest opacity-50">Sección 02</span>
-            </div>
-            <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl max-w-3xl mb-12 leading-tight">Seis preguntas que su <span class="text-[#C98A3B]">Kardex</span> no contesta solo.</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                <div class="flex gap-4">
-                    <span class="font-serif text-sm opacity-40 pt-1">01</span>
-                    <div>
-                        <h4 class="font-bold text-lg mb-2">Candidatos a consignación</h4>
-                        <p class="text-sm opacity-70">Qué productos pueden dejar de inmovilizar capital.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <span class="font-serif text-sm opacity-40 pt-1">02</span>
-                    <div>
-                        <h4 class="font-bold text-lg mb-2">Capital de trabajo inmovilizado</h4>
-                        <p class="text-sm opacity-70">Cuánto sigue atado en inventario.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <span class="font-serif text-sm opacity-40 pt-1">03</span>
-                    <div>
-                        <h4 class="font-bold text-lg mb-2">Dispersión de precio</h4>
-                        <p class="text-sm opacity-70">Dónde paga distinto por el mismo producto.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <span class="font-serif text-sm opacity-40 pt-1">04</span>
-                    <div>
-                        <h4 class="font-bold text-lg mb-2">Dependencia de proveedor</h4>
-                        <p class="text-sm opacity-70">Qué depende de un solo laboratorio.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <span class="font-serif text-sm opacity-40 pt-1">05</span>
-                    <div>
-                        <h4 class="font-bold text-lg mb-2">Distribución interna</h4>
-                        <p class="text-sm opacity-70">Cuánto es traslado entre almacenes, no compra.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <span class="font-serif text-sm opacity-40 pt-1">06</span>
-                    <div>
-                        <h4 class="font-bold text-lg mb-2">Racionalización de surtido</h4>
-                        <p class="text-sm opacity-70">Cuántas claves son, en realidad, el mismo producto.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 03: METODOLOGÍA -->
-    <section id="metodologia" class="max-w-7xl mx-auto px-6 py-24">
-        <div class="flex justify-between items-center border-b border-[#0B1420]/10 pb-3 mb-12">
-            <span class="text-xs font-bold uppercase tracking-widest opacity-60">Metodología</span>
-            <span class="text-xs font-bold uppercase tracking-widest opacity-60">Sección 03</span>
-        </div>
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <h2 class="font-serif text-3xl md:text-4xl mb-4">Siete etapas, cada una con una <span class="text-[#C98A3B] italic font-normal">condición de salida.</span></h2>
-            <p class="opacity-80">Si los datos no la cumplen, se ajusta el alcance; nunca la fecha.</p>
-        </div>
+        /* Encabezado Principal */
+        header { 
+            background-color: #0B1420; 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            border-bottom: 2px solid #3F8072;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .header-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 16px 0;
+        }
         
-        <div class="flex flex-wrap justify-between gap-y-4 border-b border-[#0B1420]/10 pb-4 mb-12">
-            <span class="text-sm font-semibold text-[#3F8072] border-b-4 border-[#3F8072] pb-4 -mb-[20px]">01 Perfilamiento</span>
-            <span class="text-sm font-semibold opacity-50 pb-4">02 Limpieza</span>
-            <span class="text-sm font-semibold opacity-50 pb-4">03 Imputación</span>
+        /* Menú de Accesos de Anclaje */
+        nav { display: flex; gap: 24px; }
+        nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #3F8072; }
+        
+        .btn-header {
+            background-color: #3F8072;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 10px 16px;
+            border-radius: 4px;
+        }
+
+        /* Estructuras de Sección Mundiales */
+        .section-white { background-color: #E7E9ED; padding: 100px 0; border-bottom: 1px solid rgba(11, 20, 32, 0.1); }
+        .section-dark { background-color: #0B1420; color: #FFFFFF; padding: 100px 0; }
+        .section-header-meta { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(11, 20, 32, 0.1); padding-bottom: 12px; margin-bottom: 48px; }
+        .section-header-meta-dark { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 12px; margin-bottom: 48px; }
+        .meta-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+        
+        /* Sección 1: Hero Principal */
+        .hero-layout { display: flex; gap: 64px; align-items: center; padding: 40px 0 60px 0; }
+        .hero-left { flex: 7; }
+        .hero-right { flex: 5; }
+        .hero-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #3F8072; margin-bottom: 16px; display: block; }
+        .hero-layout h1 { font-size: 54px; font-weight: 700; line-height: 1.1; margin-bottom: 24px; color: #0B1420; }
+        .hero-layout h1 span { color: #C98A3B; font-style: italic; font-weight: 400; }
+        .hero-desc { font-size: 18px; opacity: 0.85; margin-bottom: 36px; }
+        
+        .cta-group { display: flex; gap: 24px; align-items: center; }
+        .btn-primary { background-color: #C98A3B; color: white; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; display: inline-block; }
+        .btn-secondary { color: #0B1420; text-decoration: none; font-weight: 600; font-size: 15px; border-bottom: 2px solid #0B1420; padding-bottom: 2px; }
+
+        .image-frame { background-color: white; padding: 8px; border-radius: 12px; border: 1px solid rgba(11, 20, 32, 0.1); box-shadow: 0 30px 60px rgba(0,0,0,0.1); aspect-ratio: 4/3; overflow: hidden; width: 100%; }
+        .image-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+
+        /* Sección 2: Nosotros (Origen Maya) */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+        .pillar-card { background-color: rgba(11, 20, 32, 0.03); padding: 24px; border-radius: 8px; border: 1px solid rgba(11, 20, 32, 0.05); }
+        .pillar-num { font-size: 24px; font-weight: 700; color: #3F8072; display: block; margin-bottom: 8px; }
+        .pillar-text { font-size: 16px; font-weight: 600; color: #0B1420; }
+
+        /* Sección 3: Qué Resolvemos (Kardex Seis Preguntas) */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+        .grid-questions { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; margin-top: 48px; }
+        .question-card { display: flex; gap: 24px; background-color: rgba(255,255,255,0.03); padding: 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+        .question-num { font-size: 16px; font-weight: 700; color: #C98A3B; }
+        .question-content h4 { font-size: 18px; font-weight: 700; color: white; margin-bottom: 8px; }
+        .question-content p { font-size: 14px; opacity: 0.7; }
+
+        /* Sección 4: Metodología (7 Etapas) */
+        .timeline-bar { display: flex; justify-content: space-between; border-bottom: 4px solid rgba(11, 20, 32, 0.1); padding-bottom: 12px; margin-top: 40px; }
+        .timeline-step { font-size: 14px; font-weight: 600; opacity: 0.5; padding-bottom: 12px; }
+        .timeline-step.active { opacity: 1; color: #3F8072; font-weight: 700; }
+        .timeline-step.amber { opacity: 1; color: #C98A3B; font-weight: 700; }
+        .kardex-banner { background-color: #0B1420; color: white; padding: 48px; border-radius: 12px; margin-top: 48px; display: flex; align-items: center; gap: 64px; }
+        .kardex-banner .num { font-size: 64px; font-weight: 700; font-family: 'Fraunces', serif; color: #C98A3B; }
+        .kardex-banner .text { font-size: 16px; opacity: 0.8; }
+
+        /* Sección 5: Caso Real */
+        .case-box { background-color: #0B1420; color: white; padding: 48px; border-radius: 16px; margin-top: 32px; }
+        .case-split { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; }
+        .progress-container { margin-top: 32px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 8px; opacity: 0.7; }
+        .progress-bar-bg { width: 100%; height: 12px; background-color: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; }
+        .progress-bar-fill { width: 47.3%; height: 100%; background-color: #3F8072; }
+        .case-footer-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; margin-top: 32px; }
+        .meta-label { font-size: 11px; text-transform: uppercase; tracking: 0.05em; color: #C98A3B; margin-bottom: 4px; display: block; font-weight: 700; }
+
+        /* Sección 6: Cómo Trabajamos (3 Fases) */
+        .grid-fases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px; }
+        .fase-card { background-color: #0B1420; color: white; padding: 40px 32px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .fase-card.active { border-top: 4px solid #C98A3B; background-color: rgba(255,255,255,0.02); }
+        .fase-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.5; margin-bottom: 16px; display: block; }
+        .fase-card h4 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .fase-duration { font-size: 13px; font-weight: 700; text-transform: uppercase; color: #3F8072; margin-top: 24px; display: block; }
+
+        /* Conversión / Cierre (Doble Bloque Zoho & WhatsApp) */
+        .conversion-section { background-color: #0B1420; color: white; padding: 120px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+        .conversion-title { font-size: 42px; font-weight: 700; margin-bottom: 16px; }
+        .conversion-desc { opacity: 0.7; font-size: 16px; max-w: 600px; margin: 0 auto 48px auto; }
+        .box-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-w: 800px; margin: 0 auto; text-align: left; }
+        .box-card { background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 40px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+        .box-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: white; }
+        .box-card p { font-size: 13px; opacity: 0.6; margin-bottom: 24px; }
+        .btn-action-dark { display: block; width: 100%; text-align: center; background-color: white; color: #0B1420; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 14px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
+        .btn-action-teal { display: block; width: 100%; text-align: center; background-color: #3F8072; color: white; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 14px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
+        .btn-action-dark:hover, .btn-action-teal:hover { opacity: 0.9; }
+
+        footer { background-color: #E7E9ED; border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 48px 0; text-align: center; font-size: 12px; opacity: 0.6; }
+        .fixed-watermark { position: fixed; bottom: 40px; right: 40px; opacity: 0.03; pointer-events: none; z-index: 0; max-width: 180px; }
+
+        /* Adaptabilidad Móvil */
