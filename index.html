@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilik Analytics | Inteligencia de Compra Hospitalaria</title>
     
-    <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- INFRAESTRUCTURA CSS PURA NATIVA - BLINDAJE TOTAL CONTRA TEXTO PLANO -->
+    <!-- MAQUETACIÓN CSS PURA NATIVA INDEPENDIENTE - GARANTÍA DE RENDERIZADO OBLIGATORIO -->
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: #E7E9ED; 
             color: #0B1420; 
             line-height: 1.6;
         }
-        .font-serif { font-family: 'Fraunces', serif !important; }
+        .font-serif { font-family: Georgia, Cambria, "Times New Roman", Times, serif !important; }
         .max-w-7xl { max-w: 1200px; margin: 0 auto; padding: 0 24px; }
         
-        /* Encabezado Principal */
+        /* Encabezado Corporativo Principal */
         header { 
             background-color: #0B1420; 
             position: sticky; 
@@ -39,7 +34,7 @@
             padding: 16px 0;
         }
         
-        /* Menú de Accesos de Anclaje */
+        /* Menú de Accesos de Anclaje Líquido */
         nav { display: flex; gap: 24px; }
         nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
         nav a:hover { color: #3F8072; }
@@ -54,6 +49,7 @@
             letter-spacing: 0.05em;
             padding: 10px 16px;
             border-radius: 4px;
+            display: inline-block;
         }
 
         /* Estructuras de Sección Mundiales */
@@ -99,7 +95,7 @@
         .timeline-step.active { opacity: 1; color: #3F8072; font-weight: 700; }
         .timeline-step.amber { opacity: 1; color: #C98A3B; font-weight: 700; }
         .kardex-banner { background-color: #0B1420; color: white; padding: 48px; border-radius: 12px; margin-top: 48px; display: flex; align-items: center; gap: 64px; }
-        .kardex-banner .num { font-size: 64px; font-weight: 700; font-family: 'Fraunces', serif; color: #C98A3B; }
+        .kardex-banner .num { font-size: 64px; font-weight: 700; font-family: Georgia, serif; color: #C98A3B; }
         .kardex-banner .text { font-size: 16px; opacity: 0.8; }
 
         /* Sección 5: Caso Real */
@@ -136,3 +132,5 @@
         .fixed-watermark { position: fixed; bottom: 40px; right: 40px; opacity: 0.03; pointer-events: none; z-index: 0; max-width: 180px; }
 
         /* Adaptabilidad Móvil */
+        @media (max-w: 1024px) {
+            .hero-layout, .grid-3, .grid-2, .grid-questions, .timeline-bar, .case-split, .case-footer-metrics, .grid-fases, .box-grid { grid-template-columns: 1fr; flex-direction: column; gap: 32px; }
