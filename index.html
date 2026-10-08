@@ -3,10 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilik | Inteligencia de Compra</title>
+    <title>Ilik | Diagnóstico de gasto e inteligencia de compra</title>
     <meta name="description" content="Inteligencia de compra aplicable a cualquier industria. Convertimos sus datos de compra en un diagnóstico de gasto que finanzas puede defender. Primer vertical: hospitales privados en México.">
     <meta name="theme-color" content="#0B1420">
     <link rel="icon" type="image/png" href="marca-agua.png">
+
+    <!-- ILIK v2 · URL canónica y vista previa al compartir (LinkedIn, WhatsApp, Facebook).
+         Requiere subir og-image.jpg (1200 x 630 px, menos de 300 KB) a la raíz del sitio. -->
+    <link rel="canonical" href="https://ilikanalytics.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Ilik">
+    <meta property="og:url" content="https://ilikanalytics.com/">
+    <meta property="og:title" content="Lo que no se mide, se paga de más. | Ilik">
+    <meta property="og:description" content="Convertimos su Kardex en un diagnóstico de gasto que finanzas puede defender, conciliado contra su origen. Primer vertical: hospitales privados en México.">
+    <meta property="og:image" content="https://ilikanalytics.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ilik · Inteligencia de Compra">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lo que no se mide, se paga de más. | Ilik">
+    <meta name="twitter:description" content="Diagnóstico de gasto a partir de su Kardex, conciliado contra su origen.">
+    <meta name="twitter:image" content="https://ilikanalytics.com/og-image.jpg">
+
+    <!-- ILIK v2 · Datos estructurados: empresa, fundador y preguntas frecuentes (Google y buscadores con IA).
+         Si cambia el texto de las preguntas en la sección 07, actualícelo también aquí. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://ilikanalytics.com/#organizacion",
+                "name": "Ilik",
+                "url": "https://ilikanalytics.com/",
+                "logo": "https://ilikanalytics.com/logo-oficial.png",
+                "image": "https://ilikanalytics.com/og-image.jpg",
+                "description": "Consultoría boutique de inteligencia de compra. Diagnóstico de gasto a partir del Kardex, con cada cifra conciliada contra su origen. Primer vertical: hospitales privados en México.",
+                "email": "contacto@ilikanalytics.com",
+                "telephone": "+52 33 1087 4987",
+                "areaServed": { "@type": "Country", "name": "México" },
+                "knowsAbout": ["Inteligencia de compra", "Análisis de Kardex", "Diagnóstico de gasto", "Consignación", "Capital de trabajo", "Dispersión de precio"],
+                "founder": { "@type": "Person", "name": "Ricardo Rodríguez Escamilla", "jobTitle": "Fundador · Estadístico" }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    { "@type": "Question", "name": "¿Qué pasa con los datos del hospital?", "acceptedAnswer": { "@type": "Answer", "text": "No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución." } },
+                    { "@type": "Question", "name": "¿Cuánto trabajo le implica a mi equipo?", "acceptedAnswer": { "@type": "Answer", "text": "Un export de su sistema (Kardex u otro reporte de compras). El pipeline hace el resto." } },
+                    { "@type": "Question", "name": "¿Qué pasa si los datos están sucios?", "acceptedAnswer": { "@type": "Answer", "text": "Siempre lo están. Se mide qué tan sucios y se declara en el diagnóstico; no se oculta ni se asume una calidad que no existe." } },
+                    { "@type": "Question", "name": "¿Qué se lleva el hospital al final?", "acceptedAnswer": { "@type": "Answer", "text": "Hallazgos con cifra, prioridad y un siguiente paso concreto; no un dashboard más." } }
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <!-- ILIK v2 · Analítica con Plausible (sin cookies, no requiere banner de consentimiento).
+         Para que registre visitas: dé de alta ilikanalytics.com en plausible.io.
+         Eventos que envía el sitio (script al final): "Contacto WhatsApp", "Contacto Correo", "Contacto Telefono",
+         "Contacto Agenda" y "Clic Solicitar diagnostico", con la propiedad "ubicacion".
+         Cada nombre se da de alta en Plausible: Settings > Goals > Add goal > Custom event (nombre idéntico).
+         Plausible ya ofrece un script nuevo por sitio (pa-XXXX.js). Si al dar de alta el sitio le muestra ese snippet,
+         reemplace estas dos líneas por él; el registro de eventos de abajo sigue funcionando igual. -->
+    <script defer data-domain="ilikanalytics.com" src="https://plausible.io/js/script.js"></script>
+    <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };</script>
 
     <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK
          Si Google Fonts no responde, cada familia cae a una fuente del sistema equivalente. -->
@@ -329,6 +390,25 @@
         .fict-ribbon { position: absolute; top: 34px; right: -56px; width: 230px; transform: rotate(35deg); background-color: var(--amber); color: var(--ink); text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 0; }
         .data-note { font-size: 12px; opacity: 0.6; margin-top: 8px; }
 
+        /* ILIK v2 · Header que se compacta al bajar (el script agrega .is-compact) */
+        .header-container { transition: padding 0.25s ease; }
+        .header-container .logo img { transition: height 0.25s ease; }
+        header.is-compact .header-container { padding-top: 6px; padding-bottom: 6px; }
+        header.is-compact .header-container .logo img { height: 40px; }
+
+        /* ILIK v2 · Menú: marca la sección que se está leyendo (el script agrega .is-active) */
+        nav a.is-active { color: var(--bone); box-shadow: inset 0 -2px 0 var(--amber); padding-bottom: 4px; }
+
+        /* ILIK v2 · CTA intermedio después del caso real */
+        .inline-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; margin-top: 40px; padding: 28px 32px; border: 1px solid rgba(201, 138, 59, 0.45); border-radius: 12px; background-color: rgba(201, 138, 59, 0.06); }
+        .inline-cta p { font-size: 17px; max-width: 560px; }
+        .inline-cta strong { font-family: var(--serif); font-size: 21px; display: block; margin-bottom: 2px; }
+
+        /* ILIK v2 · Botón flotante de WhatsApp (solo celular; aparece después de la portada) */
+        .wa-fab { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 90; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 999px; background-color: var(--teal); color: var(--bone); font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 28px rgba(11, 20, 32, 0.35); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; }
+        .wa-fab.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+        .wa-fab svg { width: 18px; height: 18px; fill: currentColor; }
+
         /* Adaptabilidad Móvil */
         @media (max-width: 1024px) {
             nav { gap: 16px; }
@@ -336,6 +416,7 @@
             .hero-cover h1 { font-size: 50px; }
             .hero-media { width: 50%; }
             .timeline-step { font-size: 13px; }
+            .fixed-watermark { width: 72px; bottom: 20px; right: 20px; } /* ILIK v2 */
         }
 
         @media (max-width: 900px) {
@@ -408,6 +489,9 @@
             .sample-card .eyebrow { display: block; padding-right: 70px; }
             .fict-ribbon { top: 16px; right: -70px; font-size: 9.5px; }
             .next-step { flex-direction: column; gap: 6px; }
+            .wa-fab { display: inline-flex; } /* ILIK v2 */
+            .inline-cta { padding: 24px 22px; } /* ILIK v2 */
+            .inline-cta .btn-primary { width: 100%; text-align: center; } /* ILIK v2 */
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -417,7 +501,7 @@
 
         @media print {
             header { position: static; box-shadow: none; }
-            .fixed-watermark, .skip-link { display: none; }
+            .fixed-watermark, .skip-link, .wa-fab { display: none; } /* ILIK v2: + .wa-fab */
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
@@ -443,7 +527,7 @@
                 <a href="#trabajo">Cómo trabajamos</a>
                 <a href="#preguntas">Preguntas</a>
             </nav>
-            <a href="#contacto" class="btn-header">Contacto Directo</a>
+            <a href="#contacto" class="btn-header" data-cta="header">Solicitar diagnóstico</a> <!-- ILIK v2: misma etiqueta que la acción principal -->
         </div>
     </header>
 
@@ -452,7 +536,7 @@
     <!-- PORTADA -->
     <section id="inicio" class="hero-cover">
         <figure class="hero-media">
-            <img src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896">
+            <img src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896" fetchpriority="high"> <!-- ILIK v2: carga prioritaria -->
             <figcaption class="hero-caption"><strong>Ricardo Rodríguez Escamilla</strong><span>Fundador &middot; Estadístico</span></figcaption>
         </figure>
         <div class="max-w-7xl hero-inner">
@@ -462,14 +546,14 @@
                 <p class="hero-desc">Convertimos su Kardex y sus datos de compra en un diagnóstico de gasto que finanzas puede defender.</p>
                 <p class="hero-vertical">Metodología aplicable a cualquier industria. <strong>Primer vertical: hospitales privados en México.</strong></p>
                 <div class="cta-group">
-                    <a href="#contacto" class="btn-primary">Solicitar diagnóstico &rarr;</a>
+                    <a href="#contacto" class="btn-primary" data-cta="hero">Solicitar diagnóstico &rarr;</a>
                     <a href="#metodologia" class="btn-secondary">Ver metodología</a>
                 </div>
-                <p class="hero-email">O escríbanos directo a <a href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></p>
+                <p class="hero-email">O escríbanos directo a <a data-cta="hero-correo" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></p>
 
                 <div class="proof-strip">
                     <div class="proof-item"><span class="proof-num">$169.9<small>M</small></span><span class="proof-label">en movimientos de Kardex analizados</span></div>
-                    <div class="proof-item"><span class="proof-num">2.12<small>x</small></span><span class="proof-label">sobreestimación del gasto detectada</span></div>
+                    <div class="proof-item"><span class="proof-num">2.12<small>x</small></span><span class="proof-label">sobreestimación del gasto al no separar traslados internos</span><!-- ILIK v2: aclara qué mide el 2.12x --></div>
                     <div class="proof-item"><span class="proof-num">0.0<small>%</small></span><span class="proof-label">diferencia no explicada al conciliar</span></div>
                 </div>
                 <p class="proof-note">Caso real anonimizado, presentado como efecto ilustrativo de la metodología.</p>
@@ -479,7 +563,7 @@
 
     <!-- SECCIÓN 01: NOSOTROS -->
     <section id="nosotros" class="about-section">
-        <img class="about-bg-logo" src="logo-grande.png" alt="" aria-hidden="true" width="900" height="590">
+        <img class="about-bg-logo" src="logo-grande.png" alt="" aria-hidden="true" width="900" height="590" loading="lazy" decoding="async"> <!-- ILIK v2: carga diferida -->
         <div class="max-w-7xl">
             <div class="section-header-meta">
                 <span class="meta-tag">Nosotros</span>
@@ -522,9 +606,10 @@
                 <span class="ctx-label">Por qué ahora<br>Salud privada 2026</span>
                 <div class="context-bars">
                     <div class="ctx-row"><span>Inflación médica privada</span><div class="bar"><span style="width: 93%; background-color: var(--amber);"></span></div><span class="val" style="color: var(--amber);">12 a 14%</span></div>
-                    <div class="ctx-row"><span>Inflación general</span><div class="bar"><span style="width: 32%; background-color: var(--teal-soft);"></span></div><span class="val">~4.5%</span></div>
+                    <div class="ctx-row"><span>Inflación general esperada</span><div class="bar"><span style="width: 31%; background-color: var(--teal-soft);"></span></div><span class="val">4.35%</span></div><!-- ILIK v2: cifra con fuente primaria (Banxico); ancho 4.35/14 = 31% -->
                 </div>
-                <p class="ctx-foot">Proyección de la directora general de la AMIS, vía Publimetro, 13 de mayo de 2026. En el primer vertical de Ilik, el costo de los insumos crece unas tres veces más rápido que la inflación general.</p>
+                <!-- ILIK v2 · Cita verificada. 12-14%: Norma Alicia Rosas Rodríguez, directora general de la AMIS, conferencia de prensa en la 35.ª Convención de Aseguradores, 12/may/2026 (La Jornada, 13/may/2026). 4.35%: mediana de expectativa de inflación general dic-dic 2026, Encuesta Banxico de mayo 2026, publicada 1/jun/2026. -->
+                <p class="ctx-foot">Inflación médica privada: proyección de la directora general de la AMIS, Norma Alicia Rosas Rodríguez, en la 35.ª Convención de Aseguradores (12 de mayo de 2026). Inflación general: mediana de expectativas para el cierre de 2026, Encuesta de Banco de México a especialistas (mayo de 2026). En el primer vertical de Ilik, el costo de la atención médica privada crece cerca de tres veces más rápido que los precios en general.</p>
             </div>
 
             <ol class="grid-questions">
@@ -659,6 +744,12 @@
                 </div>
             </div>
             <p class="case-note">Cifras de un caso real anonimizado (siete meses de compras de farmacia de un hospital privado), presentadas como efecto ilustrativo de la metodología. Millones de pesos redondeados; el 32.5% se calcula sobre cifras sin redondear.</p>
+
+            <!-- ILIK v2 · CTA intermedio: aparece justo después de la prueba más fuerte del sitio -->
+            <div class="inline-cta">
+                <p><strong>¿Cuánto de su gasto es compra real?</strong>Lo medimos con su propio Kardex, en un diagnóstico ejecutivo de 4 semanas.</p>
+                <a href="#contacto" class="btn-primary" data-cta="caso-real">Solicitar diagnóstico &rarr;</a>
+            </div>
         </section>
 
         <!-- SECCIÓN 06: CÓMO TRABAJAMOS -->
@@ -753,26 +844,26 @@
                     </div>
                     <!-- Funciona siempre: por defecto abre un correo prellenado.
                          Para usar Zoho, pegue su liga en AGENDA_URL (script al final). -->
-                    <a id="cta-agenda" class="btn-action-dark" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico</a>
+                    <a id="cta-agenda" class="btn-action-dark" data-cta="contacto-agenda" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico</a>
                 </div>
                 <div class="box-card">
                     <div>
                         <h4 class="font-serif">WhatsApp directo</h4>
                         <p>Escríbanos y le respondemos personalmente. Ideal para una primera pregunta rápida.</p>
                     </div>
-                    <a class="btn-action-teal" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+                    <a class="btn-action-teal" data-cta="contacto-whatsapp" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener">Escribir por WhatsApp</a>
                 </div>
             </div>
 
             <div class="email-feature">
                 <div>
                     <span class="meta-tag">Correo directo</span>
-                    <a class="email-link" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a>
+                    <a class="email-link" data-cta="contacto-correo-grande" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a>
                 </div>
-                <a class="btn-email" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">Enviar correo</a>
+                <a class="btn-email" data-cta="contacto-correo" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">Enviar correo</a>
             </div>
 
-            <p class="contact-line">Teléfono y WhatsApp: <a href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
+            <p class="contact-line">Teléfono y WhatsApp: <a data-cta="contacto-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
         </div>
     </section>
 
@@ -782,7 +873,7 @@
         <div class="max-w-7xl">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logo-oficial.png" alt="Ilik" width="92" height="60">
+                    <img src="logo-oficial.png" alt="Ilik" width="92" height="60" loading="lazy" decoding="async"> <!-- ILIK v2: carga diferida -->
                     <p>Inteligencia de Compra para cualquier industria. Diagnóstico de gasto con trazabilidad y reconciliación completa. Primer vertical: hospitales privados en México.</p>
                     <p class="tagline">Lo que no se mide, se paga de más.</p>
                 </div>
@@ -807,9 +898,9 @@
                 <div class="footer-col">
                     <h5>Contacto</h5>
                     <ul>
-                        <li><a class="contact-email" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></li>
-                        <li>Tel. <a href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></li>
-                        <li><a href="https://wa.me/523310874987" target="_blank" rel="noopener">WhatsApp directo</a></li>
+                        <li><a class="contact-email" data-cta="pie-correo" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></li>
+                        <li>Tel. <a data-cta="pie-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></li>
+                        <li><a data-cta="pie-whatsapp" href="https://wa.me/523310874987" target="_blank" rel="noopener">WhatsApp directo</a></li>
                     </ul>
                 </div>
             </div>
@@ -829,7 +920,7 @@
                 </div>
                 <div>
                     <h6>Datos personales</h6>
-                    <p>Sus datos de contacto se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Mientras se publica nuestro Aviso de Privacidad, puede solicitarlo en <a href="mailto:contacto@ilikanalytics.com?subject=Aviso%20de%20privacidad">contacto@ilikanalytics.com</a>.</p>
+                    <p>Sus datos de contacto se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Mientras se publica nuestro Aviso de Privacidad, puede solicitarlo en <a data-no-track href="mailto:contacto@ilikanalytics.com?subject=Aviso%20de%20privacidad">contacto@ilikanalytics.com</a>.</p>
                 </div>
             </div>
 
@@ -839,6 +930,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- ILIK v2 · Botón flotante de WhatsApp (solo celular) -->
+    <a class="wa-fab" id="wa-fab" data-cta="whatsapp-flotante" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener" aria-label="Escribir a Ilik por WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
+        WhatsApp
+    </a>
 
     <!-- La página se ve completa aunque este script no corra: solo agrega mejoras opcionales. -->
     <script>
@@ -888,7 +985,8 @@
                         break;
                     }
                     var overAbout = false;
-                    for (var j = 0; j < stack.length; j++) { if (stack[j] !== wm) { overAbout = !!(stack[j].closest && stack[j].closest(".about-section")); break; } }
+                    // ILIK v2: también se oculta sobre el cierre y el pie, donde tapaba botones y datos de contacto.
+                    for (var j = 0; j < stack.length; j++) { if (stack[j] !== wm) { overAbout = !!(stack[j].closest && stack[j].closest(".about-section, .conversion-section, footer")); break; } }
                     wm.style.opacity = overAbout ? "0" : "";
                     if (dark !== lastDark) {
                         lastDark = dark;
@@ -900,6 +998,59 @@
                 window.addEventListener("resize", onScroll);
                 checkWatermark();
             }
+            // ILIK v2 · Header compacto al bajar
+            var header = document.querySelector("header");
+            if (header) {
+                var compact = function () { header.classList.toggle("is-compact", window.scrollY > 80); };
+                window.addEventListener("scroll", compact, { passive: true });
+                compact();
+            }
+
+            // ILIK v2 · Menú: resalta la sección en pantalla
+            var navLinks = Array.prototype.slice.call(document.querySelectorAll('header nav a[href^="#"]'));
+            if (navLinks.length && "IntersectionObserver" in window) {
+                var linkById = {};
+                navLinks.forEach(function (a) { linkById[a.getAttribute("href").slice(1)] = a; });
+                var spy = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (!e.isIntersecting) { return; }
+                        navLinks.forEach(function (a) { a.classList.remove("is-active"); });
+                        if (linkById[e.target.id]) { linkById[e.target.id].classList.add("is-active"); }
+                    });
+                }, { rootMargin: "-45% 0px -50% 0px" });
+                document.querySelectorAll("main section[id]").forEach(function (sec) { spy.observe(sec); });
+            }
+
+            // ILIK v2 · WhatsApp flotante: visible después de la portada y oculto al llegar al contacto
+            var fab = document.getElementById("wa-fab");
+            var hero = document.getElementById("inicio");
+            var contacto = document.getElementById("contacto");
+            if (fab && hero && contacto) {
+                var toggleFab = function () {
+                    var show = hero.getBoundingClientRect().bottom < 0 && contacto.getBoundingClientRect().top > window.innerHeight;
+                    fab.classList.toggle("is-visible", show);
+                };
+                window.addEventListener("scroll", toggleFab, { passive: true });
+                toggleFab();
+            }
+
+            // ILIK v2 · Medición en Plausible. Nombres de evento = metas en Plausible (funcionan en cualquier plan).
+            //   Contacto WhatsApp / Contacto Correo / Contacto Telefono / Contacto Agenda  -> conversión (meta principal)
+            //   Clic Solicitar diagnostico                                                -> intención (lleva a #contacto)
+            // La propiedad "ubicacion" (data-cta) dice desde qué botón se hizo clic.
+            document.addEventListener("click", function (ev) {
+                var a = ev.target.closest ? ev.target.closest("a") : null;
+                if (!a || !window.plausible || a.hasAttribute("data-no-track")) { return; } // solicitudes legales no cuentan como lead
+                var href = a.getAttribute("href") || "";
+                var name = null;
+                if (a.id === "cta-agenda") { name = "Contacto Agenda"; }
+                else if (/wa\.me|whatsapp\.com/i.test(href)) { name = "Contacto WhatsApp"; }
+                else if (/^mailto:/i.test(href)) { name = "Contacto Correo"; }
+                else if (/^tel:/i.test(href)) { name = "Contacto Telefono"; }
+                else if (href === "#contacto") { name = "Clic Solicitar diagnostico"; }
+                if (name) { window.plausible(name, { props: { ubicacion: a.getAttribute("data-cta") || "sin-etiqueta" } }); }
+            });
+
             var y = document.getElementById("year");
             if (y) { y.textContent = String(new Date().getFullYear()); }
         } catch (e) { /* sin efecto visible */ }
