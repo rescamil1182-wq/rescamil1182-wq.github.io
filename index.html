@@ -49,7 +49,7 @@
             {
                 "@type": "FAQPage",
                 "mainEntity": [
-                    { "@type": "Question", "name": "¿Qué pasa con los datos del hospital?", "acceptedAnswer": { "@type": "Answer", "text": "No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución." } },
+                    { "@type": "Question", "name": "¿Qué pasa con los datos del hospital?", "acceptedAnswer": { "@type": "Answer", "text": "No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución. Antes de recibir cualquier archivo firmamos un Convenio de Confidencialidad." } },
                     { "@type": "Question", "name": "¿Cuánto trabajo le implica a mi equipo?", "acceptedAnswer": { "@type": "Answer", "text": "Un export de su sistema (Kardex u otro reporte de compras). El pipeline hace el resto." } },
                     { "@type": "Question", "name": "¿Qué pasa si los datos están sucios?", "acceptedAnswer": { "@type": "Answer", "text": "Siempre lo están. Se mide qué tan sucios y se declara en el diagnóstico; no se oculta ni se asume una calidad que no existe." } },
                     { "@type": "Question", "name": "¿Qué se lleva el hospital al final?", "acceptedAnswer": { "@type": "Answer", "text": "Hallazgos con cifra, prioridad y un siguiente paso concreto; no un dashboard más." } }
@@ -62,7 +62,8 @@
     <!-- ILIK v2 · Analítica con Plausible (sin cookies, no requiere banner de consentimiento).
          Para que registre visitas: dé de alta ilikanalytics.com en plausible.io.
          Eventos que envía el sitio (script al final): "Contacto WhatsApp", "Contacto Correo", "Contacto Telefono",
-         "Contacto Agenda" y "Clic Solicitar diagnostico", con la propiedad "ubicacion".
+         "Contacto Agenda", "Clic Solicitar diagnostico", "Ver Convenio" y "Ver Aviso de Privacidad",
+         con la propiedad "ubicacion".
          Cada nombre se da de alta en Plausible: Settings > Goals > Add goal > Custom event (nombre idéntico).
          Plausible ya ofrece un script nuevo por sitio (pa-XXXX.js). Si al dar de alta el sitio le muestra ese snippet,
          reemplace estas dos líneas por él; el registro de eventos de abajo sigue funcionando igual. -->
@@ -281,6 +282,7 @@
         .btn-action-dark:hover, .btn-action-teal:hover { opacity: 0.9; }
         .contact-line { margin-top: 24px; font-size: 14px; opacity: 0.75; }
         .contact-line a { color: inherit; }
+        .privacy-line { margin-top: 10px; font-size: 12.5px; opacity: 0.6; } /* ILIK v2 */
 
         /* Correo directo destacado */
         .email-feature { max-width: 800px; margin: 32px auto 0; padding: 32px 40px; border: 1px solid rgba(201, 138, 59, 0.45); border-radius: 16px; background-color: rgba(201, 138, 59, 0.06); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; text-align: left; }
@@ -549,14 +551,14 @@
                     <a href="#contacto" class="btn-primary" data-cta="hero">Solicitar diagnóstico &rarr;</a>
                     <a href="#metodologia" class="btn-secondary">Ver metodología</a>
                 </div>
-                <p class="hero-email">O escríbanos directo a <a data-cta="hero-correo" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a></p>
+                <!-- ILIK v2: se quitó la línea "O escríbanos directo a…" de la portada; el correo sigue en Contacto y en el pie -->
 
                 <div class="proof-strip">
                     <div class="proof-item"><span class="proof-num">$169.9<small>M</small></span><span class="proof-label">en movimientos de Kardex analizados</span></div>
-                    <div class="proof-item"><span class="proof-num">2.12<small>x</small></span><span class="proof-label">sobreestimación del gasto al no separar traslados internos</span><!-- ILIK v2: aclara qué mide el 2.12x --></div>
-                    <div class="proof-item"><span class="proof-num">0.0<small>%</small></span><span class="proof-label">diferencia no explicada al conciliar</span></div>
+                    <div class="proof-item"><span class="proof-num">52.7<small>%</small></span><span class="proof-label">del movimiento no era compra real</span></div><!-- ILIK v2: antes 2.12x (= 1 / 47.3%); mismo hallazgo, lectura directa -->
+                    <div class="proof-item"><span class="proof-num">$2.3<small>M</small></span><span class="proof-label">en sobreprecio recuperable identificado</span></div><!-- ILIK v2: resultado en dinero (Hallazgo 02) -->
                 </div>
-                <p class="proof-note">Caso real anonimizado, presentado como efecto ilustrativo de la metodología.</p>
+                <p class="proof-note">Caso real anonimizado, conciliado contra el Kardex original con 0.0% de diferencia no explicada. Cifras presentadas como efecto ilustrativo de la metodología.</p><!-- ILIK v2: el 0.0% se conserva como garantía de rigor -->
             </div>
         </div>
     </section>
@@ -822,7 +824,7 @@
             </div>
 
             <ol class="grid-questions faq">
-                <li class="question-card"><span class="question-num font-serif">01</span><div class="question-content"><h4>¿Qué pasa con los datos del hospital?</h4><p>No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución.</p></div></li>
+                <li class="question-card"><span class="question-num font-serif">01</span><div class="question-content"><h4>¿Qué pasa con los datos del hospital?</h4><p>No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución. Antes de recibir cualquier archivo firmamos un <a data-cta="faq-convenio" href="convenio-de-confidencialidad.pdf" target="_blank" rel="noopener" title="Modelo de convenio (PDF)" style="color: var(--teal-soft);">Convenio de Confidencialidad</a>.</p></div></li>
                 <li class="question-card"><span class="question-num font-serif">02</span><div class="question-content"><h4>¿Cuánto trabajo le implica a mi equipo?</h4><p>Un export de su sistema (Kardex u otro reporte de compras). El pipeline hace el resto.</p></div></li>
                 <li class="question-card"><span class="question-num font-serif">03</span><div class="question-content"><h4>¿Qué pasa si los datos están sucios?</h4><p>Siempre lo están. Se mide qué tan sucios y se declara en el diagnóstico; no se oculta ni se asume una calidad que no existe.</p></div></li>
                 <li class="question-card"><span class="question-num font-serif">04</span><div class="question-content"><h4>¿Qué se lleva el hospital al final?</h4><p>Hallazgos con cifra, prioridad y un siguiente paso concreto; no un dashboard más.</p></div></li>
@@ -864,6 +866,7 @@
             </div>
 
             <p class="contact-line">Teléfono y WhatsApp: <a data-cta="contacto-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
+            <p class="contact-line privacy-line">Al contactarnos, sus datos se tratan conforme a nuestro <a data-cta="contacto-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a>. <!-- ILIK v2 --></p>
         </div>
     </section>
 
@@ -891,8 +894,8 @@
                 <div class="footer-col">
                     <h5>Documentos</h5>
                     <ul>
-                        <li><a class="doc-link is-pending" id="doc-convenio" role="link" aria-disabled="true" title="Documento en preparación">Convenio de Confidencialidad <span class="badge">Próximamente</span></a></li>
-                        <li><a class="doc-link is-pending" id="doc-aviso" role="link" aria-disabled="true" title="Documento en preparación">Aviso de Privacidad <span class="badge">Próximamente</span></a></li>
+                        <li><a class="doc-link" id="doc-convenio" data-cta="pie-convenio" href="convenio-de-confidencialidad.pdf" target="_blank" rel="noopener">Convenio de Confidencialidad (modelo) <span class="badge">PDF</span></a></li> <!-- ILIK v2: documento publicado -->
+                        <li><a class="doc-link" id="doc-aviso" data-cta="pie-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad <span class="badge">PDF</span></a></li> <!-- ILIK v2: documento publicado -->
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -912,7 +915,7 @@
                 </div>
                 <div>
                     <h6>Confidencialidad</h6>
-                    <p>La información que un hospital comparte con Ilik se trata como estrictamente confidencial, se usa solo para el diagnóstico solicitado y no se comparte con terceros. Ilik no recaba datos de pacientes. El intercambio de archivos se formaliza mediante un Convenio de Confidencialidad.</p>
+                    <p>La información que un hospital comparte con Ilik se trata como estrictamente confidencial, se usa solo para el diagnóstico solicitado y no se comparte con terceros. Ilik no recaba datos de pacientes. El intercambio de archivos se formaliza mediante un Convenio de Confidencialidad (<a data-cta="legal-convenio" href="convenio-de-confidencialidad.pdf" target="_blank" rel="noopener">ver modelo</a>).</p> <!-- ILIK v2 -->
                 </div>
                 <div>
                     <h6>Alcance de la información</h6>
@@ -920,7 +923,7 @@
                 </div>
                 <div>
                     <h6>Datos personales</h6>
-                    <p>Sus datos de contacto se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Mientras se publica nuestro Aviso de Privacidad, puede solicitarlo en <a data-no-track href="mailto:contacto@ilikanalytics.com?subject=Aviso%20de%20privacidad">contacto@ilikanalytics.com</a>.</p>
+                    <p>Sus datos de contacto se tratan conforme a la legislación mexicana de protección de datos personales y solo para atender su solicitud. Consulte nuestro <a data-cta="legal-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a>.</p> <!-- ILIK v2 -->
                 </div>
             </div>
 
@@ -950,6 +953,7 @@
                 agenda.rel = "noopener";
             }
             // Cuando cada documento esté listo, pegue aquí su liga (https://...). Mientras esté vacía, se muestra "Próximamente".
+            // ILIK v2: los documentos ya están enlazados directo en el HTML (aviso-de-privacidad.pdf y convenio-de-confidencialidad.pdf).
             var DOCS = {
                 "doc-convenio": "",
                 "doc-aviso": ""
@@ -985,8 +989,8 @@
                         break;
                     }
                     var overAbout = false;
-                    // ILIK v2: también se oculta sobre el cierre y el pie, donde tapaba botones y datos de contacto.
-                    for (var j = 0; j < stack.length; j++) { if (stack[j] !== wm) { overAbout = !!(stack[j].closest && stack[j].closest(".about-section, .conversion-section, footer")); break; } }
+                    // ILIK v2: también se oculta sobre la portada (la foto ya muestra el logo), el cierre y el pie, donde tapaba botones y datos de contacto.
+                    for (var j = 0; j < stack.length; j++) { if (stack[j] !== wm) { overAbout = !!(stack[j].closest && stack[j].closest(".hero-cover, .about-section, .conversion-section, footer")); break; } }
                     wm.style.opacity = overAbout ? "0" : "";
                     if (dark !== lastDark) {
                         lastDark = dark;
@@ -1048,6 +1052,8 @@
                 else if (/^mailto:/i.test(href)) { name = "Contacto Correo"; }
                 else if (/^tel:/i.test(href)) { name = "Contacto Telefono"; }
                 else if (href === "#contacto") { name = "Clic Solicitar diagnostico"; }
+                else if (/convenio-de-confidencialidad\.pdf$/i.test(href)) { name = "Ver Convenio"; }   // señal de prospecto serio
+                else if (/aviso-de-privacidad\.pdf$/i.test(href)) { name = "Ver Aviso de Privacidad"; }
                 if (name) { window.plausible(name, { props: { ubicacion: a.getAttribute("data-cta") || "sin-etiqueta" } }); }
             });
 
