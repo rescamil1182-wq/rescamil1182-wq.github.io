@@ -286,23 +286,16 @@
         .conversion-title span { color: var(--amber); font-style: italic; font-weight: 400; }
         .conversion-desc { opacity: 0.7; font-size: 16px; max-width: 600px; margin: 0 auto 48px auto; }
         .box-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 800px; margin: 0 auto; text-align: left; }
-        .box-card { background-color: rgba(247, 248, 250, 0.02); border: 1px solid rgba(247, 248, 250, 0.08); padding: 40px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; }
-        .box-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--bone); }
+        .box-card { background-color: rgba(247, 248, 250, 0.02); border: 1px solid rgba(247, 248, 250, 0.08); padding: 40px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .box-card.primary { border-color: rgba(201, 138, 59, 0.35); background-color: rgba(201, 138, 59, 0.04); }
         .box-card p { font-size: 13px; opacity: 0.7; margin-bottom: 24px; }
-        .btn-action-dark { display: block; width: 100%; text-align: center; background-color: var(--bone); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
-        .btn-action-teal { display: block; width: 100%; text-align: center; background-color: var(--teal); color: var(--bone); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
-        .btn-action-dark:hover, .btn-action-teal:hover { opacity: 0.9; }
+        .recommended-badge { position: absolute; top: -12px; left: 40px; background-color: var(--teal); color: var(--bone); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 999px; }
+        .btn-action-amber { display: block; width: 100%; text-align: center; background-color: var(--amber); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
+        .btn-action-outline { display: block; width: 100%; text-align: center; background-color: transparent; color: var(--bone); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 14px; border-radius: 6px; text-decoration: none; border: 1.5px solid rgba(247, 248, 250, 0.3); transition: opacity 0.2s; }
+        .btn-action-amber:hover, .btn-action-outline:hover { opacity: 0.9; }
         .contact-line { margin-top: 24px; font-size: 14px; opacity: 0.75; }
         .contact-line a { color: inherit; }
         .privacy-line { margin-top: 10px; font-size: 12.5px; opacity: 0.6; } /* ILIK v2 */
-
-        /* Correo directo destacado */
-        .email-feature { max-width: 800px; margin: 32px auto 0; padding: 32px 40px; border: 1px solid rgba(201, 138, 59, 0.45); border-radius: 16px; background-color: rgba(201, 138, 59, 0.06); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; text-align: left; }
-        .email-feature .meta-tag { display: block; color: var(--amber); opacity: 1; margin-bottom: 6px; }
-        .email-feature .email-link { font-family: var(--serif); font-size: 32px; font-weight: 600; line-height: 1.2; color: var(--bone); text-decoration: none; border-bottom: 3px solid var(--amber); overflow-wrap: anywhere; }
-        .email-feature .email-link:hover { color: var(--amber); }
-        .btn-email { display: inline-block; background-color: var(--amber); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px 24px; border-radius: 6px; text-decoration: none; white-space: nowrap; }
-        .btn-email:hover { opacity: 0.9; }
 
         /* Pie de página: marca, navegación, documentos, contacto y aviso legal */
         footer { position: relative; z-index: 1; background-color: var(--bone-dim); border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 64px 0 28px; font-size: 13px; }
@@ -489,11 +482,9 @@
             .kardex-banner .num { font-size: 46px; }
             .case-box { padding: 28px 22px; }
             .box-card { padding: 28px 22px; }
+            .recommended-badge { left: 22px; }
             .conversion-section { padding: 72px 0; }
             .fixed-watermark { display: none; }
-            .email-feature { padding: 24px 22px; }
-            .email-feature .email-link { font-size: 22px; }
-            .btn-email { width: 100%; text-align: center; }
             .footer-top { grid-template-columns: minmax(0, 1fr); gap: 28px; }
             .criterio { padding: 64px 0; }
             .criterio h2 { font-size: 32px; }
@@ -859,36 +850,27 @@
     <section id="contacto" class="conversion-section">
         <div class="max-w-7xl">
             <h2 class="conversion-title font-serif">Lo que no se mide, <span>se paga de más.</span></h2>
-            <p class="conversion-desc">Elija el canal que le resulte más cómodo para solicitar su diagnóstico.</p>
+            <p class="conversion-desc">Elija el canal que le resulte más cómodo.</p>
 
             <div class="box-grid">
-                <div class="box-card">
+                <div class="box-card primary">
+                    <span class="recommended-badge">Recomendado</span>
                     <div>
-                        <h4 class="font-serif">Agendar diagnóstico</h4>
-                        <p>Cuéntenos qué información de compras tiene su hospital y le proponemos fecha para el diagnóstico.</p>
+                        <p>Cuéntenos qué información de compras tiene su hospital y le proponemos fecha.</p>
                     </div>
                     <!-- Funciona siempre: por defecto abre un correo prellenado.
                          Para usar Zoho, pegue su liga en AGENDA_URL (script al final). -->
-                    <a id="cta-agenda" class="btn-action-dark" data-cta="contacto-agenda" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico</a>
+                    <a id="cta-agenda" class="btn-action-amber" data-cta="contacto-agenda" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico &rarr;</a>
                 </div>
                 <div class="box-card">
                     <div>
-                        <h4 class="font-serif">WhatsApp directo</h4>
                         <p>Escríbanos y le respondemos personalmente. Ideal para una primera pregunta rápida.</p>
                     </div>
-                    <a class="btn-action-teal" data-cta="contacto-whatsapp" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+                    <a class="btn-action-outline" data-cta="contacto-whatsapp" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener">Escribir por WhatsApp</a>
                 </div>
             </div>
 
-            <div class="email-feature">
-                <div>
-                    <span class="meta-tag">Correo directo</span>
-                    <a class="email-link" data-cta="contacto-correo-grande" href="mailto:contacto@ilikanalytics.com">contacto@ilikanalytics.com</a>
-                </div>
-                <a class="btn-email" data-cta="contacto-correo" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">Enviar correo</a>
-            </div>
-
-            <p class="contact-line">Teléfono y WhatsApp: <a data-cta="contacto-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
+            <p class="contact-line">Teléfono y WhatsApp: <a data-cta="contacto-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a> &middot; Correo: <a data-cta="contacto-correo" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">contacto@ilikanalytics.com</a></p>
             <p class="contact-line privacy-line">Al contactarnos, sus datos se tratan conforme a nuestro <a data-cta="contacto-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a>. <!-- ILIK v2 --></p>
         </div>
     </section>
