@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observatorio del gasto hospitalario | Ilik</title>
+    <meta name="description" content="Datos públicos e investigación propia de Ilik sobre el gasto hospitalario en México: crecimiento, inflación médica y estructura del mercado, con fuentes citadas.">
+    <meta name="theme-color" content="#0B1420">
+    <link rel="icon" type="image/png" href="../marca-agua.png">
+    <link rel="canonical" href="https://ilikanalytics.com/observatorio/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Ilik">
+    <meta property="og:url" content="https://ilikanalytics.com/observatorio/">
+    <meta property="og:title" content="Observatorio del gasto hospitalario | Ilik">
+    <meta property="og:description" content="Investigación propia sobre el gasto hospitalario en México, con fuentes citadas.">
+    <meta property="og:image" content="https://ilikanalytics.com/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script defer data-domain="ilikanalytics.com" src="https://plausible.io/js/script.js"></script>
+    <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };</script>
+
+    <link rel="preload" href="../fuentes/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fuentes/inter.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../fuentes/fuentes.css">
+    <link rel="stylesheet" href="tarjetas.css">
+    <link rel="stylesheet" href="paginas.css">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header">
+        <div class="bar">
+            <a class="logo" href="../" aria-label="Ilik, ir al inicio"><img src="../logo-claro.png" alt="Ilik" width="79" height="52"></a>
+            <nav aria-label="Secciones">
+                <a href="../">Inicio</a>
+                <a href="../#metodologia">Metodología</a>
+                <a class="keep" href="./" aria-current="page">Observatorio</a>
+            </nav>
+            <a class="btn-header" href="../#contacto" data-cta="observatorio-header">Solicitar diagnóstico</a>
+        </div>
+    </header>
+
+    <main id="contenido">
+        <section class="archive-hero">
+            <div class="max-w-7xl">
+                <p class="crumb"><a href="../">Inicio</a> &nbsp;/&nbsp; Observatorio</p>
+                <h1>Observatorio</h1>
+                <p class="lead">Datos públicos e investigación propia sobre el gasto hospitalario en México: cuánto crece, qué lo empuja y cómo se compara con el mundo cuando hay evidencia sólida. Cada cifra con su fuente.</p>
+                <div class="facts"><span>Datos públicos comentados</span><span>Una investigación cada quince días</span><span>Fuentes citadas</span><span>Sin nombres de hospitales</span></div>
+            </div>
+        </section>
+
+        <!-- Lista cronológica única: la más reciente arriba y destacada. Se llena desde articulos.js -->
+        <section class="archive-list" data-obs-wrap hidden>
+            <div class="max-w-7xl">
+                <div class="obs-grid" data-obs="archivo" data-obs-grid></div>
+            </div>
+        </section>
+
+        <!-- Se muestra solo si todavía no hay investigaciones publicadas -->
+        <section class="archive-empty" data-obs-vacio>
+            <div class="max-w-7xl">
+                <div class="box">
+                    <h2>La primera publicación está en revisión.</h2>
+                    <p>Publicamos cuando la evidencia sostiene el nivel de rigor que prometemos, no antes. Mientras tanto, conozca cómo trabajamos.</p>
+                    <a href="../#metodologia">Ver la metodología de Ilik</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="max-w-7xl">
+            <div class="row">
+                <img src="../logo-oficial.png" alt="Ilik" width="67" height="44">
+                <nav aria-label="Pie de página">
+                    <a href="../">Inicio</a>
+                    <a href="./">Observatorio</a>
+                    <a href="../#contacto">Contacto</a>
+                    <a href="../aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a>
+                </nav>
+            </div>
+            <div class="legal-line">
+                <span><strong>&copy; <span class="js-year">2026</span> Ilik. Todos los derechos reservados.</strong> El contenido del Observatorio es informativo y no constituye una auditoría ni una recomendación de inversión.</span>
+                <span>contacto@ilikanalytics.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="articulos.js"></script>
+    <script src="render.js" data-obs-base="../"></script>
+    <script>try { document.querySelectorAll(".js-year").forEach(function (n) { n.textContent = String(new Date().getFullYear()); }); } catch (e) {}</script>
+</body>
+</html>
