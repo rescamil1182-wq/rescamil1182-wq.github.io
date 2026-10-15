@@ -32,7 +32,12 @@
             a._programada = a._fecha > hoy;
             if (verBorradores) { return true; }
             return !a._borrador && !a._programada;
-        }).sort(function (x, y) { return y._fecha - x._fecha; });
+        }).sort(function (x, y) {
+            // ILIK v5: misma fecha, primero la investigación y luego el dato público
+            var d = y._fecha - x._fecha;
+            if (d !== 0) { return d; }
+            return (x.tipo === "dato" ? 1 : 0) - (y.tipo === "dato" ? 1 : 0);
+        });
 
         function el(tag, cls, texto) {
             var n = document.createElement(tag);

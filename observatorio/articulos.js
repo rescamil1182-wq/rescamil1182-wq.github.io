@@ -30,18 +30,6 @@
  */
 window.ILIK_ARTICULOS = [
     {
-        "tipo": "investigacion",
-        "slug": "dos-oligopolios-y-una-factura",
-        "titulo": "Dos oligopolios y una factura: por qué el Seguro de Gastos Médicos Mayores se volvió el más caro del mundo",
-        "resumen": "Concentración de aseguradoras, concentración de hospitales y una factura que termina pagando el asegurado. Lo que dicen los datos.",
-        "tema": "Aseguradoras y SGMM",
-        "fecha": "2026-11-05",
-        "minutos": null,
-        "imagen": false,
-        "imagenAlt": "Ilustración editorial: médicos y ejecutivos alrededor de una gráfica de inflación médica.",
-        "estado": "borrador"
-    },
-    {
         "slug": "inflacion-medica-privada-2026",
         "tipo": "dato",
         "titulo": "La atención médica privada se encarece cerca de tres veces más rápido que el resto de los precios",
@@ -70,5 +58,39 @@ window.ILIK_ARTICULOS = [
             "fuente": "AMIS, mayo 2026 · Banxico, mayo 2026"
         },
         "estado": "publicado"
+    },
+    {
+        "tipo": "investigacion",
+        "slug": "dos-oligopolios-y-una-factura",
+        "titulo": "Dos oligopolios y una factura: por qué el seguro de gastos médicos mayores se encareció tanto en México",
+        "resumen": "Cuatro aseguradoras concentran tres cuartas partes del mercado y los hospitales privados grandes se agrupan en cuatro entidades del país. Entre ambos, el costo de la atención privada sube casi cinco veces más rápido que los precios en general, y la cuenta termina en la prima del asegurado.",
+        "tema": "Aseguradoras y SGMM",
+        "fecha": "2026-10-14",
+        "minutos": 6,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "grafica": {
+            "barras": [
+                {
+                    "etiqueta": "México",
+                    "valor": 14.8,
+                    "texto": "14.8%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Promedio mundial",
+                    "valor": 9.8,
+                    "texto": "9.8%"
+                },
+                {
+                    "etiqueta": "Inflación general en México",
+                    "valor": 3.2,
+                    "texto": "3.2%"
+                }
+            ],
+            "titulo": "Inflación médica proyectada para 2026",
+            "fuente": "Aon, Global Medical Trend Rates 2026"
+        }
     }
 ];
