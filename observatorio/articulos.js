@@ -30,6 +30,63 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "el-ahorro-que-nadie-ve",
+        "titulo": "El ahorro que nadie ve",
+        "resumen": "La mitad de los registros de medicamentos ya lista un fabricante indio de principio activo, en teoría más barato. Ni las primas, ni la inflación médica, ni la cuenta del hospital parecen haberlo notado. Seguimos el rastro de esa diferencia.",
+        "tema": "Medicamentos y aseguradoras",
+        "fecha": "2026-10-15",
+        "minutos": 6,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "titulo": "Inflación médica privada frente a la general",
+            "barras": [
+                {
+                    "etiqueta": "Costos médicos, AMIS feb 2026",
+                    "valor": 16,
+                    "desde": 14,
+                    "texto": "14 a 16%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Médica 2026, AMIS may 2026",
+                    "valor": 14,
+                    "desde": 12,
+                    "texto": "12 a 14%"
+                },
+                {
+                    "etiqueta": "General",
+                    "valor": 4.5,
+                    "texto": "cerca de 4.5%"
+                }
+            ],
+            "fuente": "AMIS, citada por Expansión y Publimetro"
+        }
+    },
+    {
+        "slug": "treinta-y-siete-aspirantes-para-una-sola-molecula",
+        "titulo": "Treinta y siete aspirantes para una sola molécula",
+        "resumen": "Las solicitudes de registro sanitario que recibe COFEPRIS anticipan qué medicamentos tendrán varios proveedores y cuáles seguirán con uno solo. Para quien compra en un hospital, funcionan como un calendario de negociación.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-10-15",
+        "minutos": 6,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "titulo": "Empresas que pidieron registrar la molécula, 2024 a 2026",
+            "barras": [
+                {"etiqueta": "Sitagliptina", "valor": 37, "texto": "37", "destacar": true},
+                {"etiqueta": "Dapagliflozina", "valor": 28, "texto": "28"},
+                {"etiqueta": "Palbociclib", "valor": 3, "texto": "3"}
+            ],
+            "fuente": "Ilik con datos de los listados de solicitudes de COFEPRIS"
+        }
+    },
+    {
         "slug": "hecho-en-mexico-con-molecula-de-india",
         "titulo": "Hecho en México, con molécula de India",
         "resumen": "La mitad de los registros de medicamentos que se emiten hoy lista un fabricante indio de principio activo; hace diez años, un tercio. Lo medimos en la base completa de COFEPRIS.",
