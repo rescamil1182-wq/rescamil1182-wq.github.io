@@ -78,7 +78,7 @@ a { color: inherit; }
 .dato .txt { font-size: 16px; line-height: 1.5; }
 .dato .src { font-size: 12.5px; color: var(--teal-soft); }
 .prose figure { margin: 40px 0; }
-.prose figure img { border-radius: 6px; width: 100%; }
+.prose figure img { border-radius: 6px; width: 100%; height: auto; }
 .prose figcaption { margin-top: 10px; font-size: 13.5px; line-height: 1.5; color: rgba(11, 20, 32, 0.62); }
 .prose .tag-s { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink); background-color: rgba(201, 138, 59, 0.25); padding: 0 6px; border-radius: 3px; vertical-align: 2px; }
 .method-note { margin-top: 48px; padding: 24px 26px; background-color: rgba(63, 125, 110, 0.08); border-radius: 8px; font-size: 15px; line-height: 1.6; }

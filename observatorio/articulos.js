@@ -30,6 +30,40 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "hecho-en-mexico-con-molecula-de-india",
+        "titulo": "Hecho en México, con molécula de India",
+        "resumen": "La mitad de los registros de medicamentos que se emiten hoy lista un fabricante indio de principio activo; hace diez años, un tercio. Lo medimos en la base completa de COFEPRIS.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-10-15",
+        "minutos": 7,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "barras": [
+                {
+                    "etiqueta": "2026, al 9 de octubre",
+                    "valor": 51.0,
+                    "texto": "51%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "2025",
+                    "valor": 50.0,
+                    "texto": "50%"
+                },
+                {
+                    "etiqueta": "2016",
+                    "valor": 35.0,
+                    "texto": "35%"
+                }
+            ],
+            "titulo": "Registros emitidos que listan un fabricante indio de principio activo",
+            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
+        }
+    },
+    {
         "slug": "inflacion-medica-privada-2026",
         "tipo": "dato",
         "titulo": "La atención médica privada se encarece cerca de tres veces más rápido que el resto de los precios",
