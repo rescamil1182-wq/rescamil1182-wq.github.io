@@ -51,6 +51,7 @@
                 "mainEntity": [
                     { "@type": "Question", "name": "¿Qué pasa con los datos del hospital?", "acceptedAnswer": { "@type": "Answer", "text": "No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución. Antes de recibir cualquier archivo firmamos un Convenio de Confidencialidad." } },
                     { "@type": "Question", "name": "¿Cuánto trabajo le implica a mi equipo?", "acceptedAnswer": { "@type": "Answer", "text": "Un export de su sistema (Kardex u otro reporte de compras). El pipeline hace el resto." } },
+                    { "@type": "Question", "name": "¿En qué formato necesitan la información?", "acceptedAnswer": { "@type": "Answer", "text": "El export que ya genera su sistema de inventarios o ERP, en Excel (.xls o .xlsx) o CSV. Si el sistema parte el reporte en varias hojas o archivos, nosotros lo consolidamos. No necesitamos acceso a su sistema ni datos de pacientes." } },
                     { "@type": "Question", "name": "¿Qué pasa si los datos están sucios?", "acceptedAnswer": { "@type": "Answer", "text": "Siempre lo están. Se mide qué tan sucios y se declara en el diagnóstico; no se oculta ni se asume una calidad que no existe." } },
                     { "@type": "Question", "name": "¿Qué se lleva el hospital al final?", "acceptedAnswer": { "@type": "Answer", "text": "Hallazgos con cifra, prioridad y un siguiente paso concreto; no un dashboard más." } }
                 ]
@@ -61,8 +62,8 @@
 
     <!-- ILIK v2 · Analítica con Plausible (sin cookies, no requiere banner de consentimiento).
          Para que registre visitas: dé de alta ilikanalytics.com en plausible.io.
-         Eventos que envía el sitio (script al final): "Contacto WhatsApp", "Contacto Correo", "Contacto Telefono",
-         "Contacto Agenda", "Clic Solicitar diagnostico", "Ver Convenio" y "Ver Aviso de Privacidad",
+         Eventos que envía el sitio (script al final): "Contacto Formulario" (solicitud enviada; propiedad "canal"),
+         "Contacto WhatsApp", "Contacto Correo", "Contacto Telefono", "Clic Solicitar diagnostico", "Ver Convenio" y "Ver Aviso de Privacidad",
          con la propiedad "ubicacion".
          Cada nombre se da de alta en Plausible: Settings > Goals > Add goal > Custom event (nombre idéntico).
          Plausible ya ofrece un script nuevo por sitio (pa-XXXX.js). Si al dar de alta el sitio le muestra ese snippet,
@@ -70,11 +71,13 @@
     <script defer data-domain="ilikanalytics.com" src="https://plausible.io/js/script.js"></script>
     <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };</script>
 
-    <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK
-         Si Google Fonts no responde, cada familia cae a una fuente del sistema equivalente. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK (ILIK v5: servidas desde /fuentes, sin Google Fonts)
+         Si un archivo no carga, cada familia cae a una fuente del sistema equivalente. -->
+    <link rel="preload" href="fuentes/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fuentes/inter.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fuentes/fuentes.css">
+    <!-- ILIK v4 · Observatorio: estilos de las tarjetas de investigación -->
+    <link rel="stylesheet" href="observatorio/tarjetas.css">
 
     <!-- INFRAESTRUCTURA CSS PURA NATIVA - BLINDAJE DE INTERFAZ -->
     <style>
@@ -89,6 +92,8 @@
             --amber: #C98A3B;
             --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
             --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            /* ILIK v3 · Curva de salida propia (respuesta inmediata, frenado suave) en lugar del "ease" genérico */
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -133,9 +138,10 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+        .header-container .logo { flex-shrink: 0; } /* ILIK v5: el logo nunca se comprime */
         .header-container .logo img { height: 58px; width: auto; }
         nav { display: flex; gap: 24px; }
-        nav a { color: rgba(247, 248, 250, 0.8); text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; transition: color 0.2s; }
+        nav a { color: rgba(247, 248, 250, 0.8); text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; transition: color 160ms var(--ease-out); }
         nav a:hover { color: var(--teal-soft); }
 
         .btn-header {
@@ -158,7 +164,7 @@
         .section-dark { background-color: var(--ink); color: var(--bone); padding: 100px 0; width: 100%; }
         .section-header-meta { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid rgba(11, 20, 32, 0.1); padding-bottom: 12px; margin-bottom: 48px; width: 100%; }
         .section-header-meta-dark { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid rgba(247, 248, 250, 0.1); padding-bottom: 12px; margin-bottom: 48px; width: 100%; }
-        .meta-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+        .meta-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.72; }
 
         /* Sección 1: Portada (pantalla completa, imagen a sangre) */
         .hero-cover { position: relative; display: flex; align-items: center; min-height: calc(100vh - 84px); min-height: calc(100svh - 84px); background-color: var(--ink); color: var(--bone); overflow: hidden; }
@@ -190,7 +196,7 @@
         .proof-num { display: block; font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--bone); white-space: nowrap; }
         .proof-num small { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--teal-soft); margin-left: 2px; }
         .proof-label { display: block; font-size: 12.5px; line-height: 1.4; opacity: 0.75; margin-top: 4px; }
-        .proof-note { margin-top: 14px; font-size: 11px; letter-spacing: 0.04em; opacity: 0.5; }
+        .proof-note { margin-top: 14px; font-size: 12px; letter-spacing: 0.02em; opacity: 0.72; max-width: 600px; } /* ILIK v5: contraste legible */
 
         /* Identificación del fundador sobre la foto */
         .hero-caption { position: absolute; right: 168px; bottom: 32px; z-index: 1; background-color: rgba(11, 20, 32, 0.88); color: var(--bone); padding: 14px 20px; border-radius: 8px; border-left: 3px solid var(--amber); }
@@ -233,7 +239,7 @@
         .faq-icon { flex-shrink: 0; width: 22px; height: 22px; border: 1px solid rgba(247, 248, 250, 0.35); border-radius: 50%; position: relative; }
         .faq-icon::before, .faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; background-color: var(--amber); transform: translate(-50%, -50%); }
         .faq-icon::before { width: 10px; height: 1.5px; }
-        .faq-icon::after { width: 1.5px; height: 10px; transition: transform 0.2s ease; }
+        .faq-icon::after { width: 1.5px; height: 10px; transition: transform 200ms var(--ease-out); }
         .faq-item[open] .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
         .faq-answer { padding: 0 2px 24px; font-size: 15px; line-height: 1.6; opacity: 0.78; }
         .faq-answer a { color: var(--teal-soft); }
@@ -243,10 +249,15 @@
         .section-intro h2 { font-size: 42px; line-height: 1.2; margin-bottom: 16px; }
         .section-intro h2 span { color: var(--amber); font-style: italic; font-weight: 400; }
         .section-intro p { opacity: 0.8; }
-        .timeline-bar { display: flex; justify-content: space-between; gap: 12px; border-bottom: 4px solid rgba(11, 20, 32, 0.1); padding-bottom: 12px; margin-top: 40px; width: 100%; list-style: none; }
-        .timeline-step { font-size: 14px; font-weight: 600; opacity: 0.5; padding-bottom: 12px; }
-        .timeline-step.active { opacity: 1; color: var(--teal); font-weight: 700; }
-        .timeline-step.amber { opacity: 1; color: var(--ink); font-weight: 700; box-shadow: inset 0 -3px 0 var(--amber); }
+        /* ILIK v3 · Etapas con su condición de salida (antes: solo siete etiquetas) */
+        .stages { list-style: none; margin-top: 48px; border-top: 2px solid var(--ink); }
+        .stage { display: grid; grid-template-columns: 56px minmax(0, 4fr) minmax(0, 7fr); gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid rgba(11, 20, 32, 0.12); }
+        .stage-n { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--amber); font-variant-numeric: tabular-nums; }
+        .stage-name strong { display: block; font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.25; }
+        .stage-name span { display: block; font-size: 13.5px; opacity: 0.65; margin-top: 2px; }
+        .stage-exit { font-size: 15px; line-height: 1.55; }
+        .stage-exit b { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 3px; }
+        .stage.is-key { background-color: rgba(201, 138, 59, 0.07); box-shadow: inset 3px 0 0 var(--amber); padding-left: 16px; padding-right: 16px; margin: 0 -16px; }
         .kardex-banner { background-color: var(--ink); color: var(--bone); padding: 48px; border-radius: 12px; margin-top: 48px; display: flex; align-items: center; gap: 64px; width: 100%; }
         .kardex-banner .num { font-size: 64px; font-weight: 700; font-family: var(--serif); color: var(--amber); line-height: 1; white-space: nowrap; }
         .kardex-banner .text { font-size: 16px; }
@@ -268,7 +279,7 @@
         .case-footer-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; border-top: 1px solid rgba(247, 248, 250, 0.1); padding-top: 32px; margin-top: 32px; }
         .case-footer-metrics p { font-size: 14px; opacity: 0.8; }
         .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); margin-bottom: 4px; display: block; font-weight: 700; }
-        .case-note { margin-top: 16px; text-align: center; font-size: 12px; opacity: 0.55; }
+        .case-note { margin-top: 16px; text-align: center; font-size: 12.5px; opacity: 0.72; }
 
         /* Sección 6: Cómo Trabajamos (3 Fases) */
         .grid-fases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 48px; width: 100%; }
@@ -278,16 +289,14 @@
         .card-fase h4 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
         .card-fase p { font-size: 14px; opacity: 0.75; flex-grow: 1; }
         .fase-duration { font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--teal-soft); margin-top: 24px; display: block; }
-        .invest-note { margin-top: 32px; text-align: center; font-size: 13px; opacity: 0.6; }
+        .invest-note { margin-top: 32px; text-align: center; font-size: 13.5px; opacity: 0.75; }
 
         /* Conversión / Cierre (Doble Bloque Zoho & WhatsApp) */
         .conversion-section { background-color: var(--ink); color: var(--bone); padding: 120px 0; text-align: center; border-top: 1px solid rgba(247, 248, 250, 0.1); width: 100%; }
         .conversion-title { font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
         .conversion-title span { color: var(--amber); font-style: italic; font-weight: 400; }
         .conversion-desc { opacity: 0.7; font-size: 16px; max-width: 600px; margin: 0 auto 48px auto; }
-        .box-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 800px; margin: 0 auto; text-align: left; }
         .box-card { background-color: rgba(247, 248, 250, 0.02); border: 1px solid rgba(247, 248, 250, 0.08); padding: 40px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-        .box-card.primary { border-color: rgba(201, 138, 59, 0.35); background-color: rgba(201, 138, 59, 0.04); }
         .box-card p { font-size: 13px; opacity: 0.7; margin-bottom: 24px; }
         .recommended-badge { position: absolute; top: -12px; left: 40px; background-color: var(--teal); color: var(--bone); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 999px; }
         .btn-action-amber { display: block; width: 100%; text-align: center; background-color: var(--amber); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 15px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
@@ -295,7 +304,7 @@
         .btn-action-amber:hover, .btn-action-outline:hover { opacity: 0.9; }
         .contact-line { margin-top: 24px; font-size: 14px; opacity: 0.75; }
         .contact-line a { color: inherit; }
-        .privacy-line { margin-top: 10px; font-size: 12.5px; opacity: 0.6; } /* ILIK v2 */
+        .privacy-line { margin-top: 10px; font-size: 13px; opacity: 0.75; } /* ILIK v2 */
 
         /* Pie de página: marca, navegación, documentos, contacto y aviso legal */
         footer { position: relative; z-index: 1; background-color: var(--bone-dim); border-top: 1px solid rgba(11, 20, 32, 0.1); padding: 64px 0 28px; font-size: 13px; }
@@ -310,7 +319,6 @@
         .footer-col a:hover { color: var(--teal); }
         .footer-col .contact-email { font-weight: 700; border-bottom: 2px solid var(--amber); }
         .doc-link { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-weight: 600; color: var(--ink); text-decoration: none; }
-        .doc-link.is-pending { cursor: default; opacity: 0.75; }
         .doc-link .badge { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); background-color: rgba(201, 138, 59, 0.25); padding: 2px 6px; border-radius: 3px; }
 
         /* Aviso legal: acordeón colapsado por defecto en vez de bloque de texto denso */
@@ -321,7 +329,7 @@
         .legal-icon { flex-shrink: 0; width: 16px; height: 16px; position: relative; }
         .legal-icon::before, .legal-icon::after { content: ""; position: absolute; left: 50%; top: 50%; background-color: var(--ink); opacity: 0.45; transform: translate(-50%, -50%); }
         .legal-icon::before { width: 10px; height: 1.5px; }
-        .legal-icon::after { width: 1.5px; height: 10px; transition: transform 0.2s ease; }
+        .legal-icon::after { width: 1.5px; height: 10px; transition: transform 200ms var(--ease-out); }
         .legal-item[open] .legal-icon::after { transform: translate(-50%, -50%) scaleY(0); }
         .legal p { padding: 0 0 18px; opacity: 0.7; max-width: 640px; }
         .legal a { color: var(--ink); font-weight: 600; }
@@ -351,7 +359,7 @@
         .ctx-row .bar { height: 10px; border-radius: 999px; background-color: rgba(247, 248, 250, 0.08); overflow: hidden; }
         .ctx-row .bar span { display: block; height: 100%; border-radius: 999px; }
         .ctx-row .val { font-family: var(--serif); font-size: 20px; font-weight: 700; text-align: right; white-space: nowrap; }
-        .ctx-foot { grid-column: 1 / -1; font-size: 11.5px; opacity: 0.55; }
+        .ctx-foot { grid-column: 1 / -1; font-size: 12.5px; opacity: 0.72; max-width: 900px; }
 
         /* NUEVO · Criterio clínico */
         .criterio { background-color: var(--bone); padding: 100px 0; border-bottom: 1px solid rgba(11, 20, 32, 0.1); }
@@ -403,11 +411,11 @@
         .next-step { display: flex; gap: 14px; align-items: baseline; margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(247, 248, 250, 0.14); font-size: 14px; }
         .next-step b { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-soft); white-space: nowrap; }
         .fict-ribbon { position: absolute; top: 34px; right: -56px; width: 230px; transform: rotate(35deg); background-color: var(--amber); color: var(--ink); text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 0; }
-        .data-note { font-size: 12px; opacity: 0.6; margin-top: 8px; }
+        .data-note { font-size: 12.5px; opacity: 0.72; margin-top: 8px; }
 
         /* ILIK v2 · Header que se compacta al bajar (el script agrega .is-compact) */
-        .header-container { transition: padding 0.25s ease; }
-        .header-container .logo img { transition: height 0.25s ease; }
+        .header-container { transition: padding 250ms var(--ease-out); }
+        .header-container .logo img { transition: height 250ms var(--ease-out); }
         header.is-compact .header-container { padding-top: 6px; padding-bottom: 6px; }
         header.is-compact .header-container .logo img { height: 40px; }
 
@@ -420,9 +428,83 @@
         .inline-cta strong { font-family: var(--serif); font-size: 21px; display: block; margin-bottom: 2px; }
 
         /* ILIK v2 · Botón flotante de WhatsApp (solo celular; aparece después de la portada) */
-        .wa-fab { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 90; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 999px; background-color: var(--teal); color: var(--bone); font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 28px rgba(11, 20, 32, 0.35); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; }
+        .wa-fab { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 90; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 999px; background-color: var(--teal); color: var(--bone); font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 28px rgba(11, 20, 32, 0.35); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 250ms var(--ease-out), transform 250ms var(--ease-out); }
         .wa-fab.is-visible { opacity: 1; transform: none; pointer-events: auto; }
         .wa-fab svg { width: 18px; height: 18px; fill: currentColor; }
+
+        /* ILIK v5 · Preguntas en dos columnas en escritorio: el título queda fijo a la izquierda mientras se leen las respuestas */
+        @media (min-width: 901px) {
+            #preguntas .max-w-7xl { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 64px; align-items: start; }
+            #preguntas .section-header-meta-dark { grid-column: 1 / -1; }
+            #preguntas .section-title-dark { position: sticky; top: 120px; border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+            #preguntas .section-title-dark h2 { font-size: 40px; line-height: 1.15; }
+            #preguntas .faq-list { margin-top: 0; max-width: none; }
+        }
+
+        /* ILIK v3 · Respuesta táctil de botones: se hunden 3% al presionar, 160 ms con curva propia */
+        .btn-primary, .btn-header, .btn-action-amber, .btn-action-outline, .form-submit {
+            transition: transform 160ms var(--ease-out), opacity 160ms var(--ease-out), background-color 160ms var(--ease-out);
+        }
+        .btn-primary:active, .btn-header:active, .btn-action-amber:active, .btn-action-outline:active, .form-submit:active { transform: scale(0.97); }
+        .wa-fab.is-visible:active { transform: scale(0.97); }
+        .btn-header:hover { background-color: #36705F; }
+
+        /* ILIK v3 · Cifras con ancho fijo por dígito, como en un estado financiero */
+        .proof-num, .kardex-banner .num, .ctx-row .val, .case-split h2, .progress-label, .split-bar, .hbar .p, .stage-n { font-variant-numeric: tabular-nums; }
+
+        /* ILIK v3 · Las barras se llenan una vez al entrar en pantalla (solo si corre el script; sin él se ven completas) */
+        .js-reveal .reveal-bar { clip-path: inset(0 100% 0 0); transition: clip-path 600ms var(--ease-out); }
+        .js-reveal .reveal-bar.is-in { clip-path: inset(0 0 0 0); }
+        .js-reveal .hbar:nth-child(2) .reveal-bar { transition-delay: 60ms; }
+        .js-reveal .hbar:nth-child(3) .reveal-bar { transition-delay: 120ms; }
+        .js-reveal .hbar:nth-child(4) .reveal-bar { transition-delay: 180ms; }
+        .js-reveal .hbar:nth-child(5) .reveal-bar { transition-delay: 240ms; }
+
+        /* ILIK v3 · Contacto: formulario como canal principal, WhatsApp como alterno */
+        .contact-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; max-width: 980px; margin: 0 auto; text-align: left; align-items: start; }
+        .form-card { position: relative; background-color: rgba(201, 138, 59, 0.04); border: 1px solid rgba(201, 138, 59, 0.35); border-radius: 16px; padding: 40px; }
+        .form-card .recommended-badge { left: 40px; }
+        .form-intro { font-size: 14px; opacity: 0.75; margin-bottom: 24px; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 18px; }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        .field.full { grid-column: 1 / -1; }
+        .field label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: rgba(247, 248, 250, 0.85); }
+        .field label .opt { font-weight: 400; opacity: 0.6; }
+        .field input, .field textarea { width: 100%; font: inherit; font-size: 15px; color: var(--bone); background-color: rgba(247, 248, 250, 0.05); border: 1px solid rgba(247, 248, 250, 0.18); border-radius: 6px; padding: 12px 14px; transition: border-color 160ms var(--ease-out), background-color 160ms var(--ease-out); }
+        .field textarea { min-height: 96px; resize: vertical; }
+        .field input::placeholder, .field textarea::placeholder { color: rgba(247, 248, 250, 0.35); }
+        .field input:focus, .field textarea:focus { outline: none; border-color: var(--amber); background-color: rgba(247, 248, 250, 0.08); }
+        .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+        .field.has-error input, .field.has-error textarea { border-color: #E08A7A; }
+        .field-error { font-size: 12px; color: #F2B3A6; min-height: 0; }
+        .consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; opacity: 0.85; margin-top: 4px; }
+        .consent input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--amber); }
+        .consent a { color: var(--teal-soft); }
+        .consent.has-error { color: #F2B3A6; opacity: 1; }
+        .hp-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+        .form-submit { grid-column: 1 / -1; margin-top: 8px; width: 100%; border: 0; cursor: pointer; font: inherit; background-color: var(--amber); color: var(--ink); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 16px; border-radius: 6px; }
+        .form-submit:hover { opacity: 0.92; }
+        .form-submit[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+        .form-status { grid-column: 1 / -1; font-size: 13.5px; min-height: 0; }
+        .form-status.is-error { color: #F2B3A6; }
+        .form-done { display: none; text-align: left; }
+        .form-done strong { display: block; font-family: var(--serif); font-size: 26px; line-height: 1.2; margin-bottom: 10px; }
+        .form-done p { font-size: 15px; opacity: 0.8; }
+        .form-card.is-sent form, .form-card.is-sent .form-intro { display: none; }
+        .form-card.is-sent .form-done { display: block; }
+        /* ILIK v5 · Confirmación con canales de respaldo */
+        .form-done:focus { outline: none; }
+        .done-alt { margin-top: 22px; font-size: 14px !important; }
+        .done-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+        .done-actions .btn-action-outline { font: inherit; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; }
+        .done-copy-status { font-size: 13px !important; color: var(--teal-soft); min-height: 1.4em; margin-top: 10px; opacity: 1 !important; }
+        .done-edit { margin-top: 8px; background: none; border: 0; padding: 0; font: inherit; font-size: 13.5px; color: var(--bone); opacity: 0.75; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+        .done-edit:hover { opacity: 1; }
+        .side-stack { display: grid; gap: 20px; }
+        .side-stack .box-card p { font-size: 14px; }
+        .direct-lines { border-top: 1px solid rgba(247, 248, 250, 0.1); padding-top: 18px; font-size: 14px; display: grid; gap: 8px; }
+        .direct-lines span { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-soft); }
+        .direct-lines a { color: var(--bone); }
 
         /* Adaptabilidad Móvil */
         @media (max-width: 1024px) {
@@ -430,7 +512,6 @@
             nav a { font-size: 13px; }
             .hero-cover h1 { font-size: 50px; }
             .hero-media { width: 50%; }
-            .timeline-step { font-size: 13px; }
             .fixed-watermark { width: 72px; bottom: 20px; right: 20px; } /* ILIK v2 */
         }
 
@@ -439,11 +520,14 @@
             .header-container { flex-wrap: wrap; row-gap: 10px; padding: 12px 24px 8px; }
             nav { order: 3; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px 0 6px; }
             nav::-webkit-scrollbar { display: none; }
+            /* ILIK v3 · Desvanecido a la derecha: indica que el menú se desliza */
+            nav { padding-right: 40px; -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
+            nav.is-end { -webkit-mask-image: none; mask-image: none; }
+            .contact-grid { grid-template-columns: minmax(0, 1fr); max-width: 640px; }
             .hero-cover { flex-direction: column; align-items: stretch; min-height: 0; }
             .hero-media { position: relative; width: 100%; height: 380px; order: 2; }
             .hero-media::after { background: linear-gradient(180deg, var(--ink) 0%, rgba(11, 20, 32, 0.15) 35%, rgba(11, 20, 32, 0) 100%); }
             .hero-inner { padding-top: 56px; padding-bottom: 40px; }
-            .timeline-bar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 8px; }
             .case-split, .case-footer-metrics { grid-template-columns: minmax(0, 1fr); gap: 24px; }
             .grid-fases { grid-template-columns: minmax(0, 1fr); }
             .kardex-banner { gap: 32px; }
@@ -476,8 +560,10 @@
             .about-bg-logo { opacity: 0.022; }
             .section-title-dark h2, .section-intro h2, .conversion-title { font-size: 30px; }
             .section-header-meta, .section-header-meta-dark { margin-bottom: 32px; }
-            .grid-questions, .box-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; gap: 16px; }
-            .timeline-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-questions { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; gap: 16px; }
+            .stage { grid-template-columns: 36px minmax(0, 1fr); gap: 6px 12px; }
+            .stage-exit { grid-column: 2; font-size: 14.5px; }
+            .stage.is-key { margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
             .kardex-banner { flex-direction: column; align-items: flex-start; gap: 16px; padding: 28px 22px; }
             .kardex-banner .num { font-size: 46px; }
             .case-box { padding: 28px 22px; }
@@ -502,12 +588,17 @@
             .next-step { flex-direction: column; gap: 6px; }
             .wa-fab { display: inline-flex; } /* ILIK v2 */
             .inline-cta { padding: 24px 22px; } /* ILIK v2 */
+            .form-card { padding: 32px 22px 26px; } /* ILIK v3 */
+            .form-card .recommended-badge { left: 22px; }
+            .form-grid { grid-template-columns: minmax(0, 1fr); }
+            .field input, .field textarea { font-size: 16px; } /* evita el zoom automático de iOS */
             .inline-cta .btn-primary { width: 100%; text-align: center; } /* ILIK v2 */
         }
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             * { transition: none !important; }
+            .js-reveal .reveal-bar { clip-path: none; } /* ILIK v3 */
         }
 
         @media print {
@@ -530,13 +621,12 @@
             <a class="logo" href="#inicio" aria-label="Ilik, ir al inicio">
                 <img src="logo-claro.png" alt="Ilik" width="88" height="58">
             </a>
-            <nav aria-label="Secciones">
-                <a href="#nosotros">Nosotros</a>
+            <nav aria-label="Secciones"> <!-- ILIK v5: 5 ligas en vez de 7; Nosotros y Preguntas siguen en el pie -->
                 <a href="#resolver">Qué resolvemos</a>
                 <a href="#metodologia">Metodología</a>
                 <a href="#caso">Caso real</a>
                 <a href="#trabajo">Cómo trabajamos</a>
-                <a href="#preguntas">Preguntas</a>
+                <a href="observatorio/" data-cta="nav-observatorio">Observatorio</a>
             </nav>
             <a href="#contacto" class="btn-header" data-cta="header">Solicitar diagnóstico</a> <!-- ILIK v2: misma etiqueta que la acción principal -->
         </div>
@@ -607,15 +697,15 @@
                 <span class="meta-tag">Qué Resolvemos</span>
             </div>
             <div class="section-title-dark">
-                <h2 class="font-serif">Seis preguntas que su <span style="color: var(--amber);">Kardex</span> no contesta solo.</h2>
+                <h2 class="font-serif">Seis preguntas que su Kardex no contesta solo.</h2>
             </div>
 
             <!-- NUEVO · Contexto 2026 (fuente pública verificada) -->
             <div class="context-strip">
                 <span class="ctx-label">Por qué ahora<br>Salud privada 2026</span>
                 <div class="context-bars">
-                    <div class="ctx-row"><span>Inflación médica privada</span><div class="bar"><span style="width: 93%; background-color: var(--amber);"></span></div><span class="val" style="color: var(--amber);">12 a 14%</span></div>
-                    <div class="ctx-row"><span>Inflación general esperada</span><div class="bar"><span style="width: 31%; background-color: var(--teal-soft);"></span></div><span class="val">4.35%</span></div><!-- ILIK v2: cifra con fuente primaria (Banxico); ancho 4.35/14 = 31% -->
+                    <div class="ctx-row"><span>Inflación médica privada</span><div class="bar"><span class="reveal-bar" style="width: 93%; background-color: var(--amber);"></span></div><span class="val" style="color: var(--amber);">12 a 14%</span></div>
+                    <div class="ctx-row"><span>Inflación general esperada</span><div class="bar"><span class="reveal-bar" style="width: 31%; background-color: var(--teal-soft);"></span></div><span class="val">4.35%</span></div><!-- ILIK v2: cifra con fuente primaria (Banxico); ancho 4.35/14 = 31% -->
                 </div>
                 <!-- ILIK v2 · Cita verificada. 12-14%: Norma Alicia Rosas Rodríguez, directora general de la AMIS, conferencia de prensa en la 35.ª Convención de Aseguradores, 12/may/2026 (La Jornada, 13/may/2026). 4.35%: mediana de expectativa de inflación general dic-dic 2026, Encuesta Banxico de mayo 2026, publicada 1/jun/2026. -->
                 <p class="ctx-foot">Inflación médica privada: proyección de la directora general de la AMIS, Norma Alicia Rosas Rodríguez, en la 35.ª Convención de Aseguradores (12 de mayo de 2026). Inflación general: mediana de expectativas para el cierre de 2026, Encuesta de Banco de México a especialistas (mayo de 2026). En el primer vertical de Ilik, el costo de la atención médica privada crece cerca de tres veces más rápido que los precios en general.</p>
@@ -667,18 +757,20 @@
                 <span class="meta-tag">Metodología</span>
             </div>
             <div class="section-intro">
-                <h2 class="font-serif">Siete etapas, cada una con una <span>condición de salida.</span></h2>
+                <h2 class="font-serif">Siete etapas, cada una con una condición de salida.</h2>
                 <p>Si los datos no la cumplen, se ajusta el alcance; nunca la fecha.</p>
             </div>
 
-            <ol class="timeline-bar">
-                <li class="timeline-step active">01 Perfilamiento</li>
-                <li class="timeline-step">02 Limpieza</li>
-                <li class="timeline-step">03 Imputación</li>
-                <li class="timeline-step">04 Clasificación</li>
-                <li class="timeline-step">05 Análisis</li>
-                <li class="timeline-step">06 Reconciliación</li>
-                <li class="timeline-step amber">07 Storytelling</li>
+            <!-- ILIK v3 · Cada etapa muestra su condición de salida (fuente: compuertas de la skill core-ilik).
+                 Si cambia una compuerta en el pipeline, actualícela aquí. -->
+            <ol class="stages">
+                <li class="stage"><span class="stage-n">01</span><div class="stage-name"><strong>Perfilamiento</strong><span>Qué trae el archivo y qué tan usable es</span></div><p class="stage-exit"><b>Sale cuando</b>El diccionario de datos está reconstruido y hay un veredicto escrito de si el archivo es analizable.</p></li>
+                <li class="stage"><span class="stage-n">02</span><div class="stage-name"><strong>Limpieza</strong><span>Claves, fechas y montos normalizados</span></div><p class="stage-exit"><b>Sale cuando</b>Cada cambio queda registrado en bitácora y la tasa de normalización está declarada.</p></li>
+                <li class="stage"><span class="stage-n">03</span><div class="stage-name"><strong>Imputación</strong><span>Tratamiento de datos faltantes</span></div><p class="stage-exit"><b>Sale cuando</b>Cada hueco está clasificado como aleatorio o estructural. Ningún dato se inventa.</p></li>
+                <li class="stage"><span class="stage-n">04</span><div class="stage-name"><strong>Clasificación</strong><span>Cada clave en una taxonomía propia</span></div><p class="stage-exit"><b>Sale cuando</b>La cobertura por valor supera el umbral y los artículos de mayor gasto fueron revisados por una persona.</p></li>
+                <li class="stage"><span class="stage-n">05</span><div class="stage-name"><strong>Análisis</strong><span>Concentración, precio, estacionalidad, anomalías</span></div><p class="stage-exit"><b>Sale cuando</b>Cada hallazgo tiene magnitud en pesos y pasó una prueba de robustez.</p></li>
+                <li class="stage is-key"><span class="stage-n">06</span><div class="stage-name"><strong>Reconciliación</strong><span>Control contra el archivo original</span></div><p class="stage-exit"><b>Sale cuando</b>El total analizado amarra con su Kardex y toda diferencia tiene un motivo escrito.</p></li>
+                <li class="stage"><span class="stage-n">07</span><div class="stage-name"><strong>Informe ejecutivo</strong><span>Lo que dirección necesita decidir</span></div><p class="stage-exit"><b>Sale cuando</b>El entregable sostiene una sola idea central, con su evidencia y un siguiente paso.</p></li>
             </ol>
 
             <div class="kardex-banner">
@@ -707,7 +799,7 @@
                                 <span>52.7% otros movimientos</span>
                             </div>
                             <div class="progress-bar-bg" role="img" aria-label="47.3% del movimiento fue compra real">
-                                <div class="progress-bar-fill" style="width: 47.3%;"></div>
+                                <div class="progress-bar-fill reveal-bar" style="width: 47.3%;"></div>
                             </div>
                         </div>
                     </div>
@@ -738,7 +830,7 @@
                     <div>
                         <span class="finding-tag">Hallazgo 02 &middot; Dispersión de precio</span>
                         <h2 class="font-serif"><span class="amber">$7.2M</span> parecían sobreprecio. Solo <span class="teal">$2.3M</span> se podían recuperar.</h2>
-                        <div class="split-bar" role="img" aria-label="2.3 millones recuperables y 4.9 millones de cambio de precio en el tiempo">
+                        <div class="split-bar reveal-bar" role="img" aria-label="2.3 millones recuperables y 4.9 millones de cambio de precio en el tiempo">
                             <span class="rec" style="width: 32%;">Recuperable &middot; 2.3</span>
                             <span class="mkt" style="width: 68%;">Cambio en el tiempo &middot; 4.9</span>
                         </div>
@@ -764,7 +856,7 @@
                 <span class="meta-tag">Cómo Trabajamos</span>
             </div>
             <div class="section-intro">
-                <h2 class="font-serif">Un compromiso que crece con la <span>evidencia.</span></h2>
+                <h2 class="font-serif">Un compromiso que crece con la evidencia.</h2>
                 <p>De diagnóstico a decisión, en tres fases.</p>
             </div>
 
@@ -772,7 +864,7 @@
                 <article class="card-fase">
                     <span class="fase-title">Fase 01</span>
                     <h4 class="font-serif">Diagnóstico ejecutivo</h4>
-                    <p>Informe SCQA listo para finanzas, a partir de su Kardex.</p>
+                    <p>Informe ejecutivo para finanzas a partir de su Kardex: cada hallazgo con su cifra, su evidencia y un siguiente paso.</p>
                     <span class="fase-duration">4 semanas</span>
                 </article>
                 <article class="card-fase active">
@@ -803,17 +895,33 @@
                     <span class="eyebrow">Hallazgo 03 &middot; Material de curación</span>
                     <h4>Dos proveedores concentran el <span>61%</span> del gasto en material de curación.</h4>
                     <div class="hbars" role="img" aria-label="Proveedor A 38%, B 23%, C 14%, D 9%, otros 16%">
-                        <div class="hbar"><span>Proveedor A</span><div class="b top" style="width: 100%;"></div><span class="p">38%</span></div>
-                        <div class="hbar"><span>Proveedor B</span><div class="b top" style="width: 61%;"></div><span class="p">23%</span></div>
-                        <div class="hbar"><span>Proveedor C</span><div class="b" style="width: 37%;"></div><span class="p">14%</span></div>
-                        <div class="hbar"><span>Proveedor D</span><div class="b" style="width: 24%;"></div><span class="p">9%</span></div>
-                        <div class="hbar"><span>Otros</span><div class="b" style="width: 42%;"></div><span class="p">16%</span></div>
+                        <div class="hbar"><span>Proveedor A</span><div class="b top reveal-bar" style="width: 100%;"></div><span class="p">38%</span></div>
+                        <div class="hbar"><span>Proveedor B</span><div class="b top reveal-bar" style="width: 61%;"></div><span class="p">23%</span></div>
+                        <div class="hbar"><span>Proveedor C</span><div class="b reveal-bar" style="width: 37%;"></div><span class="p">14%</span></div>
+                        <div class="hbar"><span>Proveedor D</span><div class="b reveal-bar" style="width: 24%;"></div><span class="p">9%</span></div>
+                        <div class="hbar"><span>Otros</span><div class="b reveal-bar" style="width: 42%;"></div><span class="p">16%</span></div>
                     </div>
                     <div class="next-step"><b>Siguiente paso</b><span>Renegociar volumen con A y B antes del próximo cierre de contrato.</span></div>
                 </div>
             </div>
         </section>
     </div>
+
+    <!-- ILIK v4/v5 · OBSERVATORIO: publicaciones destacadas.
+         Se llena sola desde observatorio/articulos.js con las 3 piezas publicadas más recientes (datos públicos e investigaciones).
+         Mientras no haya ninguna publicada, esta sección no aparece. -->
+    <section id="observatorio" class="obs-section" data-obs-wrap hidden aria-labelledby="obs-titulo">
+        <div class="max-w-7xl">
+            <div class="obs-head">
+                <div>
+                    <h2 id="obs-titulo">Observatorio</h2>
+                    <p>Datos públicos e investigación propia sobre el gasto hospitalario en México. Cada cifra con su fuente.</p>
+                </div>
+                <a class="obs-all" href="observatorio/" data-cta="observatorio-ver-todas">Ver todas las publicaciones</a>
+            </div>
+            <div class="obs-grid" data-obs="inicio" data-obs-grid></div>
+        </div>
+    </section>
 
     <!-- SECCIÓN 07: PREGUNTAS (MARCO OSCURO) -->
     <section id="preguntas" class="section-dark">
@@ -822,7 +930,7 @@
                 <span class="meta-tag">Preguntas Frecuentes</span>
             </div>
             <div class="section-title-dark">
-                <h2 class="font-serif">Lo que preguntamos antes de compartir un <span style="color: var(--amber);">Kardex.</span></h2>
+                <h2 class="font-serif">Lo que nos preguntan antes de compartir un Kardex.</h2>
             </div>
 
             <div class="faq-list">
@@ -833,6 +941,10 @@
                 <details class="faq-item">
                     <summary>¿Cuánto trabajo le implica a mi equipo?<span class="faq-icon" aria-hidden="true"></span></summary>
                     <div class="faq-answer"><p>Un export de su sistema (Kardex u otro reporte de compras). El pipeline hace el resto.</p></div>
+                </details>
+                <details class="faq-item"> <!-- ILIK v3 -->
+                    <summary>¿En qué formato necesitan la información?<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <div class="faq-answer"><p>El export que ya genera su sistema de inventarios o ERP, en Excel (.xls o .xlsx) o CSV. Si el sistema parte el reporte en varias hojas o archivos, nosotros lo consolidamos. No necesitamos acceso a su sistema ni datos de pacientes.</p></div>
                 </details>
                 <details class="faq-item">
                     <summary>¿Qué pasa si los datos están sucios?<span class="faq-icon" aria-hidden="true"></span></summary>
@@ -846,32 +958,89 @@
         </div>
     </section>
 
-    <!-- CONVERSIÓN / CIERRE (DOBLE BLOQUE ZOHO & WHATSAPP) -->
+    <!-- CONVERSIÓN / CIERRE · ILIK v3: formulario como canal principal, WhatsApp y datos directos como alternos -->
     <section id="contacto" class="conversion-section">
         <div class="max-w-7xl">
-            <h2 class="conversion-title font-serif">Lo que no se mide, <span>se paga de más.</span></h2>
-            <p class="conversion-desc">Elija el canal que le resulte más cómodo.</p>
+            <h2 class="conversion-title font-serif">Empiece con un export de <span>su Kardex.</span></h2>
+            <p class="conversion-desc">En cuatro semanas, un diagnóstico de gasto que finanzas puede defender.</p>
 
-            <div class="box-grid">
-                <div class="box-card primary">
+            <div class="contact-grid">
+                <div class="form-card" id="form-card">
                     <span class="recommended-badge">Recomendado</span>
-                    <div>
-                        <p>Cuéntenos qué información de compras tiene su hospital y le proponemos fecha.</p>
+                    <p class="form-intro">Cuéntenos qué información de compras tiene su organización y le proponemos fecha para una primera llamada.</p>
+
+                    <!-- ILIK v5 · Sin intermediarios: la solicitud viaja como correo directo del visitante a contacto@ilikanalytics.com.
+                         Ningún servicio de formularios de terceros recibe ni guarda los datos. -->
+                    <form id="diag-form" class="form-grid" action="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik" method="post" enctype="text/plain" novalidate>
+                        <div class="field">
+                            <label for="f-nombre">Nombre</label>
+                            <input id="f-nombre" name="nombre" type="text" autocomplete="name" required maxlength="120">
+                            <span class="field-error" aria-live="polite"></span>
+                        </div>
+                        <div class="field">
+                            <label for="f-cargo">Cargo</label>
+                            <input id="f-cargo" name="cargo" type="text" autocomplete="organization-title" required maxlength="120" placeholder="Ej. Director de Finanzas">
+                            <span class="field-error" aria-live="polite"></span>
+                        </div>
+                        <div class="field full">
+                            <label for="f-org">Hospital u organización</label>
+                            <input id="f-org" name="organizacion" type="text" autocomplete="organization" required maxlength="160">
+                            <span class="field-error" aria-live="polite"></span>
+                        </div>
+                        <div class="field">
+                            <label for="f-email">Correo de trabajo</label>
+                            <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160">
+                            <span class="field-error" aria-live="polite"></span>
+                        </div>
+                        <div class="field">
+                            <label for="f-tel">Teléfono <span class="opt">(opcional)</span></label>
+                            <input id="f-tel" name="telefono" type="tel" autocomplete="tel" maxlength="30">
+                            <span class="field-error" aria-live="polite"></span>
+                        </div>
+                        <div class="field full">
+                            <label for="f-msg">¿Qué le gustaría diagnosticar? <span class="opt">(opcional)</span></label>
+                            <textarea id="f-msg" name="mensaje" maxlength="1500" placeholder="Ej. farmacia y material de curación, últimos 12 meses"></textarea>
+                        </div>
+                        <div class="hp-field" aria-hidden="true">
+                            <label for="f-hp">No llenar</label>
+                            <input id="f-hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+                        </div>
+                        <label class="consent" id="consent-label">
+                            <input id="f-consent" name="acepta_aviso" type="checkbox" value="si" required>
+                            <span>He leído el <a data-cta="form-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a> y acepto que Ilik use estos datos para atender mi solicitud.</span>
+                        </label>
+                        <button class="form-submit" type="submit" data-cta="contacto-formulario">Enviar solicitud &rarr;</button>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <div class="form-done" id="form-done" tabindex="-1">
+                        <strong class="font-serif">Su solicitud está lista en su correo.</strong>
+                        <p>Se abrió su programa de correo con los datos escritos. Solo presione Enviar.</p>
+                        <p class="done-alt">¿No se abrió? Envíela por otro canal, con el mismo texto:</p>
+                        <div class="done-actions">
+                            <button type="button" class="btn-action-outline" id="copy-req">Copiar solicitud</button>
+                            <a class="btn-action-outline" id="wa-req" data-cta="form-whatsapp" href="https://wa.me/523310874987" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+                        </div>
+                        <p class="done-copy-status" id="copy-status" role="status" aria-live="polite"></p>
+                        <button type="button" class="done-edit" id="edit-req">Corregir mis datos</button>
                     </div>
-                    <!-- Funciona siempre: por defecto abre un correo prellenado.
-                         Para usar Zoho, pegue su liga en AGENDA_URL (script al final). -->
-                    <a id="cta-agenda" class="btn-action-amber" data-cta="contacto-agenda" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik&amp;body=Cargo%3A%20%0AHospital%3A%20%0ATel%C3%A9fono%3A%20%0AQu%C3%A9%20le%20gustar%C3%ADa%20diagnosticar%3A%20">Agendar diagnóstico &rarr;</a>
                 </div>
-                <div class="box-card">
-                    <div>
-                        <p>Escríbanos y le respondemos personalmente. Ideal para una primera pregunta rápida.</p>
+
+                <div class="side-stack">
+                    <div class="box-card">
+                        <div>
+                            <p>¿Una pregunta rápida antes de enviar información? Le respondemos personalmente.</p>
+                        </div>
+                        <a class="btn-action-outline" data-cta="contacto-whatsapp" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener">Escribir por WhatsApp</a>
                     </div>
-                    <a class="btn-action-outline" data-cta="contacto-whatsapp" href="https://wa.me/523310874987?text=Hola%2C%20me%20interesa%20un%20diagn%C3%B3stico%20de%20compras%20con%20Ilik." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+                    <div class="direct-lines">
+                        <p><span>Teléfono y WhatsApp</span><a data-cta="contacto-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a></p>
+                        <p><span>Correo</span><a data-cta="contacto-correo" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">contacto@ilikanalytics.com</a></p>
+                    </div>
                 </div>
             </div>
 
-            <p class="contact-line">Teléfono y WhatsApp: <a data-cta="contacto-telefono" href="tel:+523310874987">331&nbsp;087&nbsp;4987</a> &middot; Correo: <a data-cta="contacto-correo" href="mailto:contacto@ilikanalytics.com?subject=Solicitud%20de%20diagn%C3%B3stico%3A%20Ilik">contacto@ilikanalytics.com</a></p>
-            <p class="contact-line privacy-line">Al contactarnos, sus datos se tratan conforme a nuestro <a data-cta="contacto-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a>. <!-- ILIK v2 --></p>
+            <p class="contact-line privacy-line">Sus datos se tratan conforme a nuestro <a data-cta="contacto-aviso" href="aviso-de-privacidad.pdf" target="_blank" rel="noopener">Aviso de Privacidad</a>. Antes de recibir cualquier archivo firmamos un Convenio de Confidencialidad.</p>
         </div>
     </section>
 
@@ -894,6 +1063,7 @@
                         <li><a href="#caso">Caso real</a></li>
                         <li><a href="#trabajo">Cómo trabajamos</a></li>
                         <li><a href="#preguntas">Preguntas</a></li>
+                        <li><a href="observatorio/">Observatorio</a></li> <!-- ILIK v4 -->
                     </ul>
                 </nav>
                 <div class="footer-col">
@@ -945,39 +1115,121 @@
         WhatsApp
     </a>
 
+    <!-- ILIK v4 · Observatorio: lista de investigaciones y armado de tarjetas -->
+    <script src="observatorio/articulos.js"></script>
+    <script src="observatorio/render.js" data-obs-base=""></script>
+
     <!-- La página se ve completa aunque este script no corra: solo agrega mejoras opcionales. -->
     <script>
     (function () {
         try {
-            // Pegue aquí la liga de Zoho cuando la tenga, p. ej. "https://ilik.zohobookings.com/#/diagnostico"
-            var AGENDA_URL = "";
-            var agenda = document.getElementById("cta-agenda");
-            if (agenda && /^https:\/\//.test(AGENDA_URL)) {
-                agenda.href = AGENDA_URL;
-                agenda.target = "_blank";
-                agenda.rel = "noopener";
+            // ILIK v5 · FORMULARIO DE DIAGNÓSTICO, SIN INTERMEDIARIOS
+            // Al enviar se abre el correo del visitante con la solicitud escrita, dirigida a contacto@ilikanalytics.com.
+            // Si su equipo no tiene correo configurado, la confirmación ofrece copiar el texto o mandarlo por WhatsApp.
+            var form = document.getElementById("diag-form");
+            if (form) {
+                var card = document.getElementById("form-card");
+                var statusEl = document.getElementById("form-status");
+                var consent = document.getElementById("f-consent");
+                var consentLabel = document.getElementById("consent-label");
+                var messages = {
+                    valueMissing: "Este dato es necesario.",
+                    typeMismatch: "Revise el formato del correo."
+                };
+                var showError = function (input) {
+                    var field = input.closest(".field");
+                    if (!field) { return; }
+                    var msg = "";
+                    if (input.validity.valueMissing) { msg = messages.valueMissing; }
+                    else if (input.validity.typeMismatch) { msg = messages.typeMismatch; }
+                    field.classList.toggle("has-error", !!msg);
+                    input.setAttribute("aria-invalid", msg ? "true" : "false");
+                    var out = field.querySelector(".field-error");
+                    if (out) { out.textContent = msg; }
+                    return !msg;
+                };
+                // Valida al salir de cada campo (no mientras escribe) y limpia el error en cuanto se corrige
+                Array.prototype.forEach.call(form.querySelectorAll(".field input"), function (input) {
+                    input.addEventListener("blur", function () { if (input.value) { showError(input); } });
+                    input.addEventListener("input", function () { if (input.closest(".field").classList.contains("has-error")) { showError(input); } });
+                });
+                consent.addEventListener("change", function () { consentLabel.classList.toggle("has-error", !consent.checked && consentLabel.classList.contains("has-error")); });
+
+                var setStatus = function (text, isError) { statusEl.textContent = text; statusEl.classList.toggle("is-error", !!isError); };
+                var data = function () {
+                    var get = function (n) { var el = form.elements[n]; return el ? el.value.trim() : ""; };
+                    return { nombre: get("nombre"), cargo: get("cargo"), organizacion: get("organizacion"), email: get("email"), telefono: get("telefono"), mensaje: get("mensaje") };
+                };
+                var track = function (canal) { if (window.plausible) { window.plausible("Contacto Formulario", { props: { ubicacion: "contacto-formulario", canal: canal } }); } };
+
+                form.addEventListener("submit", function (ev) {
+                    ev.preventDefault();
+                    if (form.elements["_gotcha"].value) { return; } // robot
+                    var firstBad = null;
+                    Array.prototype.forEach.call(form.querySelectorAll(".field input[required]"), function (input) {
+                        if (!showError(input) && !firstBad) { firstBad = input; }
+                    });
+                    if (!consent.checked) { consentLabel.classList.add("has-error"); if (!firstBad) { firstBad = consent; } }
+                    if (firstBad) { setStatus("Revise los campos marcados.", true); firstBad.focus(); return; }
+                    setStatus("", false);
+
+                    var d = data();
+                    var body = "Solicitud de diagnóstico\n\nNombre: " + d.nombre + "\nCargo: " + d.cargo + "\nOrganización: " + d.organizacion +
+                               "\nCorreo: " + d.email + (d.telefono ? "\nTeléfono: " + d.telefono : "") +
+                               (d.mensaje ? "\n\nQué me gustaría diagnosticar:\n" + d.mensaje : "") +
+                               "\n\nAcepto el Aviso de Privacidad de Ilik.";
+                    document.getElementById("wa-req").href = "https://wa.me/523310874987?text=" + encodeURIComponent(body);
+                    card.setAttribute("data-body", body);
+                    track("correo");
+                    window.location.href = "mailto:contacto@ilikanalytics.com?subject=" + encodeURIComponent("Solicitud de diagnóstico: " + d.organizacion) + "&body=" + encodeURIComponent(body);
+                    card.classList.add("is-sent");
+                    var done = document.getElementById("form-done");
+                    if (done) { done.focus({ preventScroll: true }); }
+                });
+
+                document.getElementById("copy-req").addEventListener("click", function () {
+                    var txt = "Para: contacto@ilikanalytics.com\n\n" + (card.getAttribute("data-body") || "");
+                    var out = document.getElementById("copy-status");
+                    var ok = function () { out.textContent = "Copiado. Péguelo en un correo a contacto@ilikanalytics.com."; };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(txt).then(ok, function () { out.textContent = "No se pudo copiar. Escríbanos a contacto@ilikanalytics.com."; });
+                    } else {
+                        var ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
+                        try { document.execCommand("copy"); ok(); } catch (e) { out.textContent = "No se pudo copiar. Escríbanos a contacto@ilikanalytics.com."; }
+                        document.body.removeChild(ta);
+                    }
+                });
+                document.getElementById("edit-req").addEventListener("click", function () {
+                    card.classList.remove("is-sent");
+                    document.getElementById("f-nombre").focus();
+                });
             }
-            // Cuando cada documento esté listo, pegue aquí su liga (https://...). Mientras esté vacía, se muestra "Próximamente".
-            // ILIK v2: los documentos ya están enlazados directo en el HTML (aviso-de-privacidad.pdf y convenio-de-confidencialidad.pdf).
-            var DOCS = {
-                "doc-convenio": "",
-                "doc-aviso": ""
-            };
-            Object.keys(DOCS).forEach(function (id) {
-                var link = document.getElementById(id);
-                var url = DOCS[id];
-                if (link && /^https:\/\//.test(url)) {
-                    link.href = url;
-                    link.target = "_blank";
-                    link.rel = "noopener";
-                    link.removeAttribute("aria-disabled");
-                    link.removeAttribute("role");
-                    link.classList.remove("is-pending");
-                    link.title = "";
-                    var badge = link.querySelector(".badge");
-                    if (badge) { badge.remove(); }
-                }
-            });
+
+            // ILIK v3 · Barras de datos: se llenan una sola vez al entrar en pantalla (se respeta "reducir movimiento")
+            var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (!reduce && "IntersectionObserver" in window) {
+                document.documentElement.classList.add("js-reveal");
+                // Se observa el contenedor de cada barra: la barra recortada no "intersecta" mientras está oculta.
+                var bars = document.querySelectorAll(".reveal-bar");
+                var barObs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (!e.isIntersecting) { return; }
+                        Array.prototype.forEach.call(e.target.querySelectorAll(".reveal-bar"), function (bar) { bar.classList.add("is-in"); });
+                        barObs.unobserve(e.target);
+                    });
+                }, { threshold: 0.4 });
+                Array.prototype.forEach.call(bars, function (el) { barObs.observe(el.parentElement); });
+            }
+
+            // ILIK v3 · Menú en celular: el desvanecido desaparece al llegar al final del deslizamiento
+            var navBar = document.querySelector("header nav");
+            if (navBar) {
+                var checkNavEnd = function () { navBar.classList.toggle("is-end", navBar.scrollLeft + navBar.clientWidth >= navBar.scrollWidth - 4); };
+                navBar.addEventListener("scroll", checkNavEnd, { passive: true });
+                window.addEventListener("resize", checkNavEnd);
+                checkNavEnd();
+            }
+
             // Marca de agua: versión clara sobre secciones oscuras, versión oficial sobre secciones claras.
             var wm = document.getElementById("watermark");
             if (wm && document.elementsFromPoint) {
@@ -995,7 +1247,7 @@
                     }
                     var overAbout = false;
                     // ILIK v2: también se oculta sobre la portada (la foto ya muestra el logo), el cierre y el pie, donde tapaba botones y datos de contacto.
-                    for (var j = 0; j < stack.length; j++) { if (stack[j] !== wm) { overAbout = !!(stack[j].closest && stack[j].closest(".hero-cover, .about-section, .conversion-section, footer")); break; } }
+                    for (var j = 0; j < stack.length; j++) { if (stack[j] !== wm) { overAbout = !!(stack[j].closest && stack[j].closest(".hero-cover, .about-section, .conversion-section, .obs-section, .case-box, .sample-card, footer")); break; } }
                     wm.style.opacity = overAbout ? "0" : "";
                     if (dark !== lastDark) {
                         lastDark = dark;
@@ -1044,7 +1296,8 @@
             }
 
             // ILIK v2 · Medición en Plausible. Nombres de evento = metas en Plausible (funcionan en cualquier plan).
-            //   Contacto WhatsApp / Contacto Correo / Contacto Telefono / Contacto Agenda  -> conversión (meta principal)
+            //   Contacto Formulario (se envía al completar el formulario, no al dar clic)  -> conversión principal
+            //   Contacto WhatsApp / Contacto Correo / Contacto Telefono                    -> conversión
             //   Clic Solicitar diagnostico                                                -> intención (lleva a #contacto)
             // La propiedad "ubicacion" (data-cta) dice desde qué botón se hizo clic.
             document.addEventListener("click", function (ev) {
@@ -1052,8 +1305,7 @@
                 if (!a || !window.plausible || a.hasAttribute("data-no-track")) { return; } // solicitudes legales no cuentan como lead
                 var href = a.getAttribute("href") || "";
                 var name = null;
-                if (a.id === "cta-agenda") { name = "Contacto Agenda"; }
-                else if (/wa\.me|whatsapp\.com/i.test(href)) { name = "Contacto WhatsApp"; }
+                if (/wa\.me|whatsapp\.com/i.test(href)) { name = "Contacto WhatsApp"; }
                 else if (/^mailto:/i.test(href)) { name = "Contacto Correo"; }
                 else if (/^tel:/i.test(href)) { name = "Contacto Telefono"; }
                 else if (href === "#contacto") { name = "Clic Solicitar diagnostico"; }
