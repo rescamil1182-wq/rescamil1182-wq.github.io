@@ -155,24 +155,24 @@
 
         // ILIK v7 · Rango: una escala común; las proyecciones son tramos, la cifra general es un punto.
         function formaRango(svg, g, X0, id) {
-            var XA = X0, XB = 700, Y = 300, MAX = 20;
+            // ILIK v7b · Versión limpia: sin rejilla ni ejes; cada fila tiene un riel tenue de 0 a 20%
+            // para que la etiqueta, el tramo y la cifra se lean como una sola línea.
+            var XA = X0, XB = 450, MAX = 20;
             var px = function (v) { return XA + (XB - XA) * (v / MAX); };
-            for (var v = 0; v <= MAX; v += 5) {
-                svg.appendChild(s("line", { x1: px(v), x2: px(v), y1: 150, y2: 380, stroke: "#C9DAD5", "stroke-opacity": v ? "0.12" : "0.35", "stroke-width": "1.5" }));
-                svg.appendChild(s("text", { x: px(v), y: 412, "text-anchor": "middle", "class": "pg-fuente" }, v + "%"));
-            }
-            var filas = g.barras.slice(0, 3), paso = 74, y0 = 168;
+            var filas = g.barras.slice(0, 3), paso = 96, y0 = 172;
             filas.forEach(function (b, i) {
-                var y = y0 + i * paso;
+                var y = y0 + i * paso, cy = y + 30;
                 svg.appendChild(s("text", { x: XA, y: y, "class": "pg-etiqueta" }, b.etiqueta));
-                var cy = y + 26;
+                svg.appendChild(s("line", { x1: XA, x2: XB, y1: cy, y2: cy, stroke: "#C9DAD5", "stroke-opacity": "0.16", "stroke-width": "4", "stroke-linecap": "round" }));
+                var fin;
                 if (b.desde != null) {
-                    svg.appendChild(s("rect", { x: px(+b.desde), y: cy - 15, width: px(+b.valor) - px(+b.desde), height: 30, rx: 15, fill: b.destacar ? "#C98A3B" : "#C9DAD5" }));
-                    svg.appendChild(s("text", { x: px(+b.valor) + 14, y: cy + 13, "class": "pg-valor" + (b.destacar ? " pg-valor--destacado" : "") }, b.texto || ""));
+                    svg.appendChild(s("rect", { x: px(+b.desde), y: cy - 11, width: px(+b.valor) - px(+b.desde), height: 22, rx: 11, fill: b.destacar ? "#C98A3B" : "#C9DAD5" }));
+                    fin = px(+b.valor);
                 } else {
-                    svg.appendChild(s("circle", { cx: px(+b.valor), cy: cy, r: 12, fill: "#0B1420", stroke: "#C9DAD5", "stroke-width": "4" }));
-                    svg.appendChild(s("text", { x: px(+b.valor) + 22, y: cy + 13, "class": "pg-valor" }, b.texto || ""));
+                    svg.appendChild(s("circle", { cx: px(+b.valor), cy: cy, r: 11, fill: "#C9DAD5" }));
+                    fin = px(+b.valor);
                 }
+                svg.appendChild(s("text", { x: Math.max(fin, XB) + 24, y: cy + 13, "class": "pg-valor" + (b.destacar ? " pg-valor--destacado" : "") }, b.texto || ""));
             });
         }
 
