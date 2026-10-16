@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilik | Diagnóstico de gasto e inteligencia de compra</title>
-    <meta name="description" content="Inteligencia de compra aplicable a cualquier industria. Convertimos sus datos de compra en un diagnóstico de gasto que finanzas puede defender. Primer vertical: hospitales privados en México.">
+    <meta name="description" content="Inteligencia de compra con metodología escalable a todo tipo de industrias. Convertimos sus datos de compra en un diagnóstico de gasto que finanzas puede defender. Primer vertical: hospitales privados en México.">
     <meta name="theme-color" content="#0B1420">
     <link rel="icon" type="image/png" href="marca-agua.png">
 
@@ -52,8 +52,9 @@
                     { "@type": "Question", "name": "¿Qué pasa con los datos del hospital?", "acceptedAnswer": { "@type": "Answer", "text": "No se comparten fuera del diagnóstico. El caso se documenta de forma anónima, sin identificar a la institución. Antes de recibir cualquier archivo firmamos un Convenio de Confidencialidad." } },
                     { "@type": "Question", "name": "¿Cuánto trabajo le implica a mi equipo?", "acceptedAnswer": { "@type": "Answer", "text": "Un export de su sistema (Kardex u otro reporte de compras). El pipeline hace el resto." } },
                     { "@type": "Question", "name": "¿En qué formato necesitan la información?", "acceptedAnswer": { "@type": "Answer", "text": "El export que ya genera su sistema de inventarios o ERP, en Excel (.xls o .xlsx) o CSV. Si el sistema parte el reporte en varias hojas o archivos, nosotros lo consolidamos. No necesitamos acceso a su sistema ni datos de pacientes." } },
-                    { "@type": "Question", "name": "¿Qué pasa si los datos están sucios?", "acceptedAnswer": { "@type": "Answer", "text": "Siempre lo están. Se mide qué tan sucios y se declara en el diagnóstico; no se oculta ni se asume una calidad que no existe." } },
-                    { "@type": "Question", "name": "¿Qué se lleva el hospital al final?", "acceptedAnswer": { "@type": "Answer", "text": "Hallazgos con cifra, prioridad y un siguiente paso concreto; no un dashboard más." } }
+                    { "@type": "Question", "name": "¿Qué pasa si los datos están sucios?", "acceptedAnswer": { "@type": "Answer", "text": "Siempre lo están. Medimos qué tan sucios vienen y lo declaramos en el diagnóstico." } },
+                    { "@type": "Question", "name": "Ya tenemos ERP y un analista que hace reportes.", "acceptedAnswer": { "@type": "Answer", "text": "¿Y esos reportes le generan eficiencias? ¿Tienen impacto en decisiones de negocio? Ilik no se enfoca en producir reportes; se enfoca en detectar oportunidades y, más importante, en presentar la mejor manera de atacarlas y materializarlas." } },
+                    { "@type": "Question", "name": "¿Qué se lleva el hospital al final?", "acceptedAnswer": { "@type": "Answer", "text": "Hallazgos con cifra, prioridad y un siguiente paso concreto." } }
                 ]
             }
         ]
@@ -117,7 +118,7 @@
         .max-w-7xl { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
         /* Marca de agua corporativa flotante */
-        .fixed-watermark { position: fixed; bottom: 32px; right: 32px; width: 104px; opacity: 0.18; pointer-events: none; z-index: 2; }
+        .fixed-watermark { display: none !important; } /* ILIK v6: se retira la marca de agua fija; flotaba sobre el contenido */
 
         /* Encabezado Corporativo Principal */
         header {
@@ -145,8 +146,8 @@
         nav a:hover { color: var(--teal-soft); }
 
         .btn-header {
-            background-color: var(--teal);
-            color: var(--bone);
+            background-color: var(--amber); /* ILIK v6: mismo color que la acción principal */
+            color: var(--ink);
             text-decoration: none;
             font-size: 12px;
             font-weight: 600;
@@ -205,10 +206,12 @@
 
         /* Sección 2: Nosotros (Origen Maya) */
         .about-section { position: relative; overflow: hidden; background-color: var(--bone-dim); padding: 110px 0; border-bottom: 1px solid rgba(11, 20, 32, 0.1); }
-        .about-bg-logo { position: absolute; right: -6%; top: 50%; width: min(58vw, 860px); height: auto; transform: translateY(-50%); opacity: 0.028; pointer-events: none; user-select: none; z-index: 0; }
+        .about-bg-logo { display: none !important; } /* ILIK v7: se retira el logo detrás del texto */
+        .about-bg-logo-old { position: absolute; right: -6%; top: 50%; width: min(58vw, 860px); height: auto; transform: translateY(-50%); opacity: 0.028; pointer-events: none; user-select: none; z-index: 0; }
         .about-section .max-w-7xl { position: relative; z-index: 1; }
         .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
         .definition { border-top: 3px solid var(--ink); padding-top: 28px; }
+        .definition-mark { display: block; height: 320px; width: auto; margin-top: 56px; opacity: 0.16; } /* ILIK v7 */
         .definition .term { display: block; font-family: var(--serif); font-size: 88px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
         .definition .term-meta { display: block; margin-top: 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
         .definition .meaning { display: block; margin-top: 18px; font-family: var(--serif); font-size: 34px; font-style: italic; line-height: 1.2; color: var(--amber); }
@@ -243,6 +246,8 @@
         .faq-item[open] .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
         .faq-answer { padding: 0 2px 24px; font-size: 15px; line-height: 1.6; opacity: 0.78; }
         .faq-answer a { color: var(--teal-soft); }
+        .about-copy p + p { margin-top: 14px; }
+        .founder-sign { font-family: var(--serif); font-style: italic; font-size: 18px; margin-top: 18px !important; } /* ILIK v7 */
 
         /* Sección 4: Metodología (7 Etapas) */
         .section-intro { text-align: center; max-width: 800px; margin: 0 auto; }
@@ -274,8 +279,8 @@
         .case-side p { opacity: 0.8; font-size: 15px; line-height: 1.6; }
         .progress-container { margin-top: 32px; }
         .progress-label { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; margin-bottom: 8px; opacity: 0.7; }
-        .progress-bar-bg { width: 100%; height: 12px; background-color: rgba(247, 248, 250, 0.1); border-radius: 999px; overflow: hidden; }
-        .progress-bar-fill { height: 100%; background-color: var(--teal); }
+        .progress-bar-bg { width: 100%; height: 12px; background-color: rgba(247, 248, 250, 0.18); border-radius: 999px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background-color: var(--teal-soft); } /* ILIK v6: contraste legible sobre fondo oscuro */
         .case-footer-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; border-top: 1px solid rgba(247, 248, 250, 0.1); padding-top: 32px; margin-top: 32px; }
         .case-footer-metrics p { font-size: 14px; opacity: 0.8; }
         .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); margin-bottom: 4px; display: block; font-weight: 700; }
@@ -534,6 +539,7 @@
             .criterio-grid, .sample { grid-template-columns: minmax(0, 1fr); gap: 36px; }
             .context-strip { grid-template-columns: minmax(0, 1fr); gap: 14px; }
             .about-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+            .definition-mark { display: none; } /* ILIK v7: en móvil solo agregaría altura */
             .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
@@ -644,8 +650,8 @@
             <div class="hero-content">
                 <span class="hero-tag">Inteligencia de Compra</span>
                 <h1 class="font-serif"><span class="h1-line">Lo que no se mide,</span> <span class="h1-line h1-accent">se paga de más.</span></h1>
-                <p class="hero-desc">Convertimos su Kardex y sus datos de compra en un diagnóstico de gasto que finanzas puede defender.</p>
-                <p class="hero-vertical">Metodología aplicable a cualquier industria. <strong>Primer vertical: hospitales privados en México.</strong></p>
+                <p class="hero-desc">A veces ni el mismo hospital sabe qué compra. Convertimos su Kardex y sus datos de compra en un diagnóstico de gasto que finanzas puede defender.</p>
+                <p class="hero-vertical">Metodología escalable a todo tipo de industrias. <strong>Primer vertical: hospitales privados en México.</strong></p>
                 <div class="cta-group">
                     <a href="#contacto" class="btn-primary" data-cta="hero">Solicitar diagnóstico &rarr;</a>
                     <a href="#metodologia" class="btn-secondary">Ver metodología</a>
@@ -662,6 +668,22 @@
         </div>
     </section>
 
+    <!-- ILIK v4/v5/v6 (v6: se sube justo después de la portada) · OBSERVATORIO: publicaciones destacadas.
+         Se llena sola desde observatorio/articulos.js con las 3 piezas publicadas más recientes (datos públicos e investigaciones).
+         Mientras no haya ninguna publicada, esta sección no aparece. -->
+    <section id="observatorio" class="obs-section" data-obs-wrap hidden aria-labelledby="obs-titulo">
+        <div class="max-w-7xl">
+            <div class="obs-head">
+                <div>
+                    <h2 id="obs-titulo">Observatorio</h2>
+                    <p>Datos públicos e investigación propia sobre el gasto hospitalario en México. Cada cifra con su fuente.</p>
+                </div>
+                <a class="obs-all" href="observatorio/" data-cta="observatorio-ver-todas">Ver todas las publicaciones</a>
+            </div>
+            <div class="obs-grid" data-obs="inicio" data-obs-grid></div>
+        </div>
+    </section>
+
     <!-- SECCIÓN 01: NOSOTROS -->
     <section id="nosotros" class="about-section">
         <img class="about-bg-logo" src="logo-grande.png" alt="" aria-hidden="true" width="900" height="590" loading="lazy" decoding="async"> <!-- ILIK v2: carga diferida -->
@@ -674,19 +696,21 @@
                     <span class="term">Ilik</span>
                     <span class="term-meta">Maya yucateco &middot; verbo</span>
                     <span class="meaning">ver, observar, mirar.</span>
+                    <img class="definition-mark" src="marca-agua.png" alt="" aria-hidden="true"> <!-- ILIK v7: firma oficial -->
                 </div>
                 <div class="about-copy">
-                    <h2 class="lead">Consultoría boutique de inteligencia de compra. Un pipeline propio, no un dashboard genérico.</h2>
-                    <p>Funciona en cualquier industria donde existan datos de compra: convertimos movimientos crudos en decisiones que finanzas puede defender, con cada cifra conciliada contra su origen.</p>
+                    <h2 class="lead">Ilik nació de una base de consumos que nadie podía leer.</h2>
+                    <!-- ILIK v7: voz del fundador, en sus palabras -->
+                    <p>Durante ocho años trabajé desde la perspectiva del laboratorio en el mercado hospitalario privado. En una ocasión, un hospital compartió su historial de consumos para que le presentáramos una oferta de valor. Entre líneas, el mensaje casi siempre era el mismo: «mejórame el precio». Para diseñar una propuesta ganar-ganar teníamos tres objetivos: asegurar la penetración del catálogo, balancear el mix precio-volumen y, en consecuencia, maximizar el share of wallet.</p>
+                    <p>Al adentrarme en la información, la taxonomía era prácticamente inexistente. Entre cientos de miles de registros en crudo, identificar una oportunidad o proponer una eficiencia operativa era técnicamente imposible.</p>
+                    <p>Ahí entendí que, a veces, el volumen de información es tan abrumador que los mismos hospitales pierden la visibilidad real de lo que compran. De la necesidad de resolver eso nació Ilik.</p>
+                    <p>No entrego reportes genéricos ni dashboards que no cambian ninguna decisión. Identifico las fugas y las oportunidades reales en sus datos y le presento la estrategia para materializarlas en su operación.</p>
+                    <p>Hay cosas que no negocio: nunca voy a mentir, inflar un indicador o inventar un resultado, y su información es confidencial sin excepción.</p>
+                    <p class="founder-sign">Ricardo Rodríguez Escamilla, fundador</p>
                     <p class="vertical-note"><span class="tag">Primer vertical</span><span>Hospitales privados en México, por la experiencia reciente de su fundador: más de ocho años al frente de la inteligencia comercial del canal hospitalario privado en la industria farmacéutica.</span></p>
                 </div>
             </div>
 
-            <ol class="principles">
-                <li><span class="n">01</span><strong>Rigor antes que velocidad</strong></li>
-                <li><span class="n">02</span><strong>Criterio propio, no el del ERP</strong></li>
-                <li><span class="n">03</span><strong>Cero especulación</strong></li>
-            </ol>
         </div>
     </section>
 
@@ -730,7 +754,7 @@
             </div>
             <div class="criterio-grid">
                 <div>
-                    <h2 class="font-serif">Hay ahorros que <em>no</em> recomendamos.</h2>
+                    <h2 class="font-serif">Hay ahorros que no recomendamos.</h2>
                     <p>Probamos sugerir sustituciones automáticas por precio. El modelo emparejaba antibióticos de reserva con antibióticos de primera línea: más barato en el papel, inválido en la clínica.</p>
                     <p>Desde entonces, cada hallazgo se enruta según quién debe decidir. Ilik aporta la evidencia; la decisión clínica es del comité.</p>
                 </div>
@@ -740,7 +764,7 @@
                         <div class="neq" aria-hidden="true">&ne;</div>
                         <div class="side"><small>Antibiótico</small><strong>de primera línea</strong></div>
                     </div>
-                    <p class="pair-caption">Más barato en el papel. Inválido en la clínica.</p>
+                    <p class="pair-caption">Cuesta menos, pero clínicamente no son intercambiables.</p>
                     <div class="routes">
                         <div class="route"><span class="from">Insumos no clínicos</span><span class="arrow" aria-hidden="true">&rarr;</span><span class="to teal">Comparación directa de precio</span></div>
                         <div class="route"><span class="from">Medicamentos e implantes</span><span class="arrow" aria-hidden="true">&rarr;</span><span class="to ink">Revisión del comité clínico</span></div>
@@ -758,7 +782,7 @@
             </div>
             <div class="section-intro">
                 <h2 class="font-serif">Siete etapas, cada una con una condición de salida.</h2>
-                <p>Si los datos no la cumplen, se ajusta el alcance; nunca la fecha.</p>
+                <p>Si los datos no la cumplen, ajustamos el alcance y mantenemos la fecha.</p>
             </div>
 
             <!-- ILIK v3 · Cada etapa muestra su condición de salida (fuente: compuertas de la skill core-ilik).
@@ -867,8 +891,8 @@
                     <p>Informe ejecutivo para finanzas a partir de su Kardex: cada hallazgo con su cifra, su evidencia y un siguiente paso.</p>
                     <span class="fase-duration">4 semanas</span>
                 </article>
-                <article class="card-fase active">
-                    <span class="fase-title">Fase 02 &middot; Recomendada</span>
+                <article class="card-fase">
+                    <span class="fase-title">Fase 02</span>
                     <h4 class="font-serif">Piloto</h4>
                     <p>El pipeline completo en una categoría, con retorno medible.</p>
                     <span class="fase-duration">6 a 8 semanas</span>
@@ -886,7 +910,7 @@
             <div class="sample">
                 <div class="sample-intro">
                     <span class="meta-tag" style="display: block; margin-bottom: 12px;">Así se ve un hallazgo</span>
-                    <h3>Una idea central. Evidencia. <em>Un siguiente paso.</em></h3>
+                    <h3>Una idea central, su evidencia y un siguiente paso.</h3>
                     <p>Cada hallazgo del diagnóstico llega con su cifra, la evidencia que la sostiene y una acción concreta para dirección.</p>
                     <p class="data-note">Ejemplo ilustrativo con datos ficticios. La estructura es la que recibe el cliente.</p>
                 </div>
@@ -907,21 +931,6 @@
         </section>
     </div>
 
-    <!-- ILIK v4/v5 · OBSERVATORIO: publicaciones destacadas.
-         Se llena sola desde observatorio/articulos.js con las 3 piezas publicadas más recientes (datos públicos e investigaciones).
-         Mientras no haya ninguna publicada, esta sección no aparece. -->
-    <section id="observatorio" class="obs-section" data-obs-wrap hidden aria-labelledby="obs-titulo">
-        <div class="max-w-7xl">
-            <div class="obs-head">
-                <div>
-                    <h2 id="obs-titulo">Observatorio</h2>
-                    <p>Datos públicos e investigación propia sobre el gasto hospitalario en México. Cada cifra con su fuente.</p>
-                </div>
-                <a class="obs-all" href="observatorio/" data-cta="observatorio-ver-todas">Ver todas las publicaciones</a>
-            </div>
-            <div class="obs-grid" data-obs="inicio" data-obs-grid></div>
-        </div>
-    </section>
 
     <!-- SECCIÓN 07: PREGUNTAS (MARCO OSCURO) -->
     <section id="preguntas" class="section-dark">
@@ -948,11 +957,15 @@
                 </details>
                 <details class="faq-item">
                     <summary>¿Qué pasa si los datos están sucios?<span class="faq-icon" aria-hidden="true"></span></summary>
-                    <div class="faq-answer"><p>Siempre lo están. Se mide qué tan sucios y se declara en el diagnóstico; no se oculta ni se asume una calidad que no existe.</p></div>
+                    <div class="faq-answer"><p>Siempre lo están. Medimos qué tan sucios vienen y lo declaramos en el diagnóstico.</p></div>
+                </details>
+                <details class="faq-item"> <!-- ILIK v7 -->
+                    <summary>Ya tenemos ERP y un analista que hace reportes.<span class="faq-icon" aria-hidden="true"></span></summary>
+                    <div class="faq-answer"><p>¿Y esos reportes le generan eficiencias? ¿Tienen impacto en decisiones de negocio? Ilik no se enfoca en producir reportes; se enfoca en detectar oportunidades y, más importante, en presentar la mejor manera de atacarlas y materializarlas.</p></div>
                 </details>
                 <details class="faq-item">
                     <summary>¿Qué se lleva el hospital al final?<span class="faq-icon" aria-hidden="true"></span></summary>
-                    <div class="faq-answer"><p>Hallazgos con cifra, prioridad y un siguiente paso concreto; no un dashboard más.</p></div>
+                    <div class="faq-answer"><p>Hallazgos con cifra, prioridad y un siguiente paso concreto.</p></div>
                 </details>
             </div>
         </div>
@@ -961,12 +974,11 @@
     <!-- CONVERSIÓN / CIERRE · ILIK v3: formulario como canal principal, WhatsApp y datos directos como alternos -->
     <section id="contacto" class="conversion-section">
         <div class="max-w-7xl">
-            <h2 class="conversion-title font-serif">Empiece con un export de <span>su Kardex.</span></h2>
-            <p class="conversion-desc">En cuatro semanas, un diagnóstico de gasto que finanzas puede defender.</p>
+            <h2 class="conversion-title font-serif">Empiece con un export de su Kardex.</h2>
+            <p class="conversion-desc">En cuatro semanas, un diagnóstico de gasto con cada cifra conciliada contra su origen.</p>
 
             <div class="contact-grid">
                 <div class="form-card" id="form-card">
-                    <span class="recommended-badge">Recomendado</span>
                     <p class="form-intro">Cuéntenos qué información de compras tiene su organización y le proponemos fecha para una primera llamada.</p>
 
                     <!-- ILIK v5 · Sin intermediarios: la solicitud viaja como correo directo del visitante a contacto@ilikanalytics.com.
@@ -1051,7 +1063,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logo-oficial.png" alt="Ilik" width="92" height="60" loading="lazy" decoding="async"> <!-- ILIK v2: carga diferida -->
-                    <p>Inteligencia de Compra para cualquier industria. Diagnóstico de gasto con trazabilidad y reconciliación completa. Primer vertical: hospitales privados en México.</p>
+                    <p>Inteligencia de Compra con metodología escalable a todo tipo de industrias. Diagnóstico de gasto con trazabilidad y reconciliación completa. Primer vertical: hospitales privados en México.</p>
                     <p class="tagline">Lo que no se mide, se paga de más.</p>
                 </div>
                 <nav class="footer-col" aria-label="Sitio">
