@@ -283,6 +283,33 @@
         .mnet-panel .exit b { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-soft); margin-bottom: 6px; }
         .mnet-panel .exit p { font-size: 17px; line-height: 1.55; color: var(--bone); }
         @media (min-width: 900px) { .mnet { display: block; } .mnet + .stages { display: none; } }
+
+        /* ILIK v7 · Preguntas en persianas */
+        .slats { list-style: none; display: flex; gap: 10px; height: 400px; }
+        .slat { flex: 1 1 0; min-width: 0; transition: flex-grow 420ms var(--ease-out); }
+        .slat.is-open { flex-grow: 4.2; }
+        .slat-btn { all: unset; box-sizing: border-box; cursor: pointer; position: relative; display: flex; flex-direction: column; justify-content: space-between; width: 100%; height: 100%; padding: 26px 24px; border-radius: 10px; border: 1px solid rgba(247, 248, 250, 0.08); background-color: rgba(247, 248, 250, 0.03); overflow: hidden; transition: background-color 300ms var(--ease-out), border-color 300ms var(--ease-out); }
+        .slat-btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+        .slat-btn:hover { border-color: rgba(201, 138, 59, 0.45); }
+        .slat.is-open .slat-btn { background-color: var(--ink-soft, #16222F); border-color: rgba(201, 138, 59, 0.55); box-shadow: inset 0 3px 0 var(--amber); }
+        .slat-n { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--amber); font-variant-numeric: tabular-nums; }
+        .slat-t { font-size: 15px; font-weight: 600; color: rgba(247, 248, 250, 0.82); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; align-self: flex-start; }
+        .slat-q { display: none; font-family: var(--serif); font-size: 34px; font-weight: 600; line-height: 1.12; color: var(--bone); max-width: 460px; }
+        .slat.is-open .slat-t { writing-mode: horizontal-tb; transform: none; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-soft); white-space: normal; order: 2; }
+        .slat.is-open .slat-q { display: block; order: 3; animation: slatIn 420ms var(--ease-out) both; }
+        .slat.is-open .slat-n { order: 1; }
+        .slat.is-open .slat-btn { justify-content: flex-start; gap: 0; }
+        .slat.is-open .slat-t { margin-top: auto; margin-bottom: 14px; }
+        @keyframes slatIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        @media (max-width: 899px) {
+            .slats { flex-direction: column; height: auto; }
+            .slat, .slat.is-open { flex: none; }
+            .slat-btn { cursor: default; padding: 20px; gap: 8px; }
+            .slat-t, .slat.is-open .slat-t { writing-mode: horizontal-tb; transform: none; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-soft); white-space: normal; margin: 0; }
+            .slat-q, .slat.is-open .slat-q { display: block; font-size: 22px; animation: none; }
+            .slat.is-open .slat-btn { box-shadow: none; background-color: rgba(247, 248, 250, 0.03); border-color: rgba(247, 248, 250, 0.08); }
+        }
+        @media (prefers-reduced-motion: reduce) { .slat { transition: none; } .slat.is-open .slat-q { animation: none; } }
         .kardex-banner { background-color: var(--ink); color: var(--bone); padding: 48px; border-radius: 12px; margin-top: 48px; display: flex; align-items: center; gap: 64px; width: 100%; }
         .kardex-banner .num { font-size: 64px; font-weight: 700; font-family: var(--serif); color: var(--amber); line-height: 1; white-space: nowrap; }
         .kardex-banner .text { font-size: 16px; }
@@ -744,24 +771,14 @@
                 <h2 class="font-serif">Seis preguntas que su Kardex no contesta solo.</h2>
             </div>
 
-            <!-- NUEVO · Contexto 2026 (fuente pública verificada) -->
-            <div class="context-strip">
-                <span class="ctx-label">Por qué ahora<br>Salud privada 2026</span>
-                <div class="context-bars">
-                    <div class="ctx-row"><span>Inflación médica privada</span><div class="bar"><span class="reveal-bar" style="width: 93%; background-color: var(--amber);"></span></div><span class="val" style="color: var(--amber);">12 a 14%</span></div>
-                    <div class="ctx-row"><span>Inflación general esperada</span><div class="bar"><span class="reveal-bar" style="width: 31%; background-color: var(--teal-soft);"></span></div><span class="val">4.35%</span></div><!-- ILIK v2: cifra con fuente primaria (Banxico); ancho 4.35/14 = 31% -->
-                </div>
-                <!-- ILIK v2 · Cita verificada. 12-14%: Norma Alicia Rosas Rodríguez, directora general de la AMIS, conferencia de prensa en la 35.ª Convención de Aseguradores, 12/may/2026 (La Jornada, 13/may/2026). 4.35%: mediana de expectativa de inflación general dic-dic 2026, Encuesta Banxico de mayo 2026, publicada 1/jun/2026. -->
-                <p class="ctx-foot">Inflación médica privada: proyección de la directora general de la AMIS, Norma Alicia Rosas Rodríguez, en la 35.ª Convención de Aseguradores (12 de mayo de 2026). Inflación general: mediana de expectativas para el cierre de 2026, Encuesta de Banco de México a especialistas (mayo de 2026). En el primer vertical de Ilik, el costo de la atención médica privada crece cerca de tres veces más rápido que los precios en general.</p>
-            </div>
-
-            <ol class="grid-questions">
-                <li class="question-card"><span class="question-num font-serif">01</span><div class="question-content"><h4>Candidatos a consignación</h4><p>Qué productos pueden dejar de inmovilizar capital.</p></div></li>
-                <li class="question-card"><span class="question-num font-serif">02</span><div class="question-content"><h4>Capital de trabajo inmovilizado</h4><p>Cuánto sigue atado en inventario.</p></div></li>
-                <li class="question-card"><span class="question-num font-serif">03</span><div class="question-content"><h4>Dispersión de precio</h4><p>Dónde paga distinto por el mismo producto.</p></div></li>
-                <li class="question-card"><span class="question-num font-serif">04</span><div class="question-content"><h4>Dependencia de proveedor</h4><p>Qué depende de un solo laboratorio.</p></div></li>
-                <li class="question-card"><span class="question-num font-serif">05</span><div class="question-content"><h4>Distribución interna</h4><p>Cuánto es traslado entre almacenes, no compra.</p></div></li>
-                <li class="question-card"><span class="question-num font-serif">06</span><div class="question-content"><h4>Racionalización de surtido</h4><p>Cuántas claves son, en realidad, el mismo producto.</p></div></li>
+            <!-- ILIK v7 · Las seis preguntas como persianas: se abren al pasar el cursor o al dar clic -->
+            <ol class="slats" data-slats>
+                <li class="slat is-open"><button type="button" class="slat-btn" aria-expanded="true"><span class="slat-n">01</span><span class="slat-t">Candidatos a consignación</span><span class="slat-q">¿Qué productos pueden dejar de inmovilizar capital?</span></button></li>
+                <li class="slat"><button type="button" class="slat-btn" aria-expanded="false"><span class="slat-n">02</span><span class="slat-t">Capital de trabajo inmovilizado</span><span class="slat-q">¿Cuánto sigue atado en inventario?</span></button></li>
+                <li class="slat"><button type="button" class="slat-btn" aria-expanded="false"><span class="slat-n">03</span><span class="slat-t">Dispersión de precio</span><span class="slat-q">¿Dónde paga distinto por el mismo producto?</span></button></li>
+                <li class="slat"><button type="button" class="slat-btn" aria-expanded="false"><span class="slat-n">04</span><span class="slat-t">Dependencia de proveedor</span><span class="slat-q">¿Qué depende de un solo laboratorio?</span></button></li>
+                <li class="slat"><button type="button" class="slat-btn" aria-expanded="false"><span class="slat-n">05</span><span class="slat-t">Distribución interna</span><span class="slat-q">¿Cuánto del movimiento es traslado entre almacenes?</span></button></li>
+                <li class="slat"><button type="button" class="slat-btn" aria-expanded="false"><span class="slat-n">06</span><span class="slat-t">Racionalización de surtido</span><span class="slat-q">¿Cuántas claves son, en realidad, el mismo producto?</span></button></li>
             </ol>
         </div>
     </section>
@@ -1486,6 +1503,28 @@
                 if (visible && !was) { requestAnimationFrame(tick); }
             }, { threshold: 0.2 }).observe(box);
         }
+    })();
+    </script>
+
+    <!-- ILIK v7 · Persianas de preguntas -->
+    <script>
+    (function () {
+        var wrap = document.querySelector("[data-slats]");
+        if (!wrap) { return; }
+        var slats = Array.prototype.slice.call(wrap.querySelectorAll(".slat"));
+        function open(i) {
+            slats.forEach(function (li, k) {
+                li.classList.toggle("is-open", k === i);
+                li.querySelector(".slat-btn").setAttribute("aria-expanded", k === i ? "true" : "false");
+            });
+        }
+        var fino = window.matchMedia("(hover: hover) and (min-width: 900px)");
+        slats.forEach(function (li, i) {
+            var b = li.querySelector(".slat-btn");
+            b.addEventListener("click", function () { open(i); });
+            b.addEventListener("focus", function () { open(i); });
+            li.addEventListener("mouseenter", function () { if (fino.matches) { open(i); } });
+        });
     })();
     </script>
 </body>
