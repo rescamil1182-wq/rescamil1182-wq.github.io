@@ -110,6 +110,72 @@
             if (texto) { n.textContent = texto; }
             return n;
         }
+
+        // ILIK v7 · Unidades: un punto por empresa. Sirve cuando la cifra es un conteo.
+        function formaUnidades(svg, g, X0) {
+            var R = 7.5, PASO = 21, POR_FILA = 26;
+            var y = 152;
+            g.barras.slice(0, 3).forEach(function (b) {
+                var n = Math.round(+b.valor) || 0;
+                var filas = Math.max(1, Math.ceil(n / POR_FILA));
+                svg.appendChild(s("text", { x: X0, y: y, "class": "pg-etiqueta" }, b.etiqueta));
+                svg.appendChild(s("text", { x: X0 + POR_FILA * PASO + 16, y: y + 22 + (filas - 1) * PASO / 2, "class": "pg-valor" + (b.destacar ? " pg-valor--destacado" : "") }, b.texto || String(n)));
+                for (var k = 0; k < n; k++) {
+                    var cx = X0 + R + (k % POR_FILA) * PASO, cy = y + 22 + Math.floor(k / POR_FILA) * PASO;
+                    svg.appendChild(s("circle", { cx: cx, cy: cy, r: R, fill: b.destacar ? "#C98A3B" : "#C9DAD5", "fill-opacity": b.destacar ? "1" : "0.75" }));
+                }
+                y += 22 + filas * PASO + 34;
+            });
+        }
+
+        // ILIK v7 · Tendencia: línea en el tiempo real (los años se separan según su distancia).
+        function formaTendencia(svg, g, X0, id) {
+            var pts = g.barras.filter(function (b) { return b.anio != null; }).slice().sort(function (a, b) { return a.anio - b.anio; });
+            if (pts.length < 2) { return; }
+            var XA = X0 + 10, XB = 640, YT = 170, YB = 400;
+            var a0 = pts[0].anio, a1 = pts[pts.length - 1].anio;
+            var vmax = Math.max.apply(null, pts.map(function (b) { return +b.valor; }));
+            var techo = Math.ceil(vmax / 10) * 10 + 10;
+            var px = function (a) { return XA + (XB - XA) * (a - a0) / ((a1 - a0) || 1); };
+            var py = function (v) { return YB - (YB - YT) * (v / techo); };
+            [0, techo / 2, techo].forEach(function (v) {
+                svg.appendChild(s("line", { x1: XA, x2: XB, y1: py(v), y2: py(v), stroke: "#C9DAD5", "stroke-opacity": "0.14", "stroke-width": "1.5" }));
+            });
+            var d = pts.map(function (b, i) { return (i ? "L" : "M") + px(b.anio).toFixed(1) + " " + py(+b.valor).toFixed(1); }).join(" ");
+            svg.appendChild(s("path", { d: d + " L" + px(a1) + " " + YB + " L" + px(a0) + " " + YB + " Z", fill: "#C98A3B", "fill-opacity": "0.12" }));
+            svg.appendChild(s("path", { d: d, fill: "none", stroke: "#C98A3B", "stroke-width": "5", "stroke-linejoin": "round", "stroke-linecap": "round" }));
+            pts.forEach(function (b, i) {
+                var x = px(b.anio), y = py(+b.valor), ultimo = i === pts.length - 1;
+                svg.appendChild(s("circle", { cx: x, cy: y, r: ultimo ? 11 : 8, fill: ultimo ? "#C98A3B" : "#0B1420", stroke: "#C98A3B", "stroke-width": "4" }));
+                var medio = i > 0 && !ultimo;
+                svg.appendChild(s("text", { x: medio ? x - 14 : x, y: medio ? y + 52 : y - 26, "text-anchor": i === 0 ? "start" : (medio ? "end" : "middle"), "class": "pg-valor" + (ultimo ? " pg-valor--destacado" : "") }, b.texto || String(b.valor)));
+                svg.appendChild(s("text", { x: x, y: YB + 34, "text-anchor": i === 0 ? "start" : (ultimo ? "start" : "end"), "class": "pg-etiqueta" }, String(Math.floor(b.anio))));
+            });
+        }
+
+        // ILIK v7 · Rango: una escala común; las proyecciones son tramos, la cifra general es un punto.
+        function formaRango(svg, g, X0, id) {
+            var XA = X0, XB = 700, Y = 300, MAX = 20;
+            var px = function (v) { return XA + (XB - XA) * (v / MAX); };
+            for (var v = 0; v <= MAX; v += 5) {
+                svg.appendChild(s("line", { x1: px(v), x2: px(v), y1: 150, y2: 380, stroke: "#C9DAD5", "stroke-opacity": v ? "0.12" : "0.35", "stroke-width": "1.5" }));
+                svg.appendChild(s("text", { x: px(v), y: 412, "text-anchor": "middle", "class": "pg-fuente" }, v + "%"));
+            }
+            var filas = g.barras.slice(0, 3), paso = 74, y0 = 168;
+            filas.forEach(function (b, i) {
+                var y = y0 + i * paso;
+                svg.appendChild(s("text", { x: XA, y: y, "class": "pg-etiqueta" }, b.etiqueta));
+                var cy = y + 26;
+                if (b.desde != null) {
+                    svg.appendChild(s("rect", { x: px(+b.desde), y: cy - 15, width: px(+b.valor) - px(+b.desde), height: 30, rx: 15, fill: b.destacar ? "#C98A3B" : "#C9DAD5" }));
+                    svg.appendChild(s("text", { x: px(+b.valor) + 14, y: cy + 13, "class": "pg-valor" + (b.destacar ? " pg-valor--destacado" : "") }, b.texto || ""));
+                } else {
+                    svg.appendChild(s("circle", { cx: px(+b.valor), cy: cy, r: 12, fill: "#0B1420", stroke: "#C9DAD5", "stroke-width": "4" }));
+                    svg.appendChild(s("text", { x: px(+b.valor) + 22, y: cy + 13, "class": "pg-valor" }, b.texto || ""));
+                }
+            });
+        }
+
         var nPortada = 0;
         function portadaGrafica(g) {
             nPortada += 1;
@@ -126,6 +192,10 @@
             svg.appendChild(defs);
             svg.appendChild(s("rect", { width: W, height: H, fill: "#0B1420" }));
             if (g.titulo) { svg.appendChild(s("text", { x: X0, y: 100, "class": "pg-titulo" }, g.titulo)); }
+            // ILIK v7 · Cada pieza puede pedir una forma distinta ("forma" en articulos.js); sin "forma", barras.
+            if (g.forma === "unidades") { formaUnidades(svg, g, X0); if (g.fuente) { svg.appendChild(s("text", { x: X0, y: H - 40, "class": "pg-fuente" }, "Fuente: " + g.fuente)); } return svg; }
+            if (g.forma === "tendencia") { formaTendencia(svg, g, X0, id); if (g.fuente) { svg.appendChild(s("text", { x: X0, y: H - 40, "class": "pg-fuente" }, "Fuente: " + g.fuente)); } return svg; }
+            if (g.forma === "rango") { formaRango(svg, g, X0, id); if (g.fuente) { svg.appendChild(s("text", { x: X0, y: H - 40, "class": "pg-fuente" }, "Fuente: " + g.fuente)); } return svg; }
             var max = Math.max.apply(null, g.barras.map(function (b) { return +b.valor || 0; })) || 1;
             var n = Math.min(g.barras.length, 4);
             var alto = n > 2 ? 44 : 68, paso = n > 2 ? 86 : 130, y0 = n > 2 ? 160 : 186;

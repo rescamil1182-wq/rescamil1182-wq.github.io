@@ -41,6 +41,7 @@ window.ILIK_ARTICULOS = [
         "estado": "publicado",
         "tipo": "investigacion",
         "grafica": {
+            "forma": "rango",
             "titulo": "Inflación médica privada frente a la general",
             "barras": [
                 {
@@ -101,21 +102,25 @@ window.ILIK_ARTICULOS = [
             "barras": [
                 {
                     "etiqueta": "2026, al 9 de octubre",
+                    "anio": 2026.78,
                     "valor": 51.0,
                     "texto": "51%",
                     "destacar": true
                 },
                 {
                     "etiqueta": "2025",
+                    "anio": 2025,
                     "valor": 50.0,
                     "texto": "50%"
                 },
                 {
                     "etiqueta": "2016",
+                    "anio": 2016,
                     "valor": 35.0,
                     "texto": "35%"
                 }
             ],
+            "forma": "tendencia",
             "titulo": "Registros emitidos que listan un fabricante indio de principio activo",
             "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
         }
