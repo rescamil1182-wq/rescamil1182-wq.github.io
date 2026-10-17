@@ -50,6 +50,16 @@
     <link rel="stylesheet" href="../../fuentes/fuentes.css">
     <link rel="stylesheet" href="../tarjetas.css">
     <link rel="stylesheet" href="../paginas.css">
+    <style>
+        .tabla{overflow-x:auto;margin:28px 0;-webkit-overflow-scrolling:touch}
+        .tabla table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:15px;line-height:1.4;font-variant-numeric:tabular-nums}
+        .tabla th{background:#0B1420;color:#F7F8FA;text-align:left;font-weight:600;padding:10px 12px;font-size:13.5px}
+        .tabla td{padding:9px 12px;border-bottom:1px solid #E7E9ED;color:#16222F;text-align:right}
+        .tabla td.t{text-align:left}
+        .tabla tbody tr:nth-child(even) td{background:#F7F8FA}
+        .nota-tabla{font-size:14px;color:#16222F;opacity:.8;margin-top:-16px}
+        @media (max-width:640px){.tabla table{font-size:13px}.tabla th,.tabla td{padding:8px}}
+    </style>
 </head>
 <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -109,13 +119,13 @@
                         <figcaption>Solicitudes de registro sanitario de medicamentos publicadas por COFEPRIS por año, 2016 a 2026, separadas entre fabricación nacional y extranjera. Cálculo de Ilik con datos de COFEPRIS.<sup><a href="#fuente-1">1</a></sup></figcaption>
                     </figure>
 
-                    <p>El cambio de fondo está en dónde se fabrica lo que se solicita. En 2016, 32% de las solicitudes eran de fabricación extranjera. Desde 2021 la proporción oscila entre 67% y 78% cada año, y en 2026 va en 76%.<sup><a href="#fuente-1">1</a></sup> En oncológicos e inmunomoduladores, la línea con más biocomparables, la brecha es todavía mayor: de 340 solicitudes entre 2024 y 2026, 92% son de fabricación extranjera y apenas 4% de fabricación nacional.</p>
+                    <p>El cambio de fondo está en dónde se fabrica lo que se solicita. En 2016, 32% de las solicitudes eran de fabricación extranjera. Desde 2021 la proporción oscila entre 67% y 78% cada año, y en 2026 va en 76%.<sup><a href="#fuente-1">1</a></sup></p>
 
                     <p>Los registros otorgados también suben. Del 1 de enero al 9 de octubre de 2026, COFEPRIS emitió cerca de 50% más registros nuevos de medicamentos que en el mismo periodo de 2025, según nuestro cálculo con la base completa de su Visor de Registros.<sup><a href="#fuente-3" id="ref-3">3</a></sup></p>
 
                     <h2>Nadie controla la puerta de entrada</h2>
 
-                    <p>Entre 2024 y 2026 sometieron solicitudes 275 empresas, contadas por razón social y sin agrupar filiales. Las diez más activas suman 24.2% del total y ninguna llega a 4%.<sup><a href="#fuente-1">1</a></sup> Medida con el índice que usan las autoridades de competencia (HHI), la concentración de esas solicitudes marca 114 puntos. Conviene leer el número con cuidado: se calcula sobre solicitudes, no sobre ventas, así que describe quién intenta entrar y no quién vende. Como referencia, las guías de fusiones de Estados Unidos de 2023 consideran moderadamente concentrado un mercado entre 1,000 y 1,800 puntos, y altamente concentrado arriba de 1,800.<sup><a href="#fuente-4" id="ref-4">4</a></sup></p>
+                    <p>Entre 2024 y 2026 sometieron solicitudes 275 empresas y ninguna llega a 4% del total.<sup><a href="#fuente-1">1</a></sup> Con un índice de concentración (HHI) de 114 puntos, muy lejos de los 1,000 donde las autoridades de competencia de Estados Unidos empiezan a hablar de concentración moderada, la puerta de entrada está abierta para cualquiera.<sup><a href="#fuente-4" id="ref-4">4</a></sup></p>
 
                     <p>Casi nueve de cada diez solicitudes son de genéricos. Metabolismo, oncología y sistema nervioso concentran cerca de la mitad.</p>
 
@@ -124,8 +134,8 @@
                     <p>Cuando decenas de empresas piden registrar la misma molécula en pocos meses, lo común es que haya una patente que acaba de vencer o está por hacerlo. No siempre: el paracetamol, sin patente, está entre las moléculas con más solicitudes.</p>
 
                     <figure>
-                        <img src="figura-2.png" alt="Número de empresas distintas que solicitaron registrar la misma molécula entre 2024 y agosto de 2026, para las doce moléculas con más solicitantes." width="1440" height="810" loading="lazy">
-                        <figcaption>Número de empresas distintas que solicitaron registrar la misma molécula entre 2024 y agosto de 2026, para las doce moléculas con más solicitantes. Cálculo de Ilik con datos de COFEPRIS.<sup><a href="#fuente-1">1</a></sup></figcaption>
+                        <img src="figura-2.png" alt="Las 12 moléculas con más empresas solicitantes de genérico o biocomparable desde 2024, frente a los registros nuevos emitidos en el mismo periodo." width="2880" height="1620" loading="lazy">
+                        <figcaption>Las 12 moléculas con más empresas solicitantes de genérico o biocomparable desde 2024, frente a los registros nuevos emitidos en el mismo periodo. Cálculo de Ilik con datos de COFEPRIS.<sup><a href="#fuente-1">1</a></sup><sup><a href="#fuente-3">3</a></sup></figcaption>
                     </figure>
 
                     <p>Sitagliptina perdió su exclusividad en Estados Unidos entre 2025 y 2026, según la fuente que se consulte, y dapagliflozina en 2025.<sup><a href="#fuente-2">2</a></sup> Para rivaroxabán y apixabán, dos anticoagulantes orales de nueva generación, las fuentes dan fechas de 2026 a 2028.<sup><a href="#fuente-2">2</a></sup> Apixabán fue el cuarto medicamento más vendido del mundo en 2024.<sup><a href="#fuente-9" id="ref-9">9</a></sup> Este año aparecieron dos señales nuevas: semaglutida pasó de cero o una solicitud al año a siete, y sacubitrilo con valsartán, de entre cero y dos a ocho.<sup><a href="#fuente-1">1</a></sup></p>
@@ -145,7 +155,17 @@
 
                     <p>En México la caída ha sido más lenta. La COFECE encontró en 2017 que, dos años después de su entrada, el primer genérico costaba en promedio 28% menos que el original, contra 40% en la Unión Europea, y estimó que la falta de competencia les costaba a los consumidores más de 2,500 millones de pesos al año.<sup><a href="#fuente-7" id="ref-7">7</a></sup></p>
 
-                    <p>Además, 37 solicitudes no equivalen a 37 proveedores. Rastreamos las solicitudes de 2021 a 2024 contra los registros otorgados después a la misma empresa para la misma molécula: al menos 23% llegó a registro. La cifra real es más alta, porque muchas veces el registro sale a nombre del fabricante extranjero y la empresa que lo pidió queda como distribuidora. Si contamos también esos casos, 45% de las solicitudes llegó a registro.</p>
+                    <p>Además, 37 solicitudes no equivalen a 37 proveedores. Para saber cuánto de cada ola ya se volvió competencia real, cruzamos las solicitudes con los registros nuevos emitidos desde 2024.<sup><a href="#fuente-3">3</a></sup></p>
+
+                    <p>Sitagliptina es el caso de una ola que ya llegó: 34 registros nuevos a nombre de 24 titulares distintos. Dapagliflozina va a medio camino, con 17 registros y 14 titulares.</p>
+
+                    <p>Otras moléculas tienen la fila formada y la puerta todavía cerrada. Linagliptina tiene 16 empresas solicitantes y empagliflozina 12, pero ninguna de las dos suma un registro nuevo desde 2024; en toda la base de COFEPRIS, sus registros están a nombre de un solo titular. Apixabán tiene 21 aspirantes y tampoco suma registros nuevos desde 2024; los vigentes son el original y dos genéricos registrados en 2023.</p>
+
+                    <div class="tabla"><table><thead><tr><th>Molécula</th><th>Empresas solicitantes</th><th>Registros nuevos</th><th>Titulares distintos</th><th>Registros con titular en México</th></tr></thead><tbody><tr><td class="t">Sitagliptina</td><td>37</td><td>34</td><td>24</td><td>50%</td></tr><tr><td class="t">Paracetamol</td><td>35</td><td>26</td><td>22</td><td>81%</td></tr><tr><td class="t">Dapagliflozina</td><td>28</td><td>17</td><td>14</td><td>24%</td></tr><tr><td class="t">Rivaroxabán</td><td>22</td><td>7</td><td>7</td><td>43%</td></tr><tr><td class="t">Apixabán</td><td>21</td><td>0</td><td>0</td><td class="t">Sin registros nuevos</td></tr><tr><td class="t">Linagliptina</td><td>16</td><td>0</td><td>0</td><td class="t">Sin registros nuevos</td></tr><tr><td class="t">Lenalidomida</td><td>15</td><td>5</td><td>5</td><td>60%</td></tr><tr><td class="t">Ácido tranexámico</td><td>13</td><td>7</td><td>7</td><td>57%</td></tr><tr><td class="t">Brimonidina</td><td>12</td><td>7</td><td>5</td><td>71%</td></tr><tr><td class="t">Empagliflozina</td><td>12</td><td>0</td><td>0</td><td class="t">Sin registros nuevos</td></tr><tr><td class="t">Lidocaína</td><td>12</td><td>5</td><td>4</td><td>100%</td></tr><tr><td class="t">Ketorolaco</td><td>11</td><td>4</td><td>4</td><td>50%</td></tr></tbody></table></div>
+
+                    <p class="nota-tabla">Empresas que pidieron registrar un genérico o biocomparable de 2024 al 28 de agosto de 2026, y registros nuevos de cualquier tipo de 2024 al 9 de octubre de 2026. La molécula se identifica por el primer componente del nombre genérico.</p>
+
+                    <p>No todas las solicitudes llegan a registro: según cómo se cuente, lo logra entre una cuarta parte y casi la mitad de las de 2021 a 2024. Y llegar toma tiempo.</p>
 
                     <aside class="dato" aria-label="Dato destacado">
                         <span class="num">609 días</span>
@@ -167,7 +187,7 @@
 
                     <section class="method-note" aria-labelledby="nota-metodo">
                         <h2 id="nota-metodo">Nota metodológica</h2>
-                        <p>Juntamos los 22 listados de solicitudes de registro sanitario de medicamentos alopáticos que COFEPRIS publica para 2016 a 2026 (por año, uno de genéricos y biocomparables y otro del resto de alopáticos), consultados el 15 de octubre de 2026; el de 2026 está actualizado al 31 de agosto. Son avisos para que terceros se opongan por patentes y pueden no incluir todas las solicitudes que recibe la comisión. El tipo de trámite y el lugar de fabricación salen del texto de la modalidad de cada solicitud. En las cifras por año y en la figura 1, la fabricación extranjera incluye los trámites al amparo de acuerdos de equivalencia; en la cifra por línea terapéutica, solo la fabricación extranjera directa. La línea terapéutica se asignó por molécula con la clasificación ATC de la base de registros de COFEPRIS. Contamos empresas distintas por razón social, sin agrupar filiales de un mismo grupo. Una solicitud de 2021 a 2024 cuenta como llegada a registro si existe un registro nuevo de la misma molécula, emitido en los cuatro años siguientes, a nombre de la empresa solicitante (24%) o con ella como distribuidora (45%). Las fechas de patente provienen de prensa especializada y se refieren a Estados Unidos salvo que se indique otra cosa. La base de datos completa está disponible a solicitud.</p>
+                        <p>Juntamos los 22 listados de solicitudes de registro sanitario de medicamentos alopáticos que COFEPRIS publica para 2016 a 2026 (por año, uno de genéricos y biocomparables y otro del resto de alopáticos), consultados el 15 de octubre de 2026; el de 2026 está actualizado al 31 de agosto. Son avisos para que terceros se opongan por patentes y pueden no incluir todas las solicitudes que recibe la comisión. El tipo de trámite y el lugar de fabricación salen del texto de la modalidad de cada solicitud. En las cifras por año y en la figura 1, la fabricación extranjera incluye los trámites al amparo de acuerdos de equivalencia; en la cifra por línea terapéutica, solo la fabricación extranjera directa. La línea terapéutica se asignó por molécula con la clasificación ATC de la base de registros de COFEPRIS. Contamos empresas distintas por razón social, sin agrupar filiales de un mismo grupo. Una solicitud de 2021 a 2024 cuenta como llegada a registro si existe un registro nuevo de la misma molécula, emitido en los cuatro años siguientes, a nombre de la empresa solicitante (24%) o con ella como distribuidora (45%). En la tabla por molécula, la molécula se identifica por el primer componente del nombre genérico y los registros nuevos incluyen cualquier tipo de medicamento. Las fechas de patente provienen de prensa especializada y se refieren a Estados Unidos salvo que se indique otra cosa. La base de datos completa está disponible a solicitud.</p>
                     </section>
 
                     <section class="sources" aria-labelledby="fuentes">
