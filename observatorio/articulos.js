@@ -103,7 +103,7 @@ window.ILIK_ARTICULOS = [
     },
     {
         "slug": "treinta-y-siete-aspirantes-para-una-sola-molecula",
-        "titulo": "Treinta y siete aspirantes para una sola molécula",
+        "titulo": "¿Qué medicamento tendrá competencia en México después de sitagliptina?",
         "resumen": "Las solicitudes de registro sanitario que recibe COFEPRIS anticipan qué medicamentos tendrán varios proveedores y cuáles seguirán con uno solo. Para quien compra en un hospital, funcionan como un calendario de negociación.",
         "tema": "Medicamentos y COFEPRIS",
         "fecha": "2026-10-15",
