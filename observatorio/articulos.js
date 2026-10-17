@@ -30,11 +30,46 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "quien-gana-la-carrera-por-registrar-medicamentos",
+        "titulo": "¿Quién gana la carrera por registrar medicamentos en México?",
+        "resumen": "Desde 2024, 275 empresas pidieron a COFEPRIS registrar medicamentos y ninguna concentra más de 4% de las solicitudes. Al cruzar quién somete con quién se queda con el registro, el podio cambia.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-10-20",
+        "minutos": 10,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "titulo": "Registros nuevos con titular extranjero, 2024 a 2026",
+            "unidad": "%",
+            "barras": [
+                {
+                    "etiqueta": "Oncología",
+                    "valor": 69,
+                    "texto": "69%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Cardiovascular",
+                    "valor": 51,
+                    "texto": "51%"
+                },
+                {
+                    "etiqueta": "Respiratorio",
+                    "valor": 16,
+                    "texto": "16%"
+                }
+            ],
+            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
+        }
+    },
+    {
         "slug": "el-ahorro-que-nadie-ve",
         "titulo": "El ahorro que nadie ve",
         "resumen": "La mitad de los registros de medicamentos ya lista un fabricante indio de principio activo, en teoría más barato. Ni las primas, ni la inflación médica, ni la cuenta del hospital parecen haberlo notado. Seguimos el rastro de esa diferencia.",
         "tema": "Medicamentos y aseguradoras",
-        "fecha": "2026-10-15",
+        "fecha": "2026-11-05",
         "minutos": 6,
         "imagen": false,
         "imagenAlt": "",
@@ -124,36 +159,6 @@ window.ILIK_ARTICULOS = [
             "titulo": "Registros emitidos que listan un fabricante indio de principio activo",
             "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
         }
-    },
-    {
-        "slug": "inflacion-medica-privada-2026",
-        "tipo": "dato",
-        "titulo": "La atención médica privada se encarece cerca de tres veces más rápido que el resto de los precios",
-        "resumen": "La AMIS proyecta una inflación médica privada de 12 a 14% para 2026; los especialistas que encuesta Banxico esperan 4.35% de inflación general.",
-        "tema": "Inflación médica",
-        "fecha": "2026-10-14",
-        "minutos": 2,
-        "imagen": false,
-        "imagenAlt": "",
-        "grafica": {
-            "barras": [
-                {
-                    "etiqueta": "Médica privada",
-                    "valor": 14.0,
-                    "texto": "12 a 14%",
-                    "desde": 12.0,
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "General",
-                    "valor": 4.35,
-                    "texto": "4.35%"
-                }
-            ],
-            "titulo": "Inflación esperada para 2026",
-            "fuente": "AMIS, mayo 2026 · Banxico, mayo 2026"
-        },
-        "estado": "publicado"
     },
     {
         "tipo": "investigacion",
