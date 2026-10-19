@@ -61,16 +61,11 @@
     }
     </script>
 
-    <!-- ILIK v2 · Analítica con Plausible (sin cookies, no requiere banner de consentimiento).
-         Para que registre visitas: dé de alta ilikanalytics.com en plausible.io.
-         Eventos que envía el sitio (script al final): "Contacto Formulario" (solicitud enviada; propiedad "canal"),
-         "Contacto WhatsApp", "Contacto Correo", "Contacto Telefono", "Clic Solicitar diagnostico", "Ver Convenio" y "Ver Aviso de Privacidad",
-         con la propiedad "ubicacion".
-         Cada nombre se da de alta en Plausible: Settings > Goals > Add goal > Custom event (nombre idéntico).
-         Plausible ya ofrece un script nuevo por sitio (pa-XXXX.js). Si al dar de alta el sitio le muestra ese snippet,
-         reemplace estas dos líneas por él; el registro de eventos de abajo sigue funcionando igual. -->
-    <script defer data-domain="ilikanalytics.com" src="https://plausible.io/js/script.js"></script>
-    <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };</script>
+    <!-- ILIK · Analítica con Cloudflare Web Analytics (gratuita, sin cookies, no requiere banner de consentimiento).
+         Panel: dash.cloudflare.com > Observability > Analytics > Web analytics (cuenta contacto@ilikanalytics.com).
+         Nota: Cloudflare no registra eventos personalizados. El código de eventos de abajo (window.plausible) queda inactivo
+         y no hace nada mientras no exista Plausible; se conserva por si en el futuro se activa una herramienta con eventos. -->
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "412259b7e98f4c77b2c4d6c564aa714c"}'></script><!-- End Cloudflare Web Analytics -->
 
     <!-- FUENTES OFICIALES DE LA IDENTIDAD DE MARCA ILIK (ILIK v5: servidas desde /fuentes, sin Google Fonts)
          Si un archivo no carga, cada familia cae a una fuente del sistema equivalente. -->
