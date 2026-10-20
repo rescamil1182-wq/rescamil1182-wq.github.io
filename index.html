@@ -166,6 +166,14 @@
         .hero-cover { position: relative; display: flex; align-items: center; min-height: calc(100vh - 84px); min-height: calc(100svh - 84px); background-color: var(--ink); color: var(--bone); overflow: hidden; }
         .hero-media { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; margin: 0; }
         .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 28% 30%; }
+        /* ILIK v9 · Portada con transición: fundador primero y por más tiempo, luego tres ambientes de marca */
+        .hero-media { overflow: hidden; }
+        .hero-media .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease; will-change: opacity; }
+        .hero-media .hero-slide.is-on { opacity: 1; animation: hero-acerca 9s ease-out both; }
+        @keyframes hero-acerca { from { transform: scale(1.045); } to { transform: none; } }
+        .hero-caption { transition: opacity .6s ease; }
+        .hero-caption.is-hidden { opacity: 0; }
+        @media (prefers-reduced-motion: reduce) { .hero-media .hero-slide { transition: none; } .hero-media .hero-slide.is-on { animation: none; } }
         .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 0%, rgba(11, 20, 32, 0.82) 22%, rgba(11, 20, 32, 0.25) 60%, rgba(11, 20, 32, 0.1) 100%); pointer-events: none; }
         .hero-inner { position: relative; z-index: 1; padding-top: 72px; padding-bottom: 72px; }
         .hero-content { max-width: 640px; }
@@ -689,7 +697,11 @@
     <!-- PORTADA -->
     <section id="inicio" class="hero-cover">
         <figure class="hero-media">
-            <img src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896" fetchpriority="high"> <!-- ILIK v2: carga prioritaria -->
+            <img class="hero-slide is-on" src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896" fetchpriority="high"> <!-- ILIK v2: carga prioritaria -->
+            <!-- ILIK v9: ambientes de marca que se alternan con la foto del fundador. Se cargan después de la página; con movimiento reducido no aparecen -->
+            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-taza.jpg" alt="" width="1078" height="992" style="object-position: 50% 45%;">
+            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-cristal.jpg" alt="" width="1078" height="992" style="object-position: 0% 45%;">
+            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-sala.jpg" alt="" width="1078" height="992" style="object-position: 62% 40%;">
             <figcaption class="hero-caption"><strong>Ricardo Rodríguez Escamilla</strong><span>Fundador &middot; Estadístico</span></figcaption>
         </figure>
         <div class="max-w-7xl hero-inner">
@@ -1524,6 +1536,46 @@
             b.addEventListener("focus", function () { open(i); });
             li.addEventListener("mouseenter", function () { if (fino.matches) { open(i); } });
         });
+    })();
+    </script>
+    <script>
+    /* ILIK v9 · Transición de la portada. Fundador 8 s, cada ambiente 6 s. Se detiene si la pestaña no está visible. */
+    (function () {
+        try {
+            if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
+            var fig = document.querySelector(".hero-media");
+            if (!fig) { return; }
+            var slides = Array.prototype.slice.call(fig.querySelectorAll(".hero-slide"));
+            var cap = fig.querySelector(".hero-caption");
+            if (slides.length < 2) { return; }
+            var TIEMPOS = [8000, 6000, 6000, 6000], actual = 0, reloj = null;
+            function mostrar(i) {
+                slides[actual].classList.remove("is-on");
+                actual = i;
+                slides[actual].classList.add("is-on");
+                if (cap) { cap.classList.toggle("is-hidden", actual !== 0); }
+            }
+            function programar() { clearTimeout(reloj); reloj = setTimeout(siguiente, TIEMPOS[actual] || 6000); }
+            function siguiente() {
+                var n = (actual + 1) % slides.length;
+                var img = slides[n];
+                if (img.getAttribute("data-src") && img.getAttribute("data-lista") !== "1") { reloj = setTimeout(siguiente, 800); return; }
+                mostrar(n);
+                programar();
+            }
+            function cargarResto() {
+                slides.forEach(function (img) {
+                    var src = img.getAttribute("data-src");
+                    if (!src) { return; }
+                    var previa = new Image();
+                    previa.onload = function () { img.setAttribute("src", src); img.setAttribute("data-lista", "1"); };
+                    previa.src = src;
+                });
+            }
+            if (document.readyState === "complete") { cargarResto(); } else { window.addEventListener("load", cargarResto); }
+            document.addEventListener("visibilitychange", function () { if (document.hidden) { clearTimeout(reloj); } else { programar(); } });
+            programar();
+        } catch (e) { /* sin efecto: queda la foto del fundador */ }
     })();
     </script>
 </body>
