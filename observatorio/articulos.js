@@ -27,8 +27,51 @@
  *             { "titulo": "...", "unidad": "%", "barras": [ { "etiqueta": "...", "valor": 14, "desde": 12,
  *               "texto": "12 a 14%", "destacar": true }, ... ], "fuente": "..." }
  *             "desde" es opcional: dibuja un rango (por ejemplo, una proyección de 12 a 14%).
+ *             "forma" elige el objeto que dibuja la cifra (ILIK v8, portadas de botica):
+ *               "blister"  conteos (empresas, solicitudes): una cavidad por unidad, hasta ~60 por fila de datos
+ *               "capsulas" porcentaje de cada categoría (0 a 100)
+ *               "jeringas" tasas comparadas, como inflación; acepta "desde" para rangos
+ *               "viales"   porcentajes de inyectables (0 a 100)
+ *               "cien"     una proporción en el tiempo: requiere "anio" en cada barra
+ *             Regla: dos piezas seguidas no usan la misma forma.
  */
 window.ILIK_ARTICULOS = [
+    {
+        "slug": "de-donde-viene-el-inyectable",
+        "titulo": "¿De dónde viene realmente el inyectable que su hospital compra?",
+        "resumen": "La mitad de los inyectables con registro vigente en México se fabrica por completo fuera del país, y entre los nuevos ya son cuatro de cada cinco. Lo vigente viene sobre todo de Europa; lo nuevo, cada vez más de India.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-11-19",
+        "minutos": 6,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "titulo": "Producto terminado fabricado solo fuera de México",
+            "unidad": "%",
+            "barras": [
+                {
+                    "etiqueta": "Inyectables nuevos, 2026",
+                    "valor": 86,
+                    "texto": "86%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Inyectables vigentes",
+                    "valor": 52,
+                    "texto": "52%"
+                },
+                {
+                    "etiqueta": "Orales vigentes",
+                    "valor": 33,
+                    "texto": "33%"
+                }
+            ],
+            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS",
+            "forma": "viales"
+        }
+    },
     {
         "slug": "quien-gana-la-carrera-por-registrar-medicamentos",
         "titulo": "¿Quién gana la carrera por registrar medicamentos en México?",
@@ -61,7 +104,8 @@ window.ILIK_ARTICULOS = [
                     "texto": "16%"
                 }
             ],
-            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
+            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS",
+            "forma": "capsulas"
         }
     },
     {
@@ -76,7 +120,7 @@ window.ILIK_ARTICULOS = [
         "estado": "publicado",
         "tipo": "investigacion",
         "grafica": {
-            "forma": "rango",
+            "forma": "jeringas",
             "titulo": "Inflación médica privada frente a la general",
             "barras": [
                 {
@@ -113,11 +157,25 @@ window.ILIK_ARTICULOS = [
         "estado": "publicado",
         "tipo": "investigacion",
         "grafica": {
+            "forma": "blister",
             "titulo": "Empresas que pidieron registrar la molécula, 2024 a 2026",
             "barras": [
-                {"etiqueta": "Sitagliptina", "valor": 37, "texto": "37", "destacar": true},
-                {"etiqueta": "Dapagliflozina", "valor": 28, "texto": "28"},
-                {"etiqueta": "Palbociclib", "valor": 3, "texto": "3"}
+                {
+                    "etiqueta": "Sitagliptina",
+                    "valor": 37,
+                    "texto": "37",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Dapagliflozina",
+                    "valor": 28,
+                    "texto": "28"
+                },
+                {
+                    "etiqueta": "Palbociclib",
+                    "valor": 3,
+                    "texto": "3"
+                }
             ],
             "fuente": "Ilik con datos de los listados de solicitudes de COFEPRIS"
         }
@@ -155,7 +213,7 @@ window.ILIK_ARTICULOS = [
                     "texto": "35%"
                 }
             ],
-            "forma": "tendencia",
+            "forma": "cien",
             "titulo": "Registros emitidos que listan un fabricante indio de principio activo",
             "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
         }
@@ -191,7 +249,8 @@ window.ILIK_ARTICULOS = [
                 }
             ],
             "titulo": "Inflación médica proyectada para 2026",
-            "fuente": "Aon, Global Medical Trend Rates 2026"
+            "fuente": "Aon, Global Medical Trend Rates 2026",
+            "forma": "jeringas"
         }
     }
 ];

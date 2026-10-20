@@ -176,6 +176,202 @@
             });
         }
 
+        // ILIK v8 · Portadas de botica: la cifra se dibuja con el objeto del que habla la pieza.
+        // Cada objeto es proporcional al dato (no es ilustración decorativa):
+        //   "blister"  conteos: una cavidad por unidad (empresas, solicitudes)
+        //   "capsulas" proporciones por categoría: la cápsula se llena hasta el porcentaje
+        //   "jeringas" tasas comparadas (inflación): el émbolo empuja hasta la cifra; un rango va rayado
+        //   "viales"   porcentajes de inyectables: el líquido sube hasta la cifra
+        //   "cien"     una proporción vista como cien tabletas, con el punto de partida marcado
+        var C = { ink: "#0B1420", inkSoft: "#16222F", bone: "#F7F8FA", boneDim: "#E7E9ED", teal: "#3F7D6E", tealSoft: "#C9DAD5", amber: "#C98A3B" };
+        function txt(svg, x, y, cadena, estilo, extra) {
+            var a = { x: x, y: y, style: estilo };
+            Object.keys(extra || {}).forEach(function (k) { a[k] = extra[k]; });
+            svg.appendChild(s("text", a, cadena));
+        }
+        function partir(cadena, max) {
+            var lineas = [], actual = "";
+            String(cadena || "").split(/\s+/).forEach(function (p) {
+                if (!p) { return; }
+                if ((actual + " " + p).trim().length > max && actual) { lineas.push(actual); actual = p; }
+                else { actual = (actual + " " + p).trim(); }
+            });
+            if (actual) { lineas.push(actual); }
+            return lineas;
+        }
+        var F_SANS = "font-family: Inter, system-ui, sans-serif;";
+        var F_SERIF = "font-family: Fraunces, Georgia, serif;";
+        function titulo8(svg, g, y, max) {
+            partir(g.titulo, max || 46).slice(0, 2).forEach(function (l, i) {
+                txt(svg, 56, y + i * 33, l, F_SANS + "font-size:27px;font-weight:500;fill:" + C.tealSoft + ";");
+            });
+        }
+        function fuente8(svg, g) {
+            if (g.fuente) { txt(svg, 56, 474, "Fuente: " + g.fuente, F_SANS + "font-size:18px;fill:" + C.tealSoft + ";fill-opacity:.7;", { "class": "pg-fuente8" }); }
+        }
+        function cifra(svg, x, y, cadena, destacado, tam, ancla) {
+            txt(svg, x, y, cadena, F_SERIF + "font-weight:700;font-size:" + tam + "px;fill:" + (destacado ? C.amber : C.bone) + ";font-variant-numeric:tabular-nums;", ancla ? { "text-anchor": ancla } : null);
+        }
+        function etiqueta(svg, x, y, cadena, ancla) {
+            txt(svg, x, y, cadena, F_SANS + "font-size:24px;font-weight:600;fill:" + C.bone + ";fill-opacity:.88;", ancla ? { "text-anchor": ancla } : null);
+        }
+
+        // Blíster: cada cavidad es una unidad contada. La lámina crece con el número.
+        function formaBlister(svg, g) {
+            titulo8(svg, g, 66);
+            var filas = g.barras.slice(0, 3);
+            var COLS = 13, PX = 30, PY = 25, X = 238, cuenta = 0;
+            var y = 132;
+            filas.forEach(function (b) {
+                var n = Math.max(0, Math.round(+b.valor) || 0);
+                var nf = Math.max(1, Math.ceil(n / COLS));
+                var alto = nf * PY + 16;
+                partir(b.etiqueta, 13).slice(0, 2).forEach(function (l, i) { etiqueta(svg, 56, y + 30 + i * 28, l); });
+                svg.appendChild(s("rect", { x: X, y: y, width: COLS * PX + 12, height: alto, rx: 12, fill: C.bone, "fill-opacity": "0.05", stroke: C.bone, "stroke-opacity": "0.16", "stroke-width": "2" }));
+                for (var k = 0; k < n; k++) {
+                    var cx = X + 8 + (k % COLS) * PX, cy = y + 8 + Math.floor(k / COLS) * PY;
+                    svg.appendChild(s("rect", { x: cx, y: cy, width: 26, height: 17, rx: 8.5, fill: "none", stroke: C.bone, "stroke-opacity": "0.22", "stroke-width": "1.5" }));
+                    var pil = s("g", { "data-a": "pop", "data-i": String(cuenta++) });
+                    pil.appendChild(s("rect", { x: cx + 2.5, y: cy + 2.5, width: 21, height: 12, rx: 6, fill: b.destacar ? C.amber : C.tealSoft, "fill-opacity": b.destacar ? "1" : "0.7" }));
+                    pil.appendChild(s("rect", { x: cx + 6, y: cy + 4.5, width: 7, height: 2.5, rx: 1.2, fill: C.bone, "fill-opacity": "0.45" }));
+                    svg.appendChild(pil);
+                }
+                cifra(svg, 744, y + Math.min(alto, 60) / 2 + (b.destacar ? 26 : 18), b.texto || String(n), b.destacar, b.destacar ? 74 : 52, "end");
+                y += alto + 26;
+            });
+            fuente8(svg, g);
+        }
+
+        // Cápsulas: la parte ámbar es la proporción; la costura marca la mitad.
+        function formaCapsulas(svg, g, id) {
+            titulo8(svg, g, 66);
+            var X = 56, L = 520, AL = 50;
+            g.barras.slice(0, 3).forEach(function (b, i) {
+                var y = 150 + i * 104;
+                var v = Math.max(0, Math.min(100, +b.valor || 0));
+                etiqueta(svg, X, y, b.etiqueta);
+                var cid = id + "-cap-" + i;
+                var cp = s("clipPath", { id: cid });
+                cp.appendChild(s("rect", { x: X, y: y + 14, width: L, height: AL, rx: AL / 2 }));
+                svg.appendChild(cp);
+                var grupo = s("g", { "clip-path": "url(#" + cid + ")" });
+                grupo.appendChild(s("rect", { x: X, y: y + 14, width: L, height: AL, fill: C.tealSoft, "fill-opacity": "0.12" }));
+                grupo.appendChild(s("rect", { x: X, y: y + 14, width: L * v / 100, height: AL, fill: b.destacar ? C.amber : C.tealSoft, "fill-opacity": b.destacar ? "1" : "0.78", "data-a": "x", "data-i": String(i) }));
+                grupo.appendChild(s("rect", { x: X + 18, y: y + 22, width: L - 36, height: 7, rx: 3.5, fill: C.bone, "fill-opacity": "0.22" }));
+                svg.appendChild(grupo);
+                svg.appendChild(s("rect", { x: X, y: y + 14, width: L, height: AL, rx: AL / 2, fill: "none", stroke: C.bone, "stroke-opacity": "0.3", "stroke-width": "2" }));
+                svg.appendChild(s("line", { x1: X + L / 2, x2: X + L / 2, y1: y + 14, y2: y + 14 + AL, stroke: C.ink, "stroke-opacity": "0.55", "stroke-width": "3" }));
+                cifra(svg, 744, y + 56, b.texto || (v + "%"), b.destacar, b.destacar ? 60 : 46, "end");
+            });
+            fuente8(svg, g);
+        }
+
+        // Jeringas: el líquido llega hasta la tasa; la escala graduada es común a todas.
+        function formaJeringas(svg, g, id) {
+            titulo8(svg, g, 66);
+            var vmax = Math.max.apply(null, g.barras.map(function (b) { return +b.valor || 0; })) || 1;
+            var MAX = Math.ceil(vmax * 1.12 / 5) * 5;
+            var XA = 104, XB = 616, AL = 34;
+            var px = function (v) { return XA + (XB - XA) * (v / MAX); };
+            var filas = g.barras.slice(0, 3);
+            filas.forEach(function (b, i) {
+                var y = 150 + i * 104, by = y + 16, cy = by + AL / 2;
+                etiqueta(svg, 56, y, b.etiqueta);
+                cifra(svg, 744, y + 4, b.texto || String(b.valor), b.destacar, b.destacar ? 48 : 38, "end");
+                // émbolo
+                svg.appendChild(s("rect", { x: 56, y: by - 8, width: 9, height: AL + 16, rx: 3, fill: C.tealSoft, "fill-opacity": "0.55" }));
+                svg.appendChild(s("rect", { x: 65, y: cy - 4, width: XA - 65, height: 8, fill: C.tealSoft, "fill-opacity": "0.4" }));
+                // líquido
+                var color = b.destacar ? C.amber : C.tealSoft, op = b.destacar ? "1" : "0.75";
+                if (b.desde != null && +b.desde < +b.valor) {
+                    var liq = s("g", { "data-a": "x", "data-i": String(i) });
+                    liq.appendChild(s("rect", { x: XA, y: by, width: px(+b.desde) - XA, height: AL, fill: color, "fill-opacity": op }));
+                    liq.appendChild(s("rect", { x: px(+b.desde), y: by, width: px(+b.valor) - px(+b.desde), height: AL, fill: b.destacar ? "url(#" + id + ")" : color, "fill-opacity": b.destacar ? "1" : "0.35" }));
+                    svg.appendChild(liq);
+                } else {
+                    svg.appendChild(s("rect", { x: XA, y: by, width: px(+b.valor) - XA, height: AL, fill: color, "fill-opacity": op, "data-a": "x", "data-i": String(i) }));
+                }
+                // tapón de hule
+                svg.appendChild(s("rect", { x: XA - 4, y: by - 2, width: 10, height: AL + 4, rx: 2, fill: C.ink, stroke: C.tealSoft, "stroke-opacity": "0.6", "stroke-width": "2" }));
+                // cilindro, graduación, cono y aguja
+                svg.appendChild(s("rect", { x: XA, y: by, width: XB - XA, height: AL, rx: 4, fill: "none", stroke: C.bone, "stroke-opacity": "0.4", "stroke-width": "2" }));
+                for (var t = 1; t < MAX; t++) {
+                    var mayor = t % 5 === 0;
+                    svg.appendChild(s("line", { x1: px(t), x2: px(t), y1: by, y2: by + (mayor ? 15 : 8), stroke: C.bone, "stroke-opacity": mayor ? "0.55" : "0.3", "stroke-width": mayor ? "2" : "1.2" }));
+                }
+                svg.appendChild(s("path", { d: "M" + XB + " " + by + " L" + (XB + 26) + " " + (cy - 6) + " L" + (XB + 26) + " " + (cy + 6) + " L" + XB + " " + (by + AL) + " Z", fill: C.bone, "fill-opacity": "0.12", stroke: C.bone, "stroke-opacity": "0.4", "stroke-width": "2" }));
+                svg.appendChild(s("line", { x1: XB + 26, x2: 744, y1: cy, y2: cy, stroke: C.bone, "stroke-opacity": "0.5", "stroke-width": "2" }));
+                if (i === filas.length - 1) {
+                    for (var m = 0; m <= MAX; m += 5) { txt(svg, px(m), by + AL + 28, m + "%", F_SANS + "font-size:18px;fill:" + C.tealSoft + ";fill-opacity:.75;", { "text-anchor": "middle" }); }
+                }
+            });
+            fuente8(svg, g);
+        }
+
+        // Viales: el nivel del líquido es el porcentaje.
+        function formaViales(svg, g) {
+            titulo8(svg, g, 60, 50);
+            var filas = g.barras.slice(0, 3), n = filas.length;
+            var ANCHO = 104, TOP = 156, BASE = 326;
+            filas.forEach(function (b, i) {
+                var cx = n === 1 ? 400 : 150 + i * (500 / (n - 1));
+                var x = cx - ANCHO / 2, v = Math.max(0, Math.min(100, +b.valor || 0));
+                var cid = "vial-" + nPortada + "-" + i;
+                var cp = s("clipPath", { id: cid });
+                cp.appendChild(s("rect", { x: x, y: TOP, width: ANCHO, height: BASE - TOP, rx: 16 }));
+                svg.appendChild(cp);
+                var nivel = BASE - (BASE - TOP) * v / 100;
+                var gr = s("g", { "clip-path": "url(#" + cid + ")" });
+                gr.appendChild(s("rect", { x: x, y: TOP, width: ANCHO, height: BASE - TOP, fill: C.bone, "fill-opacity": "0.05" }));
+                var liquido = s("g", { "data-a": "y", "data-i": String(i) });
+                liquido.appendChild(s("rect", { x: x, y: nivel, width: ANCHO, height: BASE - nivel, fill: b.destacar ? C.amber : C.tealSoft, "fill-opacity": b.destacar ? "1" : "0.72" }));
+                liquido.appendChild(s("rect", { x: x, y: nivel, width: ANCHO, height: 5, fill: C.bone, "fill-opacity": "0.35" }));
+                gr.appendChild(liquido);
+                gr.appendChild(s("rect", { x: x + 12, y: TOP + 10, width: 8, height: BASE - TOP - 26, rx: 4, fill: C.bone, "fill-opacity": "0.16" }));
+                svg.appendChild(gr);
+                for (var t = 1; t < 10; t++) {
+                    var ty = BASE - (BASE - TOP) * t / 10;
+                    svg.appendChild(s("line", { x1: x + ANCHO - (t % 5 ? 14 : 24), x2: x + ANCHO, y1: ty, y2: ty, stroke: C.ink, "stroke-opacity": "0.45", "stroke-width": "2" }));
+                }
+                svg.appendChild(s("rect", { x: x, y: TOP, width: ANCHO, height: BASE - TOP, rx: 16, fill: "none", stroke: C.bone, "stroke-opacity": "0.42", "stroke-width": "2.5" }));
+                svg.appendChild(s("rect", { x: cx - 26, y: TOP - 22, width: 52, height: 24, fill: C.bone, "fill-opacity": "0.08", stroke: C.bone, "stroke-opacity": "0.42", "stroke-width": "2.5" }));
+                svg.appendChild(s("rect", { x: cx - 38, y: TOP - 52, width: 76, height: 32, rx: 5, fill: b.destacar ? C.amber : C.teal }));
+                svg.appendChild(s("rect", { x: cx - 38, y: TOP - 30, width: 76, height: 6, fill: C.ink, "fill-opacity": "0.3" }));
+                cifra(svg, cx, 384, b.texto || (v + "%"), b.destacar, b.destacar ? 54 : 44, "middle");
+                partir(b.etiqueta, 20).slice(0, 2).forEach(function (l, j) {
+                    txt(svg, cx, 412 + j * 24, l, F_SANS + "font-size:20px;font-weight:600;fill:" + C.bone + ";fill-opacity:.85;", { "text-anchor": "middle" });
+                });
+            });
+            if (g.fuente) { txt(svg, 56, 488, "Fuente: " + g.fuente, F_SANS + "font-size:16px;fill:" + C.tealSoft + ";fill-opacity:.7;", { "class": "pg-fuente8" }); }
+        }
+
+        // Cien tabletas: la proporción actual en ámbar; las que ya estaban en el punto de partida, sólidas.
+        function formaCien(svg, g) {
+            var orden = g.barras.slice().sort(function (a, b) { return (a.anio || 0) - (b.anio || 0); });
+            var ini = orden[0], fin = orden[orden.length - 1];
+            var vFin = Math.round(+fin.valor || 0), vIni = Math.round(+ini.valor || 0);
+            cifra(svg, 52, 196, fin.texto || (vFin + "%"), true, 150);
+            partir(g.titulo, 22).slice(0, 4).forEach(function (l, i) {
+                txt(svg, 56, 244 + i * 31, l, F_SANS + "font-size:26px;font-weight:500;fill:" + C.bone + ";fill-opacity:.9;");
+            });
+            var P = 36, X = 418, Y = 52;
+            for (var k = 0; k < 100; k++) {
+                var cx = X + (k % 10) * P + 15, cy = Y + Math.floor(k / 10) * P + 15;
+                var antes = k < vIni, nueva = !antes && k < vFin;
+                var tab = s("g", antes || nueva ? { "data-a": "pop", "data-i": String(k) } : {});
+                tab.appendChild(s("circle", { cx: cx, cy: cy, r: 13, fill: antes ? C.amber : (nueva ? C.amber : C.bone), "fill-opacity": antes ? "1" : (nueva ? "0.42" : "0.07"), stroke: nueva ? C.amber : C.bone, "stroke-opacity": nueva ? "1" : "0.14", "stroke-width": "2" }));
+                tab.appendChild(s("line", { x1: cx - 8, x2: cx + 8, y1: cy, y2: cy, stroke: C.ink, "stroke-opacity": antes || nueva ? "0.45" : "0.25", "stroke-width": "2" }));
+                svg.appendChild(tab);
+            }
+            var ly = 404;
+            svg.appendChild(s("circle", { cx: 66, cy: ly - 7, r: 9, fill: C.amber }));
+            txt(svg, 84, ly, "ya estaban en " + Math.floor(ini.anio) + " (" + (ini.texto || vIni + "%") + ")", F_SANS + "font-size:20px;fill:" + C.bone + ";fill-opacity:.85;");
+            svg.appendChild(s("circle", { cx: 66, cy: ly + 25, r: 9, fill: C.amber, "fill-opacity": "0.42", stroke: C.amber, "stroke-width": "2" }));
+            txt(svg, 84, ly + 32, "se sumaron después", F_SANS + "font-size:20px;fill:" + C.bone + ";fill-opacity:.85;");
+            fuente8(svg, g);
+        }
+        var FORMAS8 = { blister: formaBlister, capsulas: formaCapsulas, jeringas: formaJeringas, viales: formaViales, cien: formaCien };
+
         var nPortada = 0;
         function portadaGrafica(g) {
             nPortada += 1;
@@ -191,6 +387,7 @@
             defs.appendChild(pat);
             svg.appendChild(defs);
             svg.appendChild(s("rect", { width: W, height: H, fill: "#0B1420" }));
+            if (FORMAS8[g.forma]) { FORMAS8[g.forma](svg, g, id); return svg; }
             if (g.titulo) { svg.appendChild(s("text", { x: X0, y: 100, "class": "pg-titulo" }, g.titulo)); }
             // ILIK v7 · Cada pieza puede pedir una forma distinta ("forma" en articulos.js); sin "forma", barras.
             if (g.forma === "unidades") { formaUnidades(svg, g, X0); if (g.fuente) { svg.appendChild(s("text", { x: X0, y: H - 40, "class": "pg-fuente" }, "Fuente: " + g.fuente)); } return svg; }
@@ -267,6 +464,11 @@
             if (pieza && pieza.grafica && Array.isArray(pieza.grafica.barras)) {
                 c.classList.add("obs-card__media--grafica");
                 c.appendChild(portadaGrafica(pieza.grafica));
+                // ILIK v8 · En la apertura del artículo, el objeto se llena una sola vez al cargar
+                if (c.closest && c.closest(".art-hero")) {
+                    c.querySelectorAll("[data-a]").forEach(function (n) { n.style.setProperty("--i", n.getAttribute("data-i") || "0"); });
+                    c.classList.add("obs-animar");
+                }
             }
         });
 
