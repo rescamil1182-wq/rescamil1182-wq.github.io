@@ -205,3 +205,7 @@ a { color: inherit; }
 @media print { .art-hero { min-height: 0; background: none; color: inherit; } }
 /* En la apertura la fuente va completa en el pie de la figura, no dentro del dibujo */
 .art-hero .pg-fuente8 { display: none; }
+
+/* ILIK v9 · Lista sin JavaScript del archivo (solo aparece si el navegador no ejecuta scripts) */
+.archive-noscript { list-style: none; margin: 0; padding: 32px 0 64px; display: grid; gap: 12px; }
+.archive-noscript a { font: 600 18px/1.4 var(--serif); color: var(--ink); }
