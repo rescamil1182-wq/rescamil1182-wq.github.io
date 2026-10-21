@@ -344,7 +344,7 @@
         .grid-fases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 48px; width: 100%; }
         .card-fase { display: flex; flex-direction: column; background-color: var(--ink); color: var(--bone); padding: 40px 32px; border-radius: 12px; border: 1px solid rgba(247, 248, 250, 0.05); }
         .card-fase.active { border-top: 4px solid var(--amber); }
-        .fase-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6; margin-bottom: 16px; display: block; }
+        .fase-title { font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6; margin-bottom: 16px; display: block; }
         .card-fase h4 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
         .card-fase p { font-size: 14px; opacity: 0.75; flex-grow: 1; }
         .fase-duration { font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--teal-soft); margin-top: 24px; display: block; }
@@ -480,6 +480,15 @@
         .hbar .p { text-transform: none; font-size: 13px; }
         .next-step { display: flex; gap: 14px; align-items: baseline; margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(247, 248, 250, 0.14); font-size: 14px; }
         .next-step b { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-soft); white-space: nowrap; }
+        /* ILIK v10 · Tres capas en el hallazgo de ejemplo: dato, lectura de Ilik y lo que falta confirmar */
+        .capas { list-style: none; margin: 24px 0 0; padding: 0; }
+        .capas li { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 10px 0; border-top: 1px solid rgba(247, 248, 250, 0.12); font-size: 14px; line-height: 1.5; color: rgba(247, 248, 250, 0.86); }
+        .capas .k { display: flex; align-items: center; gap: 8px; white-space: nowrap; font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+        .capas .k::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex: none; }
+        .capas .hecho .k { color: var(--teal-soft); } .capas .hecho .k::before { background: var(--teal-soft); }
+        .capas .infer .k { color: var(--amber); } .capas .infer .k::before { background: linear-gradient(90deg, var(--amber) 50%, transparent 50%); box-shadow: inset 0 0 0 1.5px var(--amber); }
+        .capas .nosabe .k { color: rgba(247, 248, 250, 0.7); } .capas .nosabe .k::before { box-shadow: inset 0 0 0 1.5px rgba(247, 248, 250, 0.7); }
+        @media (max-width: 640px) { .capas li { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
         .fict-ribbon { position: absolute; top: 34px; right: -56px; width: 230px; transform: rotate(35deg); background-color: var(--amber); color: var(--ink); text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 0; }
         .data-note { font-size: 12.5px; opacity: 0.72; margin-top: 8px; }
 
@@ -938,7 +947,7 @@
 
             <!-- ILIK v2 · CTA intermedio: aparece justo después de la prueba más fuerte del sitio -->
             <div class="inline-cta">
-                <p><strong>¿Cuánto de su gasto es compra real?</strong>Lo medimos con su propio Kardex, en un diagnóstico ejecutivo de 4 semanas.</p>
+                <p><strong>¿Cuánto de su gasto es compra real?</strong>Lo medimos con su propio Kardex, en un Mapa de Gasto de 4 semanas.</p>
                 <a href="#contacto" class="btn-primary" data-cta="caso-real">Solicitar diagnóstico &rarr;</a>
             </div>
         </section>
@@ -956,29 +965,29 @@
             <!-- ILIK v9: cada fase responde las mismas preguntas en el mismo orden, para leerse y compararse de un vistazo -->
             <div class="grid-fases">
                 <article class="card-fase">
-                    <span class="fase-title">Fase 01</span>
-                    <h4 class="font-serif">Diagnóstico ejecutivo</h4>
+                    <span class="fase-title">Fase 01 · Diagnóstico</span>
+                    <h4 class="font-serif">Mapa de Gasto</h4>
                     <span class="fase-duration">4 semanas</span>
                     <dl class="fase-filas">
                         <div><dt>Qué recibe</dt><dd>Un informe para finanzas con cada hallazgo en pesos, su evidencia y el siguiente paso, conciliado contra su Kardex.</dd></div>
                         <div><dt>Qué necesitamos de su equipo</dt><dd>El export de su Kardex y una persona de compras que resuelva dudas.</dd></div>
-                        <div class="fase-decide"><dt>Al terminar, usted decide</dt><dd>Qué hallazgos atacar primero y si vale la pena un piloto.</dd></div>
+                        <div class="fase-decide"><dt>Al terminar, usted decide</dt><dd>Qué hallazgos atacar primero y si vale la pena una Prueba de Ahorro.</dd></div>
                     </dl>
                 </article>
                 <article class="card-fase">
-                    <span class="fase-title">Fase 02</span>
-                    <h4 class="font-serif">Piloto</h4>
+                    <span class="fase-title">Fase 02 · Piloto</span>
+                    <h4 class="font-serif">Prueba de Ahorro</h4>
                     <span class="fase-duration">6 a 8 semanas</span>
                     <dl class="fase-filas">
-                        <div><dt>Qué recibe</dt><dd>Un hallazgo del diagnóstico llevado a la práctica en una sola categoría. La acción se define con su equipo de compras y se mide, con sus propios datos, si el ahorro se sostuvo.</dd></div>
+                        <div><dt>Qué recibe</dt><dd>Un hallazgo del Mapa de Gasto llevado a la práctica en una sola categoría. La acción se define con su equipo de compras y se mide, con sus propios datos, si el ahorro se sostuvo.</dd></div>
                         <div><dt>Qué necesitamos de su equipo</dt><dd>Quien decide las compras de esa categoría y el Kardex actualizado.</dd></div>
                         <div class="fase-decide"><dt>Al terminar, usted decide</dt><dd>Si el resultado medido justifica llevarlo a todo el gasto.</dd></div>
                     </dl>
                 </article>
                 <article class="card-fase">
-                    <span class="fase-title">Fase 03</span>
-                    <h4 class="font-serif">Escalamiento</h4>
-                    <span class="fase-duration">Trimestral</span>
+                    <span class="fase-title">Fase 03 · Seguimiento</span>
+                    <h4 class="font-serif">Pulso Trimestral</h4>
+                    <span class="fase-duration">Continuo, sin plazo forzoso</span>
                     <dl class="fase-filas">
                         <div><dt>Qué recibe</dt><dd>El mismo análisis sobre todo el gasto, actualizado cada trimestre, con una sesión de revisión con dirección. El ahorro no se pierde y las desviaciones nuevas aparecen a tiempo.</dd></div>
                         <div><dt>Qué necesitamos de su equipo</dt><dd>El export trimestral de su Kardex.</dd></div>
@@ -987,7 +996,7 @@
                 </article>
             </div>
             <div class="fase-notas">
-                <p><strong>Inversión.</strong> El Diagnóstico tiene tarifa fija, cotizada antes de empezar. El Piloto y el Escalamiento se cotizan con lo que encontró el diagnóstico, según el alcance y el tamaño del hospital.</p>
+                <p><strong>Inversión.</strong> El Mapa de Gasto tiene tarifa fija, cotizada antes de empezar. La Prueba de Ahorro y el Pulso Trimestral se cotizan con lo que encontró el Mapa, según el alcance y el tamaño del hospital.</p>
                 <p><strong>Tiempo de su equipo.</strong> Todavía no tenemos un promedio medido de horas por fase. Lo estimamos con usted al arrancar y al cierre le reportamos el tiempo real que tomó.</p>
             </div>
 
@@ -996,7 +1005,7 @@
                 <div class="sample-intro">
                     <span class="meta-tag" style="display: block; margin-bottom: 12px;">Así se ve un hallazgo</span>
                     <h3>Una idea central, su evidencia y un siguiente paso.</h3>
-                    <p>Cada hallazgo del diagnóstico llega con su cifra, la evidencia que la sostiene y una acción concreta para dirección.</p>
+                    <p>Cada hallazgo del diagnóstico llega con su cifra, la evidencia que la sostiene y una acción concreta para dirección. Además separa lo que muestran sus datos, lo que interpretamos y lo que todavía hay que confirmar.</p>
                     <p class="data-note">Ejemplo ilustrativo con datos ficticios. La estructura es la que recibe el cliente.</p>
                 </div>
                 <div class="sample-card">
@@ -1010,6 +1019,11 @@
                         <div class="hbar"><span>Proveedor D</span><div class="b reveal-bar" style="width: 24%;"></div><span class="p">9%</span></div>
                         <div class="hbar"><span>Otros</span><div class="b reveal-bar" style="width: 42%;"></div><span class="p">16%</span></div>
                     </div>
+                    <ul class="capas" aria-label="Qué es dato, qué es lectura y qué falta confirmar">
+                        <li class="hecho"><span class="k">Hecho</span><span>A y B suman 61% del gasto del semestre en esta categoría, conciliado contra el Kardex.</span></li>
+                        <li class="infer"><span class="k">Inferencia</span><span>Con ese volumen hay margen para negociar precio o condiciones de entrega.</span></li>
+                        <li class="nosabe"><span class="k">Por confirmar</span><span>Si los contratos vigentes tienen exclusividad o compromisos de compra.</span></li>
+                    </ul>
                     <div class="next-step"><b>Siguiente paso</b><span>Renegociar volumen con A y B antes del próximo cierre de contrato.</span></div>
                 </div>
             </div>

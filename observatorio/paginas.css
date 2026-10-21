@@ -209,3 +209,19 @@ a { color: inherit; }
 /* ILIK v9 · Lista sin JavaScript del archivo (solo aparece si el navegador no ejecuta scripts) */
 .archive-noscript { list-style: none; margin: 0; padding: 32px 0 64px; display: grid; gap: 12px; }
 .archive-noscript a { font: 600 18px/1.4 var(--serif); color: var(--ink); }
+
+/* ILIK v10 · "En claro": separa lo que es dato, lo que es lectura de Ilik y lo que no se sabe */
+.en-claro { margin: 48px 0 0; padding: 26px 28px 22px; background-color: #FFFFFF; border: 1px solid var(--bone-dim, #E7E9ED); border-top: 3px solid var(--ink, #0B1420); border-radius: 10px; }
+.en-claro h2 { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink, #0B1420); margin: 0 0 4px; }
+.en-claro .sub { font-size: 14px; line-height: 1.5; color: rgba(11, 20, 32, 0.65); margin: 0 0 16px; }
+.en-claro ul { list-style: none; margin: 0; padding: 0; }
+.en-claro li { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 11px 0; border-top: 1px solid var(--bone-dim, #E7E9ED); font-size: 15.5px; line-height: 1.55; }
+.en-claro .k { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.en-claro .k::before { content: ""; width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.en-claro .hecho .k { color: var(--teal, #3F7D6E); }
+.en-claro .hecho .k::before { background: var(--teal, #3F7D6E); }
+.en-claro .infer .k { color: var(--ink-soft, #16222F); }
+.en-claro .infer .k::before { background: linear-gradient(90deg, var(--amber, #C98A3B) 50%, transparent 50%); box-shadow: inset 0 0 0 1.5px var(--amber, #C98A3B); }
+.en-claro .nosabe .k { color: rgba(11, 20, 32, 0.7); }
+.en-claro .nosabe .k::before { box-shadow: inset 0 0 0 1.5px rgba(11, 20, 32, 0.7); }
+@media (max-width: 640px) { .en-claro { padding: 22px 20px 18px; } .en-claro li { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
