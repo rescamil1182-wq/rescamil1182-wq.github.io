@@ -1,0 +1,56 @@
+# Ilik
+
+> Ilik es una consultoría de inteligencia de compra. Convierte el Kardex y los datos de compra de una organización en un diagnóstico de gasto que el área de finanzas puede defender, con cada cifra conciliada contra el archivo original. Su primer vertical son los hospitales privados en México.
+
+El nombre viene del maya yucateco: ilik, ver u observar.
+
+## Qué hace Ilik
+
+Diagnóstico analítico con rigor de auditoría sobre los datos de compra que la organización ya tiene. Responde preguntas como:
+
+- Qué productos pueden pasar a consignación y dejar de inmovilizar capital.
+- Cuánto capital de trabajo sigue atado en inventario.
+- Dónde se paga distinto por el mismo producto, separando lo recuperable del movimiento normal de precios.
+- Qué compras dependen de un solo proveedor.
+- Cuánto del movimiento del Kardex es traslado entre almacenes y no compra real.
+- Cuántas claves distintas son, en realidad, el mismo producto.
+
+En medicamentos e implantes, Ilik aporta la evidencia y la decisión clínica es del comité del hospital. Ilik no recomienda sustituciones automáticas por precio.
+
+## Método
+
+Siete etapas, cada una con una condición de salida: perfilamiento, limpieza, imputación, clasificación con taxonomía propia, análisis, reconciliación contra el archivo original e informe ejecutivo (hallazgo, evidencia y siguiente paso). Si los datos no cumplen una condición, se ajusta el alcance y se mantiene la fecha. Ningún dato faltante se inventa.
+
+## Cómo se contrata
+
+Tres fases. Cada una termina con una decisión del cliente y ninguna obliga a contratar la siguiente.
+
+- Diagnóstico ejecutivo: 4 semanas. Tarifa fija, cotizada antes de empezar.
+- Piloto: 6 a 8 semanas sobre una sola categoría, midiendo con los datos del propio cliente si el ahorro se sostuvo.
+- Escalamiento: análisis de todo el gasto, actualizado y renovado trimestre a trimestre.
+
+Lo que necesita el cliente: el export de su Kardex u otro reporte de compras (Excel o CSV) y una persona de compras que resuelva dudas. Ilik no necesita acceso al sistema del cliente ni datos de pacientes. Antes de recibir cualquier archivo se firma un convenio de confidencialidad.
+
+## Caso de referencia
+
+Caso real anonimizado de un hospital privado (siete meses de compras de farmacia, 266,330 renglones): de $169.9 millones de pesos en movimientos de Kardex, solo $80.3 millones eran compra real. De $7.2 millones que parecían sobreprecio, $2.3 millones eran recuperables. La reconciliación cerró con 0.0% de diferencia no explicada. Las cifras se presentan como efecto ilustrativo de la metodología y no identifican a la institución.
+
+## Observatorio del gasto hospitalario
+
+Datos públicos e investigación propia sobre el gasto hospitalario y los medicamentos en México, con fuentes citadas y sin nombres de hospitales. Una pieza nueva cada quince días: https://ilikanalytics.com/observatorio/
+
+## Fundador
+
+Ricardo Rodríguez Escamilla, fundador de Ilik y estadístico, con más de ocho años al frente de la inteligencia comercial del canal hospitalario privado en la industria farmacéutica.
+
+## Contacto
+
+- Correo: contacto@ilikanalytics.com
+- Teléfono: +52 33 1087 4987
+- Sitio: https://ilikanalytics.com/
+
+## Páginas clave
+
+- Inicio y metodología: https://ilikanalytics.com/
+- Observatorio: https://ilikanalytics.com/observatorio/
+- Aviso de privacidad: https://ilikanalytics.com/aviso-de-privacidad.pdf
