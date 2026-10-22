@@ -686,6 +686,17 @@
             .fixed-watermark, .skip-link, .wa-fab { display: none; } /* ILIK v2: + .wa-fab */
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
+        /* ILIK v13 · Pantallas anchas: el contenido crece con la pantalla en vez de quedarse en 1200 px al centro,
+           para que no quede un hueco vacío a la izquierda en monitores grandes */
+        @media (min-width: 1440px) {
+            .max-w-7xl, .header-container { max-width: 1680px; padding-left: clamp(40px, 5vw, 96px); padding-right: clamp(40px, 5vw, 96px); }
+        }
+        @media (min-width: 1680px) {
+            .hero-content { max-width: 780px; }
+            .hero-cover h1 { font-size: 74px; }
+            .hero-desc { font-size: 21px; max-width: 640px; }
+            .hero-vertical { font-size: 15.5px; max-width: 640px; }
+        }
     </style>
 </head>
 <body>
