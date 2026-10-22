@@ -53,7 +53,7 @@
                     { "@type": "Question", "name": "¿Cuánto trabajo le implica a mi equipo?", "acceptedAnswer": { "@type": "Answer", "text": "Un export de su sistema (Kardex u otro reporte de compras) y una persona de compras que resuelva dudas. Todavía no tenemos un promedio medido de horas; lo estimamos con usted al arrancar y al cierre le reportamos el tiempo real." } },
                     { "@type": "Question", "name": "¿En qué formato necesitan la información?", "acceptedAnswer": { "@type": "Answer", "text": "El export que ya genera su sistema de inventarios o ERP, en Excel (.xls o .xlsx) o CSV. Si el sistema parte el reporte en varias hojas o archivos, nosotros lo consolidamos. No necesitamos acceso a su sistema ni datos de pacientes." } },
                     { "@type": "Question", "name": "¿Qué pasa si los datos están sucios?", "acceptedAnswer": { "@type": "Answer", "text": "Siempre lo están. Medimos qué tan sucios vienen y lo declaramos en el diagnóstico." } },
-                    { "@type": "Question", "name": "Ya tenemos ERP y un analista que hace reportes.", "acceptedAnswer": { "@type": "Answer", "text": "¿Y esos reportes le generan eficiencias? ¿Tienen impacto en decisiones de negocio? Ilik no se enfoca en producir reportes; se enfoca en detectar oportunidades y, más importante, en presentar la mejor manera de atacarlas y materializarlas." } },
+                    { "@type": "Question", "name": "Ya tenemos ERP y un analista que hace reportes.", "acceptedAnswer": { "@type": "Answer", "text": "Perfecto, eso facilita el trabajo. Ilik no sustituye su ERP ni a su analista: toma la información que ya generan y la convierte en hallazgos con cifra, prioridad y una acción concreta para dirección. Su equipo sigue al mando; yo le doy la evidencia." } },
                     { "@type": "Question", "name": "¿Qué se lleva el hospital al final?", "acceptedAnswer": { "@type": "Answer", "text": "Hallazgos con cifra, prioridad y un siguiente paso concreto." } }
                 ]
             }
@@ -194,7 +194,7 @@
         .hero-email a { color: var(--bone); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--amber); }
 
         /* Franja de prueba: cifras reales del caso, visibles al entrar */
-        .proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 44px; border-top: 1px solid rgba(247, 248, 250, 0.18); }
+        .proof-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 44px; border-top: 1px solid rgba(247, 248, 250, 0.18); }
         .proof-item { padding: 18px 20px 0 0; }
         .proof-item + .proof-item { padding-left: 20px; border-left: 1px solid rgba(247, 248, 250, 0.18); }
         .proof-num { display: block; font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--bone); white-space: nowrap; }
@@ -706,7 +706,7 @@
                 <a href="#metodologia">Metodología</a>
                 <a href="#caso">Caso real</a>
                 <a href="#trabajo">Cómo trabajamos</a>
-                <a href="observatorio/" data-cta="nav-observatorio">Observatorio</a>
+                <a href="observatorio/" data-cta="nav-observatorio" title="Datos públicos e investigación propia sobre compras hospitalarias">Observatorio</a>
             </nav>
             <a href="#contacto" class="btn-header" data-cta="header">Solicitar diagnóstico</a> <!-- ILIK v2: misma etiqueta que la acción principal -->
         </div>
@@ -719,9 +719,10 @@
         <figure class="hero-media">
             <img class="hero-slide is-on" src="oficina.jpg" alt="Ricardo Rodríguez Escamilla, fundador de Ilik, en la oficina" width="974" height="896" fetchpriority="high"> <!-- ILIK v2: carga prioritaria -->
             <!-- ILIK v9: ambientes de marca que se alternan con la foto del fundador. Se cargan después de la página; con movimiento reducido no aparecen -->
-            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-taza.jpg" alt="" width="1078" height="992" style="object-position: 50% 45%;">
+            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-almacen.jpg" alt="" width="1078" height="992" style="object-position: 72% 35%;">
             <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-cristal.jpg" alt="" width="1078" height="992" style="object-position: 0% 45%;">
-            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-sala.jpg" alt="" width="1078" height="992" style="object-position: 62% 40%;">
+            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-director.jpg" alt="" width="1078" height="992" style="object-position: 50% 55%;">
+            <img class="hero-slide" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="portada-taza.jpg" alt="" width="1078" height="992" style="object-position: 50% 45%;">
             <figcaption class="hero-caption"><strong>Ricardo Rodríguez Escamilla</strong><span>Fundador &middot; Estadístico</span></figcaption>
         </figure>
         <div class="max-w-7xl hero-inner">
@@ -729,7 +730,7 @@
                 <span class="hero-tag">Inteligencia de Compra</span>
                 <h1 class="font-serif"><span class="h1-line">Lo que no se mide,</span> <span class="h1-line h1-accent">se paga de más.</span></h1>
                 <p class="hero-desc">Cuando los registros de compra se cuentan por cientos de miles, la visibilidad real del gasto se diluye. Convertimos su Kardex y sus datos de compra en un diagnóstico de gasto que finanzas puede defender.</p>
-                <p class="hero-vertical">Metodología escalable a todo tipo de industrias. <strong>Primer vertical: hospitales privados en México.</strong></p>
+                <p class="hero-vertical"><strong>Diagnóstico de gasto para hospitales privados en México.</strong> La misma metodología, con el mismo rigor, es escalable a otras industrias.</p>
                 <div class="cta-group">
                     <a href="#contacto" class="btn-primary" data-cta="hero">Solicitar diagnóstico &rarr;</a>
                     <a href="#metodologia" class="btn-secondary">Ver metodología</a>
@@ -740,6 +741,7 @@
                     <div class="proof-item"><span class="proof-num">$169.9<small>M</small></span><span class="proof-label">en movimientos de Kardex analizados</span></div>
                     <div class="proof-item"><span class="proof-num">52.7<small>%</small></span><span class="proof-label">del movimiento no era compra real</span></div><!-- ILIK v2: antes 2.12x (= 1 / 47.3%); mismo hallazgo, lectura directa -->
                     <div class="proof-item"><span class="proof-num">$2.3<small>M</small></span><span class="proof-label">en sobreprecio recuperable identificado</span></div><!-- ILIK v2: resultado en dinero (Hallazgo 02) -->
+                    <div class="proof-item"><span class="proof-num">$25.7<small>M</small></span><span class="proof-label">en capital de trabajo liberable, potencial máximo (desde $5.7M en el alcance inicial)</span></div>
                 </div>
                 <p class="proof-note">Caso real anonimizado, conciliado contra el Kardex original con 0.0% de diferencia no explicada. Cifras presentadas como efecto ilustrativo de la metodología.</p><!-- ILIK v2: el 0.0% se conserva como garantía de rigor -->
             </div>
@@ -779,11 +781,12 @@
                 <div class="about-copy">
                     <h2 class="lead">Ilik nació de una base de consumos que nadie podía leer.</h2>
                     <!-- ILIK v7: voz del fundador, en sus palabras -->
-                    <p>Durante ocho años trabajé desde la perspectiva del laboratorio en el mercado hospitalario privado. En una ocasión, un hospital compartió su historial de consumos para que le presentáramos una oferta de valor. Entre líneas, el mensaje casi siempre era el mismo: «mejórame el precio». Para diseñar una propuesta ganar-ganar teníamos tres objetivos: asegurar la penetración del catálogo, balancear el mix precio-volumen y, en consecuencia, maximizar el share of wallet.</p>
+                    <p>Durante ocho años trabajé desde la perspectiva del laboratorio en el mercado hospitalario privado. En una ocasión, un hospital compartió su historial de consumos para que le presentara una oferta de valor. Entre líneas, el mensaje casi siempre era el mismo: «mejórame el precio». Para diseñar una propuesta ganar-ganar, el objetivo del laboratorio era claro: asegurar la penetración del catálogo, balancear el mix precio-volumen y, en consecuencia, maximizar el share of wallet frente al hospital.</p>
                     <p>Al adentrarme en la información, la taxonomía era prácticamente inexistente. Entre cientos de miles de registros en crudo, identificar una oportunidad o proponer una eficiencia operativa era técnicamente imposible.</p>
                     <p>Ahí entendí que, a veces, el volumen de información es tan abrumador que los mismos hospitales pierden la visibilidad real de lo que compran. De la necesidad de resolver eso nació Ilik.</p>
                     <p>No entrego reportes genéricos ni dashboards que no cambian ninguna decisión. Identifico las fugas y las oportunidades reales en sus datos y le presento la estrategia para materializarlas en su operación.</p>
                     <p>Hay cosas que no negocio: nunca voy a mentir, inflar un indicador o inventar un resultado, y su información es confidencial sin excepción.</p>
+                    <p>Hoy ese conocimiento trabaja del otro lado de la mesa: lo uso para que un hospital negocie con evidencia, no con intuición.</p>
                     <p class="founder-sign">Ricardo Rodríguez Escamilla, fundador</p>
                     <p class="vertical-note"><span class="tag">Primer vertical</span><span>Hospitales privados en México, por la experiencia reciente de su fundador: más de ocho años al frente de la inteligencia comercial del canal hospitalario privado en la industria farmacéutica.</span></p>
                 </div>
@@ -997,7 +1000,7 @@
             </div>
             <div class="fase-notas">
                 <p><strong>Inversión.</strong> El Mapa de Gasto tiene tarifa fija, cotizada antes de empezar. La Prueba de Ahorro y el Pulso Trimestral se cotizan con lo que encontró el Mapa, según el alcance y el tamaño del hospital.</p>
-                <p><strong>Tiempo de su equipo.</strong> Todavía no tenemos un promedio medido de horas por fase. Lo estimamos con usted al arrancar y al cierre le reportamos el tiempo real que tomó.</p>
+                <p><strong>Tiempo de su equipo.</strong> Un export de su sistema y una persona de compras que resuelva dudas al arrancar cada fase.</p>
             </div>
 
             <!-- NUEVO · Así se ve un hallazgo (datos ficticios) -->
@@ -1060,7 +1063,7 @@
                 </details>
                 <details class="faq-item"> <!-- ILIK v7 -->
                     <summary>Ya tenemos ERP y un analista que hace reportes.<span class="faq-icon" aria-hidden="true"></span></summary>
-                    <div class="faq-answer"><p>¿Y esos reportes le generan eficiencias? ¿Tienen impacto en decisiones de negocio? Ilik no se enfoca en producir reportes; se enfoca en detectar oportunidades y, más importante, en presentar la mejor manera de atacarlas y materializarlas.</p></div>
+                    <div class="faq-answer"><p>Perfecto, eso facilita el trabajo. Ilik no sustituye su ERP ni a su analista: toma la información que ya generan y la convierte en hallazgos con cifra, prioridad y una acción concreta para dirección. Su equipo sigue al mando; yo le doy la evidencia.</p></div>
                 </details>
                 <details class="faq-item">
                     <summary>¿Qué se lleva el hospital al final?<span class="faq-icon" aria-hidden="true"></span></summary>
@@ -1162,7 +1165,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logo-oficial.png" alt="Ilik" width="92" height="60" loading="lazy" decoding="async"> <!-- ILIK v2: carga diferida -->
-                    <p>Inteligencia de Compra con metodología escalable a todo tipo de industrias. Diagnóstico de gasto con trazabilidad y reconciliación completa. Primer vertical: hospitales privados en México.</p>
+                    <p>Diagnóstico de gasto con trazabilidad y reconciliación completa para hospitales privados en México. La misma metodología, con el mismo rigor, es escalable a otras industrias.</p>
                     <p class="tagline">Lo que no se mide, se paga de más.</p>
                 </div>
                 <nav class="footer-col" aria-label="Sitio">
@@ -1174,7 +1177,7 @@
                         <li><a href="#caso">Caso real</a></li>
                         <li><a href="#trabajo">Cómo trabajamos</a></li>
                         <li><a href="#preguntas">Preguntas</a></li>
-                        <li><a href="observatorio/">Observatorio</a></li> <!-- ILIK v4 -->
+                        <li><a href="observatorio/" title="Datos públicos e investigación propia sobre compras hospitalarias">Observatorio</a></li> <!-- ILIK v4 -->
                     </ul>
                 </nav>
                 <div class="footer-col">
