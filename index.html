@@ -407,8 +407,8 @@
         .footer-bottom p { opacity: 0.75; }
         .footer-bottom strong { font-weight: 700; }
 
-        /* Pantallas bajas (laptops de 768 px): la portada cabe completa sin recortarse */
-        @media (min-width: 901px) and (max-height: 860px) {
+        /* Pantallas bajas (laptops y pantallas con zoom/escalado de Windows): la portada cabe completa sin recortarse. ILIK v11: rango ampliado de 860px a 1000px porque el cuarto dato de prueba (capital liberable) alargó el bloque */
+        @media (min-width: 901px) and (max-height: 1000px) {
             .hero-inner { padding-top: 36px; padding-bottom: 36px; }
             .hero-tag { margin-bottom: 14px; }
             .hero-cover h1 { font-size: 50px; margin-bottom: 16px; }
