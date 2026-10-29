@@ -6,7 +6,7 @@ El nombre viene del maya yucateco: ilik, ver u observar.
 
 ## Qué hace Ilik
 
-Diagnóstico analítico con rigor de auditoría sobre los datos de compra que la organización ya tiene. Responde preguntas como:
+Diagnóstico analítico, con trazabilidad y reconciliación completa, sobre los datos de compra que la organización ya tiene. Responde preguntas como:
 
 - Qué productos pueden pasar a consignación y dejar de inmovilizar capital.
 - Cuánto capital de trabajo sigue atado en inventario.
@@ -25,9 +25,9 @@ Siete etapas, cada una con una condición de salida: perfilamiento, limpieza, im
 
 Tres fases. Cada una termina con una decisión del cliente y ninguna obliga a contratar la siguiente.
 
-- Diagnóstico ejecutivo: 4 semanas. Tarifa fija, cotizada antes de empezar.
-- Piloto: 6 a 8 semanas sobre una sola categoría, midiendo con los datos del propio cliente si el ahorro se sostuvo.
-- Escalamiento: análisis de todo el gasto, actualizado y renovado trimestre a trimestre.
+- Mapa de Gasto: 4 semanas. Tarifa fija, cotizada antes de empezar.
+- Prueba de Ahorro: 6 a 8 semanas sobre una sola categoría, midiendo con los datos del propio cliente si el ahorro se sostuvo.
+- Pulso Trimestral: análisis de todo el gasto, actualizado y renovado trimestre a trimestre.
 
 Lo que necesita el cliente: el export de su Kardex u otro reporte de compras (Excel o CSV) y una persona de compras que resuelva dudas. Ilik no necesita acceso al sistema del cliente ni datos de pacientes. Antes de recibir cualquier archivo se firma un convenio de confidencialidad.
 
@@ -37,7 +37,7 @@ Caso real anonimizado de un hospital privado (siete meses de compras de farmacia
 
 ## Observatorio del gasto hospitalario
 
-Datos públicos e investigación propia sobre el gasto hospitalario y los medicamentos en México, con fuentes citadas y sin nombres de hospitales. Una pieza nueva cada quince días: https://ilikanalytics.com/observatorio/
+Datos públicos e investigación propia sobre el gasto hospitalario y los medicamentos en México, con fuentes citadas y sin nombres de hospitales. Investigaciones y datos públicos comentados, con fecha y fuentes: https://ilikanalytics.com/observatorio/
 
 ## Fundador
 
@@ -47,6 +47,9 @@ Ricardo Rodríguez Escamilla, fundador de Ilik y estadístico, con más de ocho 
 
 - Correo: contacto@ilikanalytics.com
 - Teléfono: +52 33 1087 4987
+- WhatsApp: https://wa.me/523310874987
+- LinkedIn de Ilik: https://www.linkedin.com/company/ilikanalytics/
+- LinkedIn del fundador: https://www.linkedin.com/in/ricardo-rodriguez-escamilla-62a6b056/
 - Sitio: https://ilikanalytics.com/
 
 ## Páginas clave

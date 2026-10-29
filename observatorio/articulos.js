@@ -73,6 +73,18 @@ window.ILIK_ARTICULOS = [
         }
     },
     {
+        "slug": "cuanto-mas-paga-un-hospital-privado-que-el-gobierno",
+        "titulo": "¿Cuánto más paga un hospital privado que el gobierno por el mismo medicamento? Tres indicadores para medirlo",
+        "resumen": "Tres indicadores para medir cuánto más paga un hospital privado que el gobierno por el mismo medicamento, qué datos los alimentan y qué ajustes evitan conclusiones falsas.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-11-12",
+        "minutos": 4,
+        "imagen": true,
+        "imagenAlt": "Regla de 1.0× a 3.5× que mide cuántas veces más que el gobierno paga un hospital privado; el gobierno está en 1.0× y el hospital privado aparece con un signo de interrogación.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
         "slug": "ninguna-de-las-139-claves-desiertas-esta-en-la-i-285",
         "titulo": "Ninguna de las 139 claves desiertas está en la licitación que viene",
         "resumen": "Las 139 claves desiertas de la licitación de genéricos 2027/2028 no están en la licitación abierta I-285. Dependen de procedimientos que aún no tienen fallo.",
