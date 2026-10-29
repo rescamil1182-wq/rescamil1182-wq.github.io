@@ -147,12 +147,12 @@ window.ILIK_ARTICULOS = [
         }
     },
     {
-        "slug": "las-75-claves-que-perdio-la-compra-publica",
-        "titulo": "Las 75 claves que la compra pública perdió para 2027",
-        "resumen": "La compra de genéricos 2027/2028 adjudicó más que la anterior, pero dejó sin proveedor 75 claves que en 2025 sí tenían, varias de uso diario en hospitales.",
+        "slug": "quien-gano-quien-perdio-y-que-falta-compra-medicamentos-2027-2028",
+        "titulo": "Quién ganó, quién perdió y qué falta en la compra de medicamentos 2027-2028 del gobierno: el posible impacto en el mercado privado",
+        "resumen": "El gobierno cambió las reglas para comprar medicamentos 2027-2028. Quién ganó, quién perdió, qué quedó sin proveedor y qué puede significar para los hospitales privados.",
         "tema": "Compras públicas de medicamentos",
         "fecha": "2026-10-28",
-        "minutos": 12,
+        "minutos": 13,
         "imagen": true,
         "imagenAlt": "Anaquel de farmacia con cajas de medicamento; 75 claves aparecen como huecos punteados en ámbar.",
         "estado": "publicado",
