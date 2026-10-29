@@ -43,34 +43,10 @@ window.ILIK_ARTICULOS = [
         "tema": "Medicamentos y COFEPRIS",
         "fecha": "2026-11-19",
         "minutos": 6,
-        "imagen": false,
-        "imagenAlt": "",
+        "imagen": true,
+        "imagenAlt": "Vial con sellos de origen: Europa 53%, India 25%, Estados Unidos y Canadá 11%. 86% de los inyectables nuevos de 2026 se fabrica solo fuera de México.",
         "estado": "publicado",
-        "tipo": "investigacion",
-        "grafica": {
-            "titulo": "Producto terminado fabricado solo fuera de México",
-            "unidad": "%",
-            "barras": [
-                {
-                    "etiqueta": "Inyectables nuevos, 2026",
-                    "valor": 86,
-                    "texto": "86%",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "Inyectables vigentes",
-                    "valor": 52,
-                    "texto": "52%"
-                },
-                {
-                    "etiqueta": "Orales vigentes",
-                    "valor": 33,
-                    "texto": "33%"
-                }
-            ],
-            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS",
-            "forma": "viales"
-        }
+        "tipo": "investigacion"
     },
     {
         "slug": "cuanto-mas-paga-un-hospital-privado-que-el-gobierno",
@@ -103,35 +79,10 @@ window.ILIK_ARTICULOS = [
         "tema": "Medicamentos y aseguradoras",
         "fecha": "2026-11-05",
         "minutos": 6,
-        "imagen": false,
-        "imagenAlt": "",
+        "imagen": true,
+        "imagenAlt": "Tubería que sale del principio activo indio, pierde caudal en la farmacia y la aseguradora, y llega a la cuenta del hospital con un signo de interrogación.",
         "estado": "publicado",
-        "tipo": "investigacion",
-        "grafica": {
-            "forma": "jeringas",
-            "titulo": "Inflación médica privada frente a la general",
-            "barras": [
-                {
-                    "etiqueta": "Costos médicos, AMIS feb 2026",
-                    "valor": 16,
-                    "desde": 14,
-                    "texto": "14 a 16%",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "Médica 2026, AMIS may 2026",
-                    "valor": 14,
-                    "desde": 12,
-                    "texto": "12 a 14%"
-                },
-                {
-                    "etiqueta": "General",
-                    "valor": 4.5,
-                    "texto": "cerca de 4.5%"
-                }
-            ],
-            "fuente": "AMIS, citada por Expansión y Publimetro"
-        }
+        "tipo": "investigacion"
     },
     {
         "slug": "lo-que-paga-el-gobierno-por-cada-medicamento",
@@ -195,34 +146,10 @@ window.ILIK_ARTICULOS = [
         "tema": "Medicamentos y COFEPRIS",
         "fecha": "2026-10-20",
         "minutos": 10,
-        "imagen": false,
-        "imagenAlt": "",
+        "imagen": true,
+        "imagenAlt": "Podio casi plano: dos empresas empatan en primer lugar con 3.9% de las solicitudes y la tercera tiene 2.7%; 275 empresas, HHI de 114.",
         "estado": "publicado",
-        "tipo": "investigacion",
-        "grafica": {
-            "titulo": "Registros nuevos con titular extranjero, 2024 a 2026",
-            "unidad": "%",
-            "barras": [
-                {
-                    "etiqueta": "Oncología",
-                    "valor": 69,
-                    "texto": "69%",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "Cardiovascular",
-                    "valor": 51,
-                    "texto": "51%"
-                },
-                {
-                    "etiqueta": "Respiratorio",
-                    "valor": 16,
-                    "texto": "16%"
-                }
-            ],
-            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS",
-            "forma": "capsulas"
-        }
+        "tipo": "investigacion"
     },
     {
         "slug": "que-medicamento-tendra-competencia-despues-de-sitagliptina",
@@ -231,33 +158,10 @@ window.ILIK_ARTICULOS = [
         "tema": "Medicamentos y COFEPRIS",
         "fecha": "2026-10-15",
         "minutos": 6,
-        "imagen": false,
-        "imagenAlt": "",
+        "imagen": true,
+        "imagenAlt": "Línea de salida con fichas numeradas: 37 empresas esperan registrar sitagliptina, 28 dapagliflozina y 3 palbociclib.",
         "estado": "publicado",
-        "tipo": "investigacion",
-        "grafica": {
-            "forma": "blister",
-            "titulo": "Empresas que pidieron registrar la molécula, 2024 a 2026",
-            "barras": [
-                {
-                    "etiqueta": "Sitagliptina",
-                    "valor": 37,
-                    "texto": "37",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "Dapagliflozina",
-                    "valor": 28,
-                    "texto": "28"
-                },
-                {
-                    "etiqueta": "Palbociclib",
-                    "valor": 3,
-                    "texto": "3"
-                }
-            ],
-            "fuente": "Ilik con datos de los listados de solicitudes de COFEPRIS"
-        }
+        "tipo": "investigacion"
     },
     {
         "slug": "hecho-en-mexico-con-molecula-de-india",
@@ -266,36 +170,10 @@ window.ILIK_ARTICULOS = [
         "tema": "Medicamentos y COFEPRIS",
         "fecha": "2026-10-15",
         "minutos": 7,
-        "imagen": false,
-        "imagenAlt": "",
+        "imagen": true,
+        "imagenAlt": "Caja de medicamento con la etiqueta \"Hecho en México\" levantada; debajo dice \"Principio activo India\". 51% de los registros de 2026 lista un fabricante indio, contra 35% en 2016.",
         "estado": "publicado",
-        "tipo": "investigacion",
-        "grafica": {
-            "barras": [
-                {
-                    "etiqueta": "2026, al 9 de octubre",
-                    "anio": 2026.78,
-                    "valor": 51.0,
-                    "texto": "51%",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "2025",
-                    "anio": 2025,
-                    "valor": 50.0,
-                    "texto": "50%"
-                },
-                {
-                    "etiqueta": "2016",
-                    "anio": 2016,
-                    "valor": 35.0,
-                    "texto": "35%"
-                }
-            ],
-            "forma": "cien",
-            "titulo": "Registros emitidos que listan un fabricante indio de principio activo",
-            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS"
-        }
+        "tipo": "investigacion"
     },
     {
         "tipo": "investigacion",
@@ -305,31 +183,8 @@ window.ILIK_ARTICULOS = [
         "tema": "Aseguradoras y SGMM",
         "fecha": "2026-10-14",
         "minutos": 6,
-        "imagen": false,
-        "imagenAlt": "",
-        "estado": "publicado",
-        "grafica": {
-            "barras": [
-                {
-                    "etiqueta": "México",
-                    "valor": 14.8,
-                    "texto": "14.8%",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "Promedio mundial",
-                    "valor": 9.8,
-                    "texto": "9.8%"
-                },
-                {
-                    "etiqueta": "Inflación general en México",
-                    "valor": 3.2,
-                    "texto": "3.2%"
-                }
-            ],
-            "titulo": "Inflación médica proyectada para 2026",
-            "fuente": "Aon, Global Medical Trend Rates 2026",
-            "forma": "jeringas"
-        }
+        "imagen": true,
+        "imagenAlt": "Dos bloques aprietan una columna ámbar: 4 aseguradoras concentran 75% de las primas y 4 entidades reúnen 79% de los hospitales grandes; el costo de la atención privada sube 14.8% en 2026.",
+        "estado": "publicado"
     }
 ];
