@@ -73,40 +73,16 @@ window.ILIK_ARTICULOS = [
         }
     },
     {
-        "slug": "quien-gana-la-carrera-por-registrar-medicamentos",
-        "titulo": "¿Quién gana la carrera por registrar medicamentos en México?",
-        "resumen": "Desde 2024, 275 empresas pidieron a COFEPRIS registrar medicamentos y ninguna concentra más de 4% de las solicitudes. Al cruzar quién somete con quién se queda con el registro, el podio cambia.",
-        "tema": "Medicamentos y COFEPRIS",
-        "fecha": "2026-10-20",
-        "minutos": 10,
-        "imagen": false,
-        "imagenAlt": "",
+        "slug": "ninguna-de-las-139-claves-desiertas-esta-en-la-i-285",
+        "titulo": "Ninguna de las 139 claves desiertas está en la licitación que viene",
+        "resumen": "Las 139 claves desiertas de la licitación de genéricos 2027/2028 no están en la licitación abierta I-285. Dependen de procedimientos que aún no tienen fallo.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-11-10",
+        "minutos": 2,
+        "imagen": true,
+        "imagenAlt": "Dos conjuntos que no se tocan: 139 claves desiertas y 1,169 renglones de la licitación I-285, con cero en común.",
         "estado": "publicado",
-        "tipo": "investigacion",
-        "grafica": {
-            "titulo": "Registros nuevos con titular extranjero, 2024 a 2026",
-            "unidad": "%",
-            "barras": [
-                {
-                    "etiqueta": "Oncología",
-                    "valor": 69,
-                    "texto": "69%",
-                    "destacar": true
-                },
-                {
-                    "etiqueta": "Cardiovascular",
-                    "valor": 51,
-                    "texto": "51%"
-                },
-                {
-                    "etiqueta": "Respiratorio",
-                    "valor": 16,
-                    "texto": "16%"
-                }
-            ],
-            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS",
-            "forma": "capsulas"
-        }
+        "tipo": "dato"
     },
     {
         "slug": "el-ahorro-que-nadie-ve",
@@ -143,6 +119,97 @@ window.ILIK_ARTICULOS = [
                 }
             ],
             "fuente": "AMIS, citada por Expansión y Publimetro"
+        }
+    },
+    {
+        "slug": "lo-que-paga-el-gobierno-por-cada-medicamento",
+        "titulo": "Lo que paga el gobierno por cada medicamento, y cómo usarlo para negociar",
+        "resumen": "Birmex publica el precio adjudicado de cada clave. Ajustado bien, es un punto de partida documentado para negociar, y la compra 2027/2028 bajó muchos de esos precios.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-11-02",
+        "minutos": 10,
+        "imagen": true,
+        "imagenAlt": "Ticket de precio del sugammadex: 2,049.69 pesos en 2025 tachado y techo de 754.15 pesos en 2027, una baja mínima de 63%.",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "barras": [
+                {
+                    "etiqueta": "Ganador 2027 abajo del precio 2025",
+                    "valor": 54.0,
+                    "texto": "54%",
+                    "destacar": true
+                }
+            ],
+            "forma": "capsulas",
+            "titulo": "Claves de la muestra donde el precio ganador de 2027 quedó abajo del de 2025 (41 de 76)",
+            "fuente": "Cálculo de Ilik con el acta de fallo de T-218-2026 y el resumen de adjudicación de I-1-2025"
+        }
+    },
+    {
+        "slug": "las-75-claves-que-perdio-la-compra-publica",
+        "titulo": "Las 75 claves que la compra pública perdió para 2027",
+        "resumen": "La compra de genéricos 2027/2028 adjudicó más que la anterior, pero dejó sin proveedor 75 claves que en 2025 sí tenían, varias de uso diario en hospitales.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-10-28",
+        "minutos": 12,
+        "imagen": true,
+        "imagenAlt": "Anaquel de farmacia con cajas de medicamento; 75 claves aparecen como huecos punteados en ámbar.",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "barras": [
+                {
+                    "etiqueta": "Mismas claves, 2027",
+                    "valor": 81.0,
+                    "texto": "81%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Mismas claves, 2025",
+                    "valor": 75.0,
+                    "texto": "75%"
+                }
+            ],
+            "forma": "viales",
+            "titulo": "Claves de medicamento adjudicadas, comparando las mismas 645 claves",
+            "fuente": "Ilik con actas y resúmenes de adjudicación de Birmex en ComprasMX"
+        }
+    },
+    {
+        "slug": "quien-gana-la-carrera-por-registrar-medicamentos",
+        "titulo": "¿Quién gana la carrera por registrar medicamentos en México?",
+        "resumen": "Desde 2024, 275 empresas pidieron a COFEPRIS registrar medicamentos y ninguna concentra más de 4% de las solicitudes. Al cruzar quién somete con quién se queda con el registro, el podio cambia.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-10-20",
+        "minutos": 10,
+        "imagen": false,
+        "imagenAlt": "",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "titulo": "Registros nuevos con titular extranjero, 2024 a 2026",
+            "unidad": "%",
+            "barras": [
+                {
+                    "etiqueta": "Oncología",
+                    "valor": 69,
+                    "texto": "69%",
+                    "destacar": true
+                },
+                {
+                    "etiqueta": "Cardiovascular",
+                    "valor": 51,
+                    "texto": "51%"
+                },
+                {
+                    "etiqueta": "Respiratorio",
+                    "valor": 16,
+                    "texto": "16%"
+                }
+            ],
+            "fuente": "Ilik con datos del Visor de Registros de Medicamentos de COFEPRIS",
+            "forma": "capsulas"
         }
     },
     {
