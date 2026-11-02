@@ -37,6 +37,31 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "lo-que-paga-el-gobierno-por-cada-medicamento",
+        "titulo": "Lo que paga el gobierno por cada medicamento, y cómo usarlo para negociar",
+        "resumen": "Birmex publica el precio adjudicado de cada clave. Ajustado bien, es un punto de partida documentado para negociar, y la compra 2027/2028 bajó muchos de esos precios.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-11-02",
+        "minutos": 10,
+        "imagen": true,
+        "imagenAlt": "Ticket de precio del sugammadex: 2,049.69 pesos en 2025 tachado y techo de 754.15 pesos en 2027, una baja mínima de 63%.",
+        "estado": "publicado",
+        "tipo": "investigacion",
+        "grafica": {
+            "barras": [
+                {
+                    "etiqueta": "Ganador 2027 abajo del precio 2025",
+                    "valor": 54.0,
+                    "texto": "54%",
+                    "destacar": true
+                }
+            ],
+            "forma": "capsulas",
+            "titulo": "Claves de la muestra donde el precio ganador de 2027 quedó abajo del de 2025 (41 de 76)",
+            "fuente": "Cálculo de Ilik con el acta de fallo de T-218-2026 y el resumen de adjudicación de I-1-2025"
+        }
+    },
+    {
         "slug": "quien-gano-quien-perdio-y-que-falta-compra-medicamentos-2027-2028",
         "titulo": "Quién ganó, quién perdió y qué falta en la compra de medicamentos 2027-2028 del gobierno: el posible impacto en el mercado privado",
         "resumen": "El gobierno cambió las reglas para comprar medicamentos 2027-2028. Quién ganó, quién perdió, qué quedó sin proveedor y qué puede significar para los hospitales privados.",
