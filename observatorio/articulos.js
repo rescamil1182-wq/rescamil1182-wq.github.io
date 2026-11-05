@@ -37,6 +37,18 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "el-ahorro-que-nadie-ve",
+        "titulo": "El ahorro que nadie ve",
+        "resumen": "La mitad de los registros de medicamentos ya lista un fabricante indio de principio activo, en teoría más barato. Ni las primas, ni la inflación médica, ni la cuenta del hospital parecen haberlo notado. Seguimos el rastro de esa diferencia.",
+        "tema": "Medicamentos y aseguradoras",
+        "fecha": "2026-11-05",
+        "minutos": 6,
+        "imagen": true,
+        "imagenAlt": "Tubería que sale del principio activo indio, pierde caudal en la farmacia y la aseguradora, y llega a la cuenta del hospital con un signo de interrogación.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
         "slug": "lo-que-paga-el-gobierno-por-cada-medicamento",
         "titulo": "Lo que paga el gobierno por cada medicamento, y cómo usarlo para negociar",
         "resumen": "Birmex publica el precio adjudicado de cada clave. Ajustado bien, es un punto de partida documentado para negociar, y la compra 2027/2028 bajó muchos de esos precios.",
