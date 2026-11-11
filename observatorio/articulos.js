@@ -37,6 +37,30 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "cuatro-de-cada-diez-claves-de-material-de-curacion-se-quedaron-sin-proveedor",
+        "titulo": "Cuatro de cada diez claves de material de curación se quedaron sin proveedor",
+        "resumen": "Las dos licitaciones de material de curación 2027/2028 dejaron sin proveedor al menos 478 de 1,188 claves: de catéteres y antisépticos a prótesis valvulares. Qué significa para un hospital privado.",
+        "tema": "Compras públicas de material de curación",
+        "fecha": "2026-11-10",
+        "minutos": 6,
+        "imagen": true,
+        "imagenAlt": "Cuadrícula de 1,188 claves de material de curación 2027/2028: 478 aparecen como huecos en ámbar, las claves que quedaron desiertas.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
+        "slug": "ninguna-de-las-139-claves-desiertas-esta-en-la-i-285",
+        "titulo": "Ninguna de las 139 claves sin proveedor entró a la licitación abierta",
+        "resumen": "La compra de genéricos 2027/2028 dejó 139 claves sin proveedor y ninguna entró a la licitación abierta. Según su acta, esa licitación dejó desiertas 496 de 1,169 claves.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-11-10",
+        "minutos": 3,
+        "imagen": true,
+        "imagenAlt": "Dos conjuntos que no se tocan: 139 claves desiertas y 1,169 renglones de la licitación I-285, con cero en común.",
+        "estado": "publicado",
+        "tipo": "dato"
+    },
+    {
         "slug": "el-ahorro-que-nadie-ve",
         "titulo": "El ahorro que nadie ve",
         "resumen": "La mitad de los registros de medicamentos ya lista un fabricante indio de principio activo, en teoría más barato. Ni las primas, ni la inflación médica, ni la cuenta del hospital parecen haberlo notado. Seguimos el rastro de esa diferencia.",
