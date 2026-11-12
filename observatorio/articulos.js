@@ -37,6 +37,18 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "cuanto-mas-paga-un-hospital-privado-que-el-gobierno",
+        "titulo": "¿Cuánto más paga un hospital privado que el gobierno por el mismo medicamento? Tres indicadores para medirlo",
+        "resumen": "Tres indicadores para medir cuánto más paga un hospital privado que el gobierno por el mismo medicamento, qué datos los alimentan y qué ajustes evitan conclusiones falsas.",
+        "tema": "Compras públicas de medicamentos",
+        "fecha": "2026-11-12",
+        "minutos": 4,
+        "imagen": true,
+        "imagenAlt": "Regla de 1.0× a 3.5× que mide cuántas veces más que el gobierno paga un hospital privado; el gobierno está en 1.0× y el hospital privado aparece con un signo de interrogación.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
         "slug": "cuatro-de-cada-diez-claves-de-material-de-curacion-se-quedaron-sin-proveedor",
         "titulo": "Cuatro de cada diez claves de material de curación se quedaron sin proveedor",
         "resumen": "Las dos licitaciones de material de curación 2027/2028 dejaron sin proveedor al menos 478 de 1,188 claves: de catéteres y antisépticos a prótesis valvulares. Qué significa para un hospital privado.",
