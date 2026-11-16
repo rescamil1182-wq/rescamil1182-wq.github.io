@@ -37,6 +37,18 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "de-donde-viene-el-inyectable",
+        "titulo": "¿De dónde viene realmente el inyectable que su hospital compra?",
+        "resumen": "La mitad de los inyectables que hoy se pueden vender en México se fabrica por completo en otro país. Entre los aprobados desde 2021, son cuatro de cada cinco. Lo que ya está en el mercado viene sobre todo de Europa; lo que entra ahora, cada vez más de India.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-11-16",
+        "minutos": 6,
+        "imagen": true,
+        "imagenAlt": "Vial con sellos de origen: Europa 53%, India 25%, Estados Unidos y Canadá 11%. 86% de los inyectables nuevos de 2026 se fabrica solo fuera de México.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
         "slug": "cuanto-mas-paga-un-hospital-privado-que-el-gobierno",
         "titulo": "¿Cuánto más paga un hospital privado que el gobierno por el mismo medicamento? Tres indicadores para medirlo",
         "resumen": "Tres indicadores para medir cuánto más paga un hospital privado que el gobierno por el mismo medicamento, qué datos los alimentan y qué ajustes evitan conclusiones falsas.",
