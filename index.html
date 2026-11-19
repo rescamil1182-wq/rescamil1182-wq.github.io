@@ -172,6 +172,11 @@
         .hero-media .hero-slide.is-on { opacity: 1; animation: hero-acerca 9s ease-out both; }
         @keyframes hero-acerca { from { transform: scale(1.045); } to { transform: none; } }
         .hero-caption { transition: opacity .6s ease; }
+        /* ILIK v14 · Tratamiento editorial de las fotos de ambiente: menos saturación, contraste suave y grano fino.
+           Reduce el aspecto de imagen generada. La foto del fundador (primera) no se toca. */
+        .hero-media .hero-slide:not(:first-child) { filter: saturate(.62) contrast(.86) brightness(.97) sepia(.08); }
+        .hero-media::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .22; mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
         .hero-caption.is-hidden { opacity: 0; }
         @media (prefers-reduced-motion: reduce) { .hero-media .hero-slide { transition: none; } .hero-media .hero-slide.is-on { animation: none; } }
         .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 0%, rgba(11, 20, 32, 0.82) 22%, rgba(11, 20, 32, 0.25) 60%, rgba(11, 20, 32, 0.1) 100%); pointer-events: none; }
@@ -195,7 +200,7 @@
         .hero-email a { color: var(--bone); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--amber); }
 
         /* Franja de prueba: cifras reales del caso, visibles al entrar */
-        .proof-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 44px; border-top: 1px solid rgba(247, 248, 250, 0.18); }
+        .proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); /* ILIK v14: 3 cifras */ margin-top: 44px; border-top: 1px solid rgba(247, 248, 250, 0.18); }
         .proof-item { padding: 18px 20px 0 0; }
         .proof-item + .proof-item { padding-left: 20px; border-left: 1px solid rgba(247, 248, 250, 0.18); }
         .proof-num { display: block; font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--bone); white-space: nowrap; }
@@ -573,6 +578,10 @@
         .form-done p { font-size: 15px; opacity: 0.8; }
         .form-card.is-sent form, .form-card.is-sent .form-intro { display: none; }
         .form-card.is-sent .form-done { display: block; }
+        /* ILIK v14 · Confirmación de envío directo (Web3Forms) */
+        .form-card .form-done.form-done-ok, .form-card.is-sent .form-done.form-done-ok { display: none; }
+        .form-card.is-sent-direct .form-done { display: none; }
+        .form-card.is-sent-direct .form-done.form-done-ok { display: block; }
         /* ILIK v5 · Confirmación con canales de respaldo */
         .form-done:focus { outline: none; }
         .done-alt { margin-top: 22px; font-size: 14px !important; }
@@ -755,7 +764,7 @@
                     <div class="proof-item"><span class="proof-num">$169.9<small>M</small></span><span class="proof-label">en movimientos de Kardex analizados</span></div>
                     <div class="proof-item"><span class="proof-num">52.7<small>%</small></span><span class="proof-label">del movimiento no era compra real</span></div><!-- ILIK v2: antes 2.12x (= 1 / 47.3%); mismo hallazgo, lectura directa -->
                     <div class="proof-item"><span class="proof-num">$2.3<small>M</small></span><span class="proof-label">en sobreprecio recuperable identificado</span></div><!-- ILIK v2: resultado en dinero (Hallazgo 02) -->
-                    <div class="proof-item"><span class="proof-num">$25.7<small>M</small></span><span class="proof-label">en capital de trabajo liberable, potencial máximo (desde $5.7M en el alcance inicial)</span></div>
+                    <!-- ILIK v14: la cifra de $25.7M (capital liberable) se movió fuera de la portada; sigue en "Qué resolvemos" -->
                 </div>
                 <p class="proof-note">Caso real anonimizado, conciliado contra el Kardex original con 0.0% de diferencia no explicada. Cifras presentadas como efecto ilustrativo de la metodología.</p><!-- ILIK v2: el 0.0% se conserva como garantía de rigor -->
             </div>
@@ -1142,6 +1151,12 @@
                         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                     </form>
 
+                    <!-- ILIK v14 · Confirmación cuando la solicitud llegó directo al correo de Ilik -->
+                    <div class="form-done form-done-ok" id="form-done-ok" tabindex="-1" role="status">
+                        <strong class="font-serif">Recibimos su solicitud.</strong>
+                        <p>Le respondemos personalmente a su correo de trabajo. Si es urgente, escríbanos por WhatsApp al 331 087 4987.</p>
+                    </div>
+
                     <div class="form-done" id="form-done" tabindex="-1">
                         <strong class="font-serif">Su solicitud está lista en su correo.</strong>
                         <p>Se abrió su programa de correo con los datos escritos. Solo presione Enviar.</p>
@@ -1257,6 +1272,10 @@
             // ILIK v5 · FORMULARIO DE DIAGNÓSTICO, SIN INTERMEDIARIOS
             // Al enviar se abre el correo del visitante con la solicitud escrita, dirigida a contacto@ilikanalytics.com.
             // Si su equipo no tiene correo configurado, la confirmación ofrece copiar el texto o mandarlo por WhatsApp.
+            // ILIK v14 · ENVÍO DIRECTO CON WEB3FORMS: la solicitud llega a contacto@ilikanalytics.com (Zoho) sin depender del correo del visitante.
+            // Pegue aquí la Access Key de Web3Forms (web3forms.com → panel). Es pública por diseño; puede ir en el código.
+            // Mientras esté vacía, o si el servicio falla, el formulario usa el método anterior (abre el correo del visitante).
+            var WEB3FORMS_KEY = "22849ffa-acd0-4bab-a5ed-75a1703170c4";
             var form = document.getElementById("diag-form");
             if (form) {
                 var card = document.getElementById("form-card");
@@ -1311,11 +1330,41 @@
                                "\n\nAcepto el Aviso de Privacidad de Ilik.";
                     document.getElementById("wa-req").href = "https://wa.me/523310874987?text=" + encodeURIComponent(body);
                     card.setAttribute("data-body", body);
-                    track("correo");
-                    window.location.href = "mailto:contacto@ilikanalytics.com?subject=" + encodeURIComponent("Solicitud de diagnóstico: " + d.organizacion) + "&body=" + encodeURIComponent(body);
-                    card.classList.add("is-sent");
-                    var done = document.getElementById("form-done");
-                    if (done) { done.focus({ preventScroll: true }); }
+                    var porCorreo = function () {
+                        track("correo");
+                        window.location.href = "mailto:contacto@ilikanalytics.com?subject=" + encodeURIComponent("Solicitud de diagnóstico: " + d.organizacion) + "&body=" + encodeURIComponent(body);
+                        card.classList.add("is-sent");
+                        var done = document.getElementById("form-done");
+                        if (done) { done.focus({ preventScroll: true }); }
+                    };
+                    if (!WEB3FORMS_KEY || !window.fetch) { porCorreo(); return; }
+                    var btn = form.querySelector('button[type="submit"]');
+                    if (btn) { btn.disabled = true; }
+                    setStatus("Enviando…", false);
+                    fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                        body: JSON.stringify({
+                            access_key: WEB3FORMS_KEY,
+                            subject: "Solicitud de diagnóstico: " + d.organizacion,
+                            from_name: "Sitio Ilik",
+                            replyto: d.email,
+                            nombre: d.nombre, cargo: d.cargo, organizacion: d.organizacion,
+                            email: d.email, telefono: d.telefono, mensaje: d.mensaje,
+                            message: body,
+                            botcheck: ""
+                        })
+                    }).then(function (r) { return r.json(); }).then(function (j) {
+                        if (!j || !j.success) { throw new Error("web3forms"); }
+                        setStatus("", false);
+                        track("directo");
+                        card.classList.add("is-sent", "is-sent-direct");
+                        var ok = document.getElementById("form-done-ok");
+                        if (ok) { ok.focus({ preventScroll: true }); }
+                    }).catch(function () {
+                        setStatus("", false);
+                        porCorreo(); // respaldo: el método anterior
+                    }).then(function () { if (btn) { btn.disabled = false; } });
                 });
 
                 document.getElementById("copy-req").addEventListener("click", function () {
@@ -1331,7 +1380,7 @@
                     }
                 });
                 document.getElementById("edit-req").addEventListener("click", function () {
-                    card.classList.remove("is-sent");
+                    card.classList.remove("is-sent", "is-sent-direct");
                     document.getElementById("f-nombre").focus();
                 });
             }
