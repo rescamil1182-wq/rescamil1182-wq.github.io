@@ -37,6 +37,30 @@
  */
 window.ILIK_ARTICULOS = [
     {
+        "slug": "que-tan-comparable-es-lo-que-su-hospital-compra-en-dispositivos",
+        "titulo": "Solo 7 de cada 100 registros sanitarios vigentes de dispositivos se pueden ligar a un código global con datos públicos",
+        "resumen": "La base pública de COFEPRIS no tiene un campo de código de barras, y con datos públicos solo 7 de cada 100 registros vigentes se pueden ligar a uno. Qué significa para comparar proveedores.",
+        "tema": "Dispositivos médicos",
+        "fecha": "2026-11-26",
+        "minutos": 5,
+        "imagen": true,
+        "imagenAlt": "Cuadrícula de 100 códigos de barras: 7 encendidos en ámbar y 93 apagados. 7 de cada 100 registros vigentes de dispositivos se pudieron ligar a un código global con información pública.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
+        "slug": "que-tienen-en-comun-los-medicamentos-que-nunca-llegan-a-mexico",
+        "titulo": "¿Qué tienen en común los medicamentos que nunca llegan a México?",
+        "resumen": "De 223 medicamentos nuevos aprobados en Estados Unidos entre 2021 y 2025, solo 71 tienen registro en México. La mayoría de los que faltan tiene algo en común: su dueño no tiene a nadie aquí, y el mercado rara vez le alcanza para venir.",
+        "tema": "Medicamentos y COFEPRIS",
+        "fecha": "2026-11-20",
+        "minutos": 13,
+        "imagen": true,
+        "imagenAlt": "Tablero de llegadas de aeropuerto con medicamentos aprobados por la FDA: resmetirom, zuranolona, suzetrigina, rezafungina, efgartigimod y acoramidis aparecen como no llegó; teclistamab y lenacapavir, como registrados. 152 de 223 no han llegado a México.",
+        "estado": "publicado",
+        "tipo": "investigacion"
+    },
+    {
         "slug": "de-donde-viene-el-inyectable",
         "titulo": "¿De dónde viene realmente el inyectable que su hospital compra?",
         "resumen": "La mitad de los inyectables que hoy se pueden vender en México se fabrica por completo en otro país. Entre los aprobados desde 2021, son cuatro de cada cinco. Lo que ya está en el mercado viene sobre todo de Europa; lo que entra ahora, cada vez más de India.",
